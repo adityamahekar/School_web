@@ -3,951 +3,785 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Government Excellence School</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto+Slab:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <title>Government Schools and PU College, Rajanukunte</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        :root {
-            --primary: #1a4f8c;
-            --secondary: #3a7dce;
-            --accent: #ff9800;
-            --light: #f5f9ff;
-            --dark: #2c3e50;
-            --text: #333;
-            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            --transition: all 0.3s ease;
         }
 
         body {
-            background-color: #f8fafc;
-            color: var(--text);
+            font-family: 'Arial', sans-serif;
             line-height: 1.6;
-            overflow-x: hidden;
+            color: #333;
         }
 
         /* Header Styles */
-        header {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+        .header-top {
+            background: #2c4a7a;
             color: white;
-            padding: 15px 0;
-            box-shadow: var(--shadow);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+            padding: 10px 0;
+            font-size: 14px;
         }
 
         .header-container {
             max-width: 1200px;
             margin: 0 auto;
+            padding: 0 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 20px;
+        }
+
+        .contact-info {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .language-select, .phone {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .top-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .top-links a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .locate-btn {
+            background: #4CAF50;
+            padding: 5px 15px;
+            border-radius: 4px;
+        }
+
+        /* Logo Section */
+        .logo-section {
+            background: white;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .logo-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
         }
 
         .logo {
-            display: flex;
-            align-items: center;
-            animation: fadeIn 1s ease;
+            width: 80px;
+            height: 80px;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="%23ff6b35"/><circle cx="50" cy="50" r="25" fill="%23fff"/><text x="50" y="55" text-anchor="middle" fill="%23333" font-size="12">GOV</text></svg>') no-repeat center;
+            background-size: contain;
         }
 
-        .logo img {
-            height: 60px;
-            margin-right: 15px;
+        .school-title {
+            text-align: left;
         }
 
-        .logo-text {
-            display: flex;
-            flex-direction: column;
+        .school-title h1 {
+            font-size: 28px;
+            color: #2c4a7a;
+            margin-bottom: 5px;
         }
 
-        .logo-text h1 {
-            font-size: 1.8rem;
-            font-weight: 700;
-            font-family: 'Roboto Slab', serif;
-        }
-
-        .logo-text p {
-            font-size: 0.9rem;
-            opacity: 0.9;
+        .school-title .kannada {
+            font-size: 20px;
+            color: #666;
         }
 
         /* Navigation */
+        .navbar {
+            background: #f8f9fa;
+            padding: 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
         .nav-container {
-            position: relative;
-            margin: 10px 0;
-            padding: 0 20px;
-        }
-
-        .nav-scroll {
-            display: flex;
-            overflow-x: auto;
-            scrollbar-width: none;
-            -ms-overflow-style: none;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50px;
-            padding: 5px;
-            margin: 0 auto;
             max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
         }
 
-        .nav-scroll::-webkit-scrollbar {
-            display: none;
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
         }
 
         .nav-item {
-            flex: 0 0 auto;
-            padding: 12px 25px;
-            margin: 0 5px;
-            color: white;
+            position: relative;
+        }
+
+        .nav-link {
+            display: block;
+            padding: 15px 20px;
+            color: #2c4a7a;
             text-decoration: none;
             font-weight: 500;
-            border-radius: 50px;
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
+            transition: background 0.3s;
         }
 
-        .nav-item::before {
-            content: '';
+        .nav-link:hover {
+            background: #e9ecef;
+            color: #1a365d;
+        }
+
+        .dropdown {
             position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: var(--transition);
+            top: 100%;
+            left: 0;
+            background: white;
+            min-width: 200px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            z-index: 1000;
         }
 
-        .nav-item:hover::before {
-            left: 100%;
+        .nav-item:hover .dropdown {
+            opacity: 1;
+            visibility: visible;
         }
 
-        .nav-item:hover, .nav-item.active {
-            background: rgba(255, 255, 255, 0.15);
-            transform: translateY(-2px);
+        .dropdown a {
+            padding: 10px 15px;
+            display: block;
+            color: #333;
+            text-decoration: none;
+            border-bottom: 1px solid #eee;
         }
 
-        .nav-item i {
-            margin-right: 8px;
-            font-size: 0.9rem;
+        .dropdown a:hover {
+            background: #f8f9fa;
         }
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3') no-repeat center center/cover;
+            position: relative;
             height: 500px;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 500"><rect fill="%2365a85f" width="1200" height="500"/><circle cx="200" cy="100" r="50" fill="%23ffffff" opacity="0.1"/><circle cx="800" cy="200" r="70" fill="%23ffffff" opacity="0.1"/><circle cx="1000" cy="400" r="60" fill="%23ffffff" opacity="0.1"/></svg>');
+            background-size: cover;
+            background-position: center;
             display: flex;
             align-items: center;
             justify-content: center;
-            text-align: center;
             color: white;
-            padding: 20px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 100px;
-            background: linear-gradient(transparent, #f8fafc);
-        }
-
-        .hero-content {
-            max-width: 800px;
-            z-index: 1;
-            animation: slideUp 1s ease;
+            text-align: center;
         }
 
         .hero-content h2 {
-            font-size: 3.2rem;
+            font-size: 48px;
             margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-            font-family: 'Roboto Slab', serif;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
 
         .hero-content p {
-            font-size: 1.2rem;
+            font-size: 20px;
             margin-bottom: 30px;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
         }
 
-        .btn {
-            display: inline-block;
-            background: var(--accent);
+        .cta-button {
+            background: #ff6b35;
             color: white;
-            padding: 14px 30px;
+            padding: 15px 30px;
             text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: var(--transition);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            position: relative;
-            overflow: hidden;
+            border-radius: 25px;
+            font-size: 18px;
+            font-weight: bold;
+            transition: transform 0.3s;
         }
 
-        .btn:hover {
-            background: #e68900;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255,107,53,0.4);
         }
 
-        .btn:active {
-            transform: translateY(0);
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            background: white;
         }
 
-        /* Main Content */
         .container {
             max-width: 1200px;
-            margin: 60px auto;
-            padding: 0 20px;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 50px;
-            color: var(--primary);
-            position: relative;
-            padding-bottom: 15px;
-            font-family: 'Roboto Slab', serif;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: var(--accent);
-            border-radius: 2px;
-        }
-
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-bottom: 50px;
-        }
-
-        .feature-card {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            position: relative;
-            top: 0;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-        }
-
-        .feature-img {
-            height: 200px;
-            overflow: hidden;
-        }
-
-        .feature-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .feature-card:hover .feature-img img {
-            transform: scale(1.1);
-        }
-
-        .feature-content {
-            padding: 25px;
-        }
-
-        .feature-content h3 {
-            color: var(--primary);
-            margin-bottom: 15px;
-            font-size: 1.4rem;
-        }
-
-        .feature-content p {
-            margin-bottom: 20px;
-            color: #555;
-        }
-
-        /* News Section */
-        .news-container {
-            background: white;
-            border-radius: 15px;
-            padding: 30px;
-            box-shadow: var(--shadow);
-            margin-bottom: 40px;
-        }
-
-        .news-item {
-            margin-bottom: 20px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid #eee;
-            display: flex;
-            align-items: flex-start;
-        }
-
-        .news-item:last-child {
-            margin-bottom: 0;
-            padding-bottom: 0;
-            border-bottom: none;
-        }
-
-        .news-date {
-            color: var(--primary);
-            font-weight: 600;
-            background: var(--light);
-            padding: 10px 15px;
-            border-radius: 8px;
-            margin-right: 20px;
-            min-width: 100px;
-            text-align: center;
-        }
-
-        .news-content h3 {
-            color: var(--dark);
-            margin-bottom: 10px;
-        }
-
-        /* Page Content */
-        .page-content {
-            display: none;
-            padding: 40px 0;
-        }
-
-        .page-content.active {
-            display: block;
-        }
-
-        .page-header {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            padding: 60px 0 40px;
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .page-header h2 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            font-family: 'Roboto Slab', serif;
-        }
-
-        .page-inner {
-            max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
 
-        .content-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-bottom: 50px;
-        }
-
-        .content-card {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-        }
-
-        .content-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-        }
-
-        .content-img {
-            height: 200px;
-            overflow: hidden;
-        }
-
-        .content-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .content-body {
-            padding: 25px;
-        }
-
-        .content-body h3 {
-            color: var(--primary);
-            margin-bottom: 15px;
-            font-size: 1.3rem;
-        }
-
-        /* Footer */
-        footer {
-            background: var(--dark);
-            color: white;
-            padding: 60px 0 20px;
-            margin-top: 60px;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
+        .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 40px;
-            padding: 0 20px;
         }
 
-        .footer-section h3 {
-            color: var(--accent);
-            margin-bottom: 20px;
-            font-size: 1.4rem;
-            font-family: 'Roboto Slab', serif;
+        .feature-card {
+            text-align: center;
+            padding: 30px 20px;
+            border-radius: 10px;
+            transition: transform 0.3s;
         }
 
-        .footer-section p {
-            margin-bottom: 15px;
-            opacity: 0.9;
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
 
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 12px;
-        }
-
-        .footer-links a {
-            color: #ddd;
-            text-decoration: none;
-            transition: var(--transition);
-            display: block;
-        }
-
-        .footer-links a:hover {
-            color: var(--accent);
-            transform: translateX(5px);
-        }
-
-        .social-icons {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .social-icons a {
-            color: white;
-            background: rgba(255, 255, 255, 0.1);
-            width: 45px;
-            height: 45px;
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 20px;
+            background: #2c4a7a;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: var(--transition);
+            color: white;
+            font-size: 24px;
         }
 
-        .social-icons a:hover {
-            background: var(--accent);
+        .feature-card h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #2c4a7a;
+        }
+
+        .feature-card p {
+            color: #666;
+        }
+
+        /* History Section */
+        .history {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 50px;
+            color: #333;
+        }
+
+        .history-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .history-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .history-card h3 {
+            color: #2c4a7a;
+            margin-bottom: 20px;
+            font-size: 22px;
+        }
+
+        /* Counter Section */
+        .counter {
+            padding: 60px 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .counter-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+        }
+
+        .counter-item h3 {
+            font-size: 48px;
+            margin-bottom: 10px;
+            color: #ff6b35;
+        }
+
+        .counter-item p {
+            font-size: 18px;
+        }
+
+        /* Vision Mission */
+        .vision-mission {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .vm-container {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .target-icon {
+            width: 200px;
+            height: 200px;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><circle cx="100" cy="100" r="90" fill="%23ff6b35"/><circle cx="100" cy="100" r="70" fill="%23fff"/><circle cx="100" cy="100" r="50" fill="%23ff6b35"/><circle cx="100" cy="100" r="30" fill="%23fff"/><circle cx="100" cy="100" r="10" fill="%23ff6b35"/></svg>') no-repeat center;
+            background-size: contain;
+        }
+
+        .vision-content h3 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #2c4a7a;
+        }
+
+        .vision-content ul {
+            list-style: none;
+        }
+
+        .vision-content li {
+            margin-bottom: 15px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .vision-content li:before {
+            content: '•';
+            color: #ff6b35;
+            font-size: 20px;
+            position: absolute;
+            left: 0;
+        }
+
+        /* Events Section */
+        .events {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .event-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .event-card:hover {
             transform: translateY(-5px);
         }
 
-        .footer-bottom {
+        .event-image {
+            height: 200px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+        }
+
+        .event-content {
+            padding: 25px;
+        }
+
+        .event-content h3 {
+            color: #2c4a7a;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+
+        /* Footer */
+        .footer {
+            background: #2c4a7a;
+            color: white;
+            padding: 40px 0;
             text-align: center;
-            padding: 20px;
-            margin-top: 50px;
-            border-top: 1px solid #444;
-            opacity: 0.8;
         }
 
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @keyframes slideUp {
-            from { 
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to { 
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .animated {
-            opacity: 0;
-            transform: translateY(50px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-
-        .visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Responsive Styles */
-        @media (max-width: 992px) {
-            .hero-content h2 {
-                font-size: 2.5rem;
-            }
-            
-            .nav-item {
-                padding: 10px 20px;
-                font-size: 0.9rem;
-            }
-        }
-
+        /* Responsive Design */
         @media (max-width: 768px) {
             .header-container {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .logo-container {
                 flex-direction: column;
                 text-align: center;
             }
 
-            .logo {
-                margin-bottom: 15px;
+            .school-title {
+                text-align: center;
+            }
+
+            .nav-menu {
+                flex-wrap: wrap;
                 justify-content: center;
             }
 
-            .hero {
-                height: 400px;
-            }
-
             .hero-content h2 {
-                font-size: 2.2rem;
+                font-size: 32px;
             }
 
-            .hero-content p {
-                font-size: 1rem;
-            }
-
-            .nav-item {
-                padding: 8px 15px;
-            }
-
-            .features {
+            .vm-container {
                 grid-template-columns: 1fr;
-            }
-            
-            .news-item {
-                flex-direction: column;
-            }
-            
-            .news-date {
-                margin-bottom: 15px;
-                margin-right: 0;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero-content h2 {
-                font-size: 1.8rem;
-            }
-            
-            .nav-item {
-                padding: 8px 12px;
-                font-size: 0.8rem;
-            }
-            
-            .nav-item i {
-                display: none;
-            }
-            
-            .btn {
-                padding: 12px 25px;
+                text-align: center;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
+    <!-- Header Top -->
+    <div class="header-top">
         <div class="header-container">
-            <div class="logo">
-                <img src="https://cdn4.iconfinder.com/data/icons/education-759/128/education_school_learn_study_knowledge_book-512.png" alt="School Logo">
-                <div class="logo-text">
-                    <h1>Government Excellence School</h1>
-                    <p>Empowering Minds, Building Futures</p>
+            <div class="contact-info">
+                <div class="language-select">
+                    <span>Select Language ▼</span>
+                </div>
+                <div class="phone">
+                    <span>📞 +91 9901773645</span>
                 </div>
             </div>
-            <div class="search-login">
-                <a href="#" class="btn">ERP Login</a>
+            <div class="top-links">
+                <a href="#quick-links">Quick Links ▼</a>
+                <a href="#overview">Overview</a>
+                <a href="#help">Help</a>
+                <a href="#locate" class="locate-btn">Locate us</a>
             </div>
         </div>
-        
+    </div>
+
+    <!-- Logo Section -->
+    <div class="logo-section">
+        <div class="logo-container">
+            <div class="logo"></div>
+            <div class="school-title">
+                <h1>Government Schools and PU College, Rajanukunte</h1>
+                <div class="kannada">ಸರ್ಕಾರಿ ಶಾಲೆಗಳು ಮತ್ತು ಪಿ.ಯು ಕಾಲೇಜು, ರಾಜಾನುಕುಂಟೆ</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
         <div class="nav-container">
-            <div class="nav-scroll">
-                <a href="#" class="nav-item active" data-page="home"><i class="fas fa-home"></i> HOME</a>
-                <a href="#" class="nav-item" data-page="about"><i class="fas fa-info-circle"></i> ABOUT</a>
-                <a href="#" class="nav-item" data-page="academics"><i class="fas fa-book"></i> ACADEMICS</a>
-                <a href="#" class="nav-item" data-page="admissions"><i class="fas fa-user-graduate"></i> ADMISSIONS</a>
-                <a href="#" class="nav-item" data-page="examination"><i class="fas fa-file-alt"></i> EXAMINATION</a>
-                <a href="#" class="nav-item" data-page="placements"><i class="fas fa-briefcase"></i> PLACEMENTS</a>
-                <a href="#" class="nav-item" data-page="research"><i class="fas fa-flask"></i> RESEARCH</a>
-                <a href="#" class="nav-item" data-page="documents"><i class="fas fa-file-pdf"></i> DOCUMENTS</a>
-                <a href="#" class="nav-item" data-page="innovation"><i class="fas fa-lightbulb"></i> INNOVATION</a>
-                <a href="#" class="nav-item" data-page="skill-labs"><i class="fas fa-microscope"></i> SKILL LABS</a>
-                <a href="#" class="nav-item" data-page="facilities"><i class="fas fa-building"></i> FACILITIES</a>
-                <a href="#" class="nav-item" data-page="activities"><i class="fas fa-running"></i> ACTIVITIES</a>
-                <a href="#" class="nav-item" data-page="first-year"><i class="fas fa-star"></i> FIRST YEAR</a>
-                <a href="#" class="nav-item" data-page="erp-login"><i class="fas fa-sign-in-alt"></i> ERP LOGIN</a>
-                <a href="#" class="nav-item" data-page="contact"><i class="fas fa-phone"></i> CONTACT US</a>
-            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#about" class="nav-link">About ▼</a>
+                    <div class="dropdown">
+                        <a href="#chairperson">👤 About Chairperson</a>
+                        <a href="#committee">👥 College Development Committee</a>
+                        <a href="#board">📋 Board of Members</a>
+                        <a href="#principals">👤 Principals</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="#admission" class="nav-link">Admission ▼</a>
+                    <div class="dropdown">
+                        <a href="#admission-overview">📋 Admission Overview</a>
+                        <a href="#fee-structure">💰 Fee Structure</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="#academics" class="nav-link">Academics ▼</a>
+                    <div class="dropdown">
+                        <a href="#academic-overview">📋 Academic Overview</a>
+                        <a href="#timetables">📅 Timetables</a>
+                        <a href="#scholarships">🎓 Scholarships</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="#department" class="nav-link">Department ▼</a>
+                    <div class="dropdown">
+                        <a href="#pu-college">🏛️ PU College</a>
+                        <a href="#high-school">🏫 High School</a>
+                        <a href="#primary-school">🏫 Primary School</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="#facilities" class="nav-link">Facilities</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#gallery" class="nav-link">Gallery ▼</a>
+                    <div class="dropdown">
+                        <a href="#school-images">🖼️ School Images</a>
+                        <a href="#school-videos">🎥 School Videos</a>
+                        <a href="#school-events">🏆 School Events</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="#contact" class="nav-link">Contact us</a>
+                </li>
+            </ul>
         </div>
-    </header>
+    </nav>
 
-    <!-- Home Page -->
-    <div id="home" class="page-content active">
-        <!-- Hero Section -->
-        <section class="hero">
-            <div class="hero-content">
-                <h2>Welcome to Government Excellence School</h2>
-                <p>Providing quality education for over 50 years. Empowering students to become responsible citizens and future leaders.</p>
-                <a href="#" class="btn">Explore Our Campus</a>
-            </div>
-        </section>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Welcome to Government Institution, Rajanukunte</h2>
+            <p>Educating Students For Success In A Changing World</p>
+            <a href="#about" class="cta-button">Learn More</a>
+        </div>
+    </section>
 
-        <!-- Main Content -->
-        <main class="container">
-            <h2 class="section-title animated">Key Features</h2>
-            
-            <div class="features">
-                <div class="feature-card animated">
-                    <div class="feature-img">
-                        <img src="https://images.unsplash.com/photo-1591123120675-6f7f1aae0e5b?ixlib=rb-4.0.3" alt="Academic Excellence">
-                    </div>
-                    <div class="feature-content">
-                        <h3>Academic Excellence</h3>
-                        <p>Our curriculum is designed to foster critical thinking, creativity, and holistic development of students.</p>
-                        <a href="#" class="btn">Learn More</a>
-                    </div>
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🏛️</div>
+                    <h3>Campus</h3>
+                    <p>To Nurture Greatness</p>
                 </div>
-                
-                <div class="feature-card animated">
-                    <div class="feature-img">
-                        <img src="https://images.unsplash.com/photo-1582573618381-c9a77c31f6b6?ixlib=rb-4.0.3" alt="Skill Development">
-                    </div>
-                    <div class="feature-content">
-                        <h3>Skill Development</h3>
-                        <p>We offer various skill development programs to prepare students for real-world challenges.</p>
-                        <a href="#" class="btn">Learn More</a>
-                    </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚛️</div>
+                    <h3>Innovation</h3>
+                    <p>To develop future</p>
                 </div>
-                
-                <div class="feature-card animated">
-                    <div class="feature-img">
-                        <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?ixlib=rb-4.0.3" alt="Modern Facilities">
-                    </div>
-                    <div class="feature-content">
-                        <h3>Modern Facilities</h3>
-                        <p>Our campus is equipped with state-of-the-art facilities to enhance the learning experience.</p>
-                        <a href="#" class="btn">Learn More</a>
-                    </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💻</div>
+                    <h3>Facilities</h3>
+                    <p>Dynamic hub</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎓</div>
+                    <h3>Academics</h3>
+                    <p>Leading the pack</p>
                 </div>
             </div>
-            
-            <h2 class="section-title animated">Latest News & Announcements</h2>
-            
-            <div class="news-container animated">
-                <div class="news-item">
-                    <div class="news-date">15 Sep 2023</div>
-                    <div class="news-content">
-                        <h3>Annual Sports Day</h3>
-                        <p>Annual Sports Day will be held on October 10, 2023. All students are requested to participate.</p>
-                    </div>
-                </div>
-                
-                <div class="news-item">
-                    <div class="news-date">10 Sep 2023</div>
-                    <div class="news-content">
-                        <h3>Admissions Open for 2023-24</h3>
-                        <p>Admissions for the academic year 2023-24 are now open. Apply online or visit the campus.</p>
-                    </div>
-                </div>
-                
-                <div class="news-item">
-                    <div class="news-date">05 Sep 2023</div>
-                    <div class="news-content">
-                        <h3>Parent-Teacher Meeting</h3>
-                        <p>The next parent-teacher meeting will be held on September 20, 2023. Please make sure to attend.</p>
-                    </div>
-                </div>
-            </div>
-        </main>
-    </div>
+        </div>
+    </section>
 
-    <!-- About Page -->
-    <div id="about" class="page-content">
-        <div class="page-header">
-            <h2>About Our School</h2>
-            <p>Excellence in Education Since 1970</p>
+    <!-- History Section -->
+    <section class="history">
+        <div class="container">
+            <h2 class="section-title">History</h2>
+            <div class="history-grid">
+                <div class="history-card">
+                    <h3>The Government PU College, Rajanukunte</h3>
+                    <p>The Government PU College, Rajanukunte, Bangalore, Karnataka, has been a part of the educational landscape since 2020. Encompassing 3.15 acres, it is currently undergoing a transformative project supported by Manyata Embassy, with an investment of 4 crores. The college offers diverse courses in Arts, Commerce, and Science.</p>
+                </div>
+                <div class="history-card">
+                    <h3>The Government High School, Rajanukunte</h3>
+                    <p>Established in 2009, the Government High School in Rajanukunte, Bangalore, Karnataka, sprawls across 4.5 acres. This institution provides education for 9th and 10th grades in both Kannada and English mediums.</p>
+                </div>
+                <div class="history-card">
+                    <h3>The Government Primary School, Rajanukunte</h3>
+                    <p>The Government Primary School in Rajanukunte, Karnataka, traces its roots back to 1945. Nestled on a 3-acre expanse, it caters to students from Std 1 to 8. The medium of instruction for Std 1-5 is Kannada, while for 6th-8th, it extends to both Kannada and English.</p>
+                </div>
+            </div>
         </div>
-        
-        <div class="page-inner">
-            <div class="content-grid">
-                <div class="content-card">
-                    <div class="content-img">
-                        <img src="https://images.unsplash.com/photo-1524178232400-38d816f003ae?ixlib=rb-4.0.3" alt="School History">
+    </section>
+
+    <!-- Counter Section -->
+    <section class="counter">
+        <div class="container">
+            <div class="counter-grid">
+                <div class="counter-item">
+                    <h3 id="students-count">940</h3>
+                    <p>Students</p>
+                </div>
+                <div class="counter-item">
+                    <h3 id="faculty-count">25</h3>
+                    <p>Faculty</p>
+                </div>
+                <div class="counter-item">
+                    <h3 id="labs-count">4</h3>
+                    <p>Labs</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vision & Mission -->
+    <section class="vision-mission">
+        <div class="container">
+            <h2 class="section-title">Vision & Mission</h2>
+            <div class="vm-container">
+                <div class="target-icon"></div>
+                <div class="vision-content">
+                    <h3>Vision</h3>
+                    <ul>
+                        <li>To provide quality education to students coming from all strata of the society. To shape the life of each student for a better future</li>
+                        <li>Fostering a sense of community by promoting collaboration and involvement of students, parents, and educators in the educational journey</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section class="events">
+        <div class="container">
+            <h2 class="section-title">Events</h2>
+            <p style="text-align: center; margin-bottom: 50px; color: #666;">Dive into the joy of education with us! Join our school events and experience the magic of learning in a vibrant community</p>
+            <div class="events-grid">
+                <div class="event-card">
+                    <div class="event-image">
+                        <span>75th Independence Day Celebration</span>
                     </div>
-                    <div class="content-body">
-                        <h3>Our History</h3>
-                        <p>Established in 1970, Government Excellence School has been a pillar of quality education in the region for over five decades.</p>
-                        <a href="#" class="btn">Learn More</a>
+                    <div class="event-content">
+                        <h3>75th INDEPENDENCE DAY</h3>
+                        <p>Reflecting on the Splendor of Our 75th Independence Day Celebration! Gratitude fills our hearts as we look back on an unforgettable event that brought our community together in the spirit of patriotism</p>
                     </div>
                 </div>
-                
-                <div class="content-card">
-                    <div class="content-img">
-                        <img src="https://images.unsplash.com/photo-1571624436279-b272aff752b5?ixlib=rb-4.0.3" alt="School Mission">
+                <div class="event-card">
+                    <div class="event-image">
+                        <span>Badminton Court Inauguration</span>
                     </div>
-                    <div class="content-body">
-                        <h3>Our Mission</h3>
-                        <p>To provide accessible, quality education that empowers students to become lifelong learners and responsible citizens.</p>
-                        <a href="#" class="btn">Learn More</a>
+                    <div class="event-content">
+                        <h3>Inauguration of Badminton Court</h3>
+                        <p>Celebrating the Grand Inauguration of Our New Badminton Court! The excitement and energy of the event still linger in the air as we reflect on a fantastic day filled with sportsmanship and camaraderie</p>
                     </div>
                 </div>
-                
-                <div class="content-card">
-                    <div class="content-img">
-                        <img src="https://images.unsplash.com/photo-1519485476481-5cdbfa9d10b1?ixlib=rb-4.0.3" alt="School Vision">
+                <div class="event-card">
+                    <div class="event-image">
+                        <span>Eco Club Launch</span>
                     </div>
-                    <div class="content-body">
-                        <h3>Our Vision</h3>
-                        <p>To be a center of excellence that nurtures talent and fosters innovation for the betterment of society.</p>
-                        <a href="#" class="btn">Learn More</a>
+                    <div class="event-content">
+                        <h3>Inauguration of Eco Club</h3>
+                        <p>Reflecting on the Inauguration of Our Eco Club! It was a day of green beginnings and sustainable aspirations as we officially launched our Eco Club. The event brought together passionate individuals committed to environmental stewardship</p>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-
-    <!-- Academics Page -->
-    <div id="academics" class="page-content">
-        <div class="page-header">
-            <h2>Academics</h2>
-            <p>Quality Education for All</p>
-        </div>
-        
-        <div class="page-inner">
-            <div class="content-grid">
-                <div class="content-card">
-                    <div class="content-img">
-                        <img src="https://images.unsplash.com/photo-1560785496-3c9d27877182?ixlib=rb-4.0.3" alt="Curriculum">
-                    </div>
-                    <div class="content-body">
-                        <h3>Curriculum</h3>
-                        <p>Our comprehensive curriculum is designed to meet national education standards while fostering creativity and critical thinking.</p>
-                        <a href="#" class="btn">Learn More</a>
-                    </div>
-                </div>
-                
-                <div class="content-card">
-                    <div class="content-img">
-                        <img src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc?ixlib=rb-4.0.3" alt="Programs">
-                    </div>
-                    <div class="content-body">
-                        <h3>Programs</h3>
-                        <p>We offer a wide range of academic programs from primary to higher secondary education with various streams.</p>
-                        <a href="#" class="btn">Learn More</a>
-                    </div>
-                </div>
-                
-                <div class="content-card">
-                    <div class="content-img">
-                        <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?ixlib=rb-4.0.3" alt="Faculty">
-                    </div>
-                    <div class="content-body">
-                        <h3>Faculty</h3>
-                        <p>Our qualified and experienced faculty members are dedicated to providing the best education to our students.</p>
-                        <a href="#" class="btn">Learn More</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Add other pages similarly with relevant content -->
-
-    <!-- Contact Page -->
-    <div id="contact" class="page-content">
-        <div class="page-header">
-            <h2>Contact Us</h2>
-            <p>We'd Love to Hear From You</p>
-        </div>
-        
-        <div class="page-inner">
-            <div class="content-grid">
-                <div class="content-card">
-                    <div class="content-img">
-                        <img src="https://images.unsplash.com/photo-1560472355-536de3962603?ixlib=rb-4.0.3" alt="Visit Us">
-                    </div>
-                    <div class="content-body">
-                        <h3>Visit Us</h3>
-                        <p>Government Excellence School<br>123 Education Street<br>City, State - 123456</p>
-                    </div>
-                </div>
-                
-                <div class="content-card">
-                    <div class="content-img">
-                        <img src="https://images.unsplash.com/photo-1587560699334-cc4ff634909a?ixlib=rb-4.0.3" alt="Call Us">
-                    </div>
-                    <div class="content-body">
-                        <h3>Call Us</h3>
-                        <p>Office: +91 9876543210<br>Principal: +91 9876543211<br>Email: info@govexcellence.edu</p>
-                    </div>
-                </div>
-                
-                <div class="content-card">
-                    <div class="content-img">
-                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3" alt="Office Hours">
-                    </div>
-                    <div class="content-body">
-                        <h3>Office Hours</h3>
-                        <p>Monday-Friday: 8:00 AM - 4:00 PM<br>Saturday: 9:00 AM - 1:00 PM<br>Sunday: Closed</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    </section>
 
     <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>Contact Us</h3>
-                <p><i class="fas fa-map-marker-alt"></i> 123 Education Street, City, State</p>
-                <p><i class="fas fa-phone"></i> +91 9876543210</p>
-                <p><i class="fas fa-envelope"></i> info@govexcellence.edu</p>
-            </div>
-            
-            <div class="footer-section">
-                <h3>Quick Links</h3>
-                <ul class="footer-links">
-                    <li><a href="#" data-page="home">Home</a></li>
-                    <li><a href="#" data-page="about">About Us</a></li>
-                    <li><a href="#" data-page="academics">Academics</a></li>
-                    <li><a href="#" data-page="admissions">Admissions</a></li>
-                    <li><a href="#" data-page="contact">Contact Us</a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-section">
-                <h3>Connect With Us</h3>
-                <p>Follow us on social media for updates and news.</p>
-                <div class="social-icons">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
-                </div>
-            </div>
-        </div>
-        
-        <div class="footer-bottom">
-            <p>&copy; 2023 Government Excellence School. All Rights Reserved.</p>
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Government Schools and PU College, Rajanukunte. All rights reserved.</p>
+            <p>📞 +91 9901773645 | 📍 Rajanukunte, Bangalore, Karnataka</p>
         </div>
     </footer>
 
     <script>
-        // Navigation and page switching
-        const navItems = document.querySelectorAll('.nav-item');
-        const footerLinks = document.querySelectorAll('.footer-links a');
-        const pages = document.querySelectorAll('.page-content');
-        
-        function switchPage(pageId) {
-            // Hide all pages
-            pages.forEach(page => {
-                page.classList.remove('active');
-            });
-            
-            // Show selected page
-            document.getElementById(pageId).classList.add('active');
-            
-            // Update active nav item
-            navItems.forEach(item => {
-                item.classList.remove('active');
-                if (item.getAttribute('data-page') === pageId) {
-                    item.classList.add('active');
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
                 }
             });
-            
-            // Scroll to top
-            window.scrollTo(0, 0);
-        }
-        
-        // Add event listeners to nav items
-        navItems.forEach(item => {
-            item.addEventListener('click', function(e) {
-                e.preventDefault();
-                const pageId = this.getAttribute('data-page');
-                switchPage(pageId);
-            });
         });
-        
-        // Add event listeners to footer links
-        footerLinks.forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const pageId = this.getAttribute('data-page');
-                switchPage(pageId);
-            });
-        });
-        
-        // Scroll animation
-        const animatedElements = document.querySelectorAll('.animated');
-        
-        function checkScroll() {
-            animatedElements.forEach(element => {
-                const elementTop = element.getBoundingClientRect().top;
-                const windowHeight = window.innerHeight;
+
+        // Counter animation
+        function animateCounter(element, start, end, duration) {
+            const startTime = performance.now();
+            const range = end - start;
+
+            function updateCounter(currentTime) {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                const current = Math.floor(start + (range * progress));
                 
-                if (elementTop < windowHeight - 100) {
-                    element.classList.add('visible');
+                element.textContent = current + '+';
+                
+                if (progress < 1) {
+                    requestAnimationFrame(updateCounter);
+                }
+            }
+            
+            requestAnimationFrame(updateCounter);
+        }
+
+        // Intersection Observer for counter animation
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const target = entry.target;
+                    const finalValue = parseInt(target.textContent);
+                    animateCounter(target, 0, finalValue, 2000);
+                    counterObserver.unobserve(target);
                 }
             });
-        }
-        
-        // Initialize scroll animation
-        window.addEventListener('scroll', checkScroll);
-        window.addEventListener('load', checkScroll);
-        
-        // Horizontal navigation scroll with mouse wheel
-        const navScroll = document.querySelector('.nav-scroll');
-        
-        navScroll.addEventListener('wheel', (e) => {
-            if (e.deltaY !== 0) {
-                e.preventDefault();
-                navScroll.scrollLeft += e.deltaY;
+        });
+
+        // Observe counter elements
+        document.querySelectorAll('#students-count, #faculty-count, #labs-count').forEach(counter => {
+            counterObserver.observe(counter);
+        });
+
+        // Add scroll effect to navigation
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 100) {
+                navbar.style.background = 'rgba(248, 249, 250, 0.95)';
+                navbar.style.backdropFilter = 'blur(10px)';
+            } else {
+                navbar.style.background = '#f8f9fa';
+                navbar.style.backdropFilter = 'none';
             }
         });
-        
-        // Parallax effect on hero section
-        window.addEventListener('scroll', () => {
-            const scrollPosition = window.scrollY;
-            const hero = document.querySelector('.hero');
-            if (hero) {
-                hero.style.backgroundPositionY = scrollPosition * 0.5 + 'px';
-            }
+
+        // Add hover effects to cards
+        document.querySelectorAll('.feature-card, .history-card, .event-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Mobile menu toggle (basic implementation)
+        function toggleMobileMenu() {
+            const navMenu = document.querySelector('.nav-menu');
+            navMenu.classList.toggle('mobile-active');
+        }
+
+        // Add some interactive elements
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add fade-in animation for elements
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const fadeObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Apply fade-in to sections
+            document.querySelectorAll('section').forEach(section => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(30px)';
+                section.style.transition = 'all 0.6s ease-out';
+                fadeObserver.observe(section);
+            });
         });
     </script>
 </body>
