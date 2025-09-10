@@ -1,3 +1,4 @@
 # School_web
 <br>
-<link rel ="https://adityamahekar.github.io/School_web/"> School_web</link>
+Link:
+<span><a href="https://adityamahekar.github.io/School_web/"> School Web </a></span>
