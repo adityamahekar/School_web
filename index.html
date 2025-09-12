@@ -3,8 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Government Schools and PU College, Rajanukunte</title>
+    <title>Government Polytechnic College Karwar</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <style>
+        :root {
+            --primary: #1e3a5f;
+            --primary-dark: #152942;
+            --accent: #e74c3c;
+            --secondary: #f39c12;
+            --white: #ffffff;
+            --light-gray: #f5f5f5;
+            --text: #333;
+            --transition: all 0.3s ease;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -12,777 +26,1643 @@
         }
 
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Poppins', sans-serif;
+            color: var(--text);
             line-height: 1.6;
-            color: #333;
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.page-container {
+  flex: 1;
+}
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Page Container for transitions */
+        .page-container {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+        }
+
+        .page {
+            position: absolute;
+            width: 100%;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transform: translateX(50px);
+            pointer-events: none;
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            z-index: 1;
+        }
+
+        .page.active {
+            opacity: 1;
+            transform: translateX(0);
+            pointer-events: all;
+            z-index: 2;
         }
 
         /* Header Styles */
-        .header-top {
-            background: #2c4a7a;
-            color: white;
+        header {
+            background: linear-gradient(to right, var(--primary), var(--primary-dark));
+            color: var(--white);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+
+        header.scrolled {
             padding: 10px 0;
-            font-size: 14px;
+            background: rgba(30, 58, 95, 0.98);
+            backdrop-filter: blur(10px);
         }
 
         .header-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        .contact-info {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .language-select, .phone {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .top-links {
-            display: flex;
-            gap: 20px;
-        }
-
-        .top-links a {
-            color: white;
-            text-decoration: none;
-        }
-
-        .locate-btn {
-            background: #4CAF50;
-            padding: 5px 15px;
-            border-radius: 4px;
-        }
-
-        /* Logo Section */
-        .logo-section {
-            background: white;
-            padding: 20px 0;
-            text-align: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-
-        .logo-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 20px;
-        }
-
         .logo {
-            width: 80px;
-            height: 80px;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="%23ff6b35"/><circle cx="50" cy="50" r="25" fill="%23fff"/><text x="50" y="55" text-anchor="middle" fill="%23333" font-size="12">GOV</text></svg>') no-repeat center;
-            background-size: contain;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            cursor: pointer;
         }
 
-        .school-title {
-            text-align: left;
+        .logo img {
+            height: 60px;
+            width: auto;
+            transition: var(--transition);
         }
 
-        .school-title h1 {
-            font-size: 28px;
-            color: #2c4a7a;
-            margin-bottom: 5px;
+        header.scrolled .logo img {
+            height: 50px;
         }
 
-        .school-title .kannada {
-            font-size: 20px;
-            color: #666;
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-text h1 {
+            font-size: 1.8rem;
+            line-height: 1.2;
+            margin: 0;
+            color: var(--white);
+            transition: var(--transition);
+        }
+
+        header.scrolled .logo-text h1 {
+            font-size: 1.5rem;
+        }
+
+        .logo-text span {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            transition: var(--transition);
+        }
+
+        header.scrolled .logo-text span {
+            font-size: 0.8rem;
         }
 
         /* Navigation */
-        .navbar {
-            background: #f8f9fa;
+        .nav-container {
+            background-color: var(--primary-dark);
             padding: 0;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: var(--transition);
         }
 
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: center;
+        header.scrolled + .nav-container {
+            position: fixed;
+            top: 70px;
+            width: 100%;
+            z-index: 999;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
 
         .nav-menu {
             display: flex;
+            justify-content: center;
             list-style: none;
-            margin: 0;
             padding: 0;
         }
 
-        .nav-item {
-            position: relative;
+        .nav-menu li {
+            margin: 0;
         }
 
-        .nav-link {
+        .nav-menu a {
             display: block;
-            padding: 15px 20px;
-            color: #2c4a7a;
+            color: var(--white);
             text-decoration: none;
+            padding: 18px 25px;
             font-weight: 500;
-            transition: background 0.3s;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
         }
 
-        .nav-link:hover {
-            background: #e9ecef;
-            color: #1a365d;
-        }
-
-        .dropdown {
+        .nav-menu a:before {
+            content: '';
             position: absolute;
-            top: 100%;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: var(--transition);
+        }
+
+        .nav-menu a:hover:before {
+            left: 100%;
+        }
+
+        .nav-menu a:hover, 
+        .nav-menu a.active {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-menu a:hover::after,
+        .nav-menu a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
             left: 0;
-            background: white;
-            min-width: 200px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s;
-            z-index: 1000;
+            width: 100%;
+            height: 4px;
+            background-color: var(--secondary);
+            animation: lineGrow 0.3s ease-out;
         }
 
-        .nav-item:hover .dropdown {
-            opacity: 1;
-            visibility: visible;
+        @keyframes lineGrow {
+            from { width: 0; }
+            to { width: 100%; }
         }
 
-        .dropdown a {
-            padding: 10px 15px;
-            display: block;
-            color: #333;
-            text-decoration: none;
-            border-bottom: 1px solid #eee;
+        .nav-menu i {
+            margin-right: 8px;
+            font-size: 1.1rem;
         }
 
-        .dropdown a:hover {
-            background: #f8f9fa;
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
         }
 
         /* Hero Section */
         .hero {
+            background: linear-gradient(rgba(30, 58, 95, 0.8), rgba(30, 58, 95, 0.9)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3') no-repeat center center/cover;
+            color: var(--white);
+            padding: 150px 0 100px;
+            text-align: center;
             position: relative;
-            height: 500px;
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 500"><rect fill="%2365a85f" width="1200" height="500"/><circle cx="200" cy="100" r="50" fill="%23ffffff" opacity="0.1"/><circle cx="800" cy="200" r="70" fill="%23ffffff" opacity="0.1"/><circle cx="1000" cy="400" r="60" fill="%23ffffff" opacity="0.1"/></svg>');
+            overflow: hidden;
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,128L48,117.3C96,107,192,85,288,112C384,139,480,213,576,224C672,235,768,181,864,181.3C960,181,1056,235,1152,234.7C1248,235,1344,181,1392,154.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,极 320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
             background-size: cover;
-            background-position: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            text-align: center;
+            background-position: bottom;
+            animation: waveAnim 15s linear infinite;
         }
 
-        .hero-content h2 {
-            font-size: 48px;
+        @keyframes waveAnim {
+            0% { background-position-x: 0; }
+            100% { background-position-x: 1440px; }
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
             margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            position: relative;
+            animation: fadeInUp 1s ease-out;
         }
 
-        .hero-content p {
-            font-size: 20px;
-            margin-bottom: 30px;
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            position: relative;
+            animation: fadeInUp 1s ease-out 0.2s;
+            animation-fill-mode: both;
         }
 
-        .cta-button {
-            background: #ff6b35;
-            color: white;
-            padding: 15px 30px;
+        .hero-btns {
+            position: relative;
+            animation: fadeInUp 1s ease-out 0.4s;
+            animation-fill-mode: both;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 30px;
+            background-color: var(--accent);
+            color: var(--white);
+            border-radius: 4px;
+            font-weight: 500;
+            transition: var(--transition);
             text-decoration: none;
-            border-radius: 25px;
-            font-size: 18px;
-            font-weight: bold;
-            transition: transform 0.3s;
+            margin: 10px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            cursor: pointer;
+            border: none;
         }
 
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(255,107,53,0.4);
+        .btn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 100%;
+            background: var(--primary);
+            transition: var(--transition);
+            z-index: -1;
         }
 
-        /* Features Section */
-        .features {
+        .btn:hover:before {
+            width: 100%;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--white);
+        }
+
+        .btn-outline:before {
+            background: var(--white);
+        }
+
+        .btn-outline:hover {
+            color: var(--primary);
+        }
+
+        /* Animation keyframes */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Section Styles */
+        .section {
             padding: 80px 0;
-            background: white;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-        }
-
-        .feature-card {
-            text-align: center;
-            padding: 30px 20px;
-            border-radius: 10px;
-            transition: transform 0.3s;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        .feature-icon {
-            width: 60px;
-            height: 60px;
-            margin: 0 auto 20px;
-            background: #2c4a7a;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 24px;
-        }
-
-        .feature-card h3 {
-            font-size: 24px;
-            margin-bottom: 10px;
-            color: #2c4a7a;
-        }
-
-        .feature-card p {
-            color: #666;
-        }
-
-        /* History Section */
-        .history {
-            padding: 80px 0;
-            background: #f8f9fa;
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .section-title {
             text-align: center;
-            font-size: 36px;
             margin-bottom: 50px;
-            color: #333;
-        }
-
-        .history-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-        }
-
-        .history-card {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .history-card h3 {
-            color: #2c4a7a;
-            margin-bottom: 20px;
-            font-size: 22px;
-        }
-
-        /* Counter Section */
-        .counter {
-            padding: 60px 0;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            text-align: center;
-        }
-
-        .counter-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px;
-        }
-
-        .counter-item h3 {
-            font-size: 48px;
-            margin-bottom: 10px;
-            color: #ff6b35;
-        }
-
-        .counter-item p {
-            font-size: 18px;
-        }
-
-        /* Vision Mission */
-        .vision-mission {
-            padding: 80px 0;
-            background: white;
-        }
-
-        .vm-container {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 50px;
-            align-items: center;
-        }
-
-        .target-icon {
-            width: 200px;
-            height: 200px;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><circle cx="100" cy="100" r="90" fill="%23ff6b35"/><circle cx="100" cy="100" r="70" fill="%23fff"/><circle cx="100" cy="100" r="50" fill="%23ff6b35"/><circle cx="100" cy="100" r="30" fill="%23fff"/><circle cx="100" cy="100" r="10" fill="%23ff6b35"/></svg>') no-repeat center;
-            background-size: contain;
-        }
-
-        .vision-content h3 {
-            font-size: 28px;
-            margin-bottom: 20px;
-            color: #2c4a7a;
-        }
-
-        .vision-content ul {
-            list-style: none;
-        }
-
-        .vision-content li {
-            margin-bottom: 15px;
-            padding-left: 20px;
             position: relative;
         }
 
-        .vision-content li:before {
-            content: '•';
-            color: #ff6b35;
-            font-size: 20px;
-            position: absolute;
-            left: 0;
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 15px;
         }
 
-        /* Events Section */
-        .events {
-            padding: 80px 0;
-            background: #f8f9fa;
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent);
+            margin: 15px auto 0;
+            border-radius: 2px;
+            animation: lineGrow 1s ease-out;
         }
 
-        .events-grid {
+        /* Features */
+        .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
         }
 
-        .event-card {
-            background: white;
-            border-radius: 15px;
+        .feature-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            text-align: center;
+            position: relative;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
+            z-index: 1;
         }
 
-        .event-card:hover {
-            transform: translateY(-5px);
+        .feature-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--accent);
+            transition: var(--transition);
+            z-index: -1;
         }
 
-        .event-image {
-            height: 200px;
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 18px;
+        .feature-card:hover:before {
+            width: 100%;
+            opacity: 0.1;
         }
 
-        .event-content {
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 40px;
+            color: var(--primary);
+            margin-bottom: 20px;
+            transition: var(--transition);
+        }
+
+        .feature-card:hover .feature-icon {
+            color: var(--accent);
+            transform: scale(1.1);
+        }
+
+        /* News Section */
+        .news-container {
+            background-color: var(--light-gray);
+            padding: 60px 0;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .news-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            transform: translateY(50px);
+            opacity: 0;
+        }
+
+        .news-card.visible {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .news-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .news-content {
             padding: 25px;
         }
 
-        .event-content h3 {
-            color: #2c4a7a;
-            margin-bottom: 15px;
-            font-size: 20px;
+        .news-date {
+            color: var(--accent);
+            font-weight: 500;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .news-date:before {
+            content: '\f133';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            margin-right: 8px;
+        }
+
+        /* Back to top button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
+            opacity: 0;
+            visibility: hidden;
+            z-index: 999;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
         }
 
         /* Footer */
-        .footer {
-            background: #2c4a7a;
-            color: white;
-            padding: 40px 0;
+        footer {
+            background-color: var(--primary-dark);
+            color: var(--white);
+            padding: 60px 0 30px;
+            position: relative;
+        }
+
+        footer:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background: linear-gradient(90deg, var(--accent), var(--secondary));
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .footer-heading {
+            color: var(--white);
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-heading:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background-color: var(--secondary);
+            animation: lineGrow 1s ease-out;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: var(--transition);
+            display: block;
+            cursor: pointer;
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: var(--transition);
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        .social-links a:hover {
+            background-color: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Page specific styles */
+        .about-section, .admission-section, .academics-section, 
+        .facilities-section, .gallery-section, .contact-section {
+            padding: 80px 0;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .gallery-item {
+            height: 200px;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .contact-card {
+            background: var(--white);
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             text-align: center;
         }
 
+        .contact-icon {
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 15px;
+        }
+
+        /* Program cards */
+        .program-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            margin-bottom: 30px;
+        }
+
+        .program-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .program-header {
+            background: var(--primary);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .program-content {
+            padding: 25px;
+        }
+
+        .program-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .program-detail {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .program-detail i {
+            color: var(--accent);
+            font-size: 1.2rem;
+        }
+
         /* Responsive Design */
-        @media (max-width: 768px) {
-            .header-container {
-                flex-direction: column;
-                gap: 10px;
-            }
-
-            .logo-container {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .school-title {
-                text-align: center;
-            }
-
+        @media (max-width: 992px) {
             .nav-menu {
                 flex-wrap: wrap;
-                justify-content: center;
             }
-
-            .hero-content h2 {
-                font-size: 32px;
-            }
-
-            .vm-container {
-                grid-template-columns: 1fr;
-                text-align: center;
+            
+            .nav-menu a {
+                padding: 15px 20px;
             }
         }
+
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: row;
+                text-align: center;
+                gap: 15px;
+            }
+            
+            .logo {
+                justify-content: flex-start;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .nav-container {
+                position: fixed;
+                top: 0;
+                right: -300px;
+                width: 300px;
+                height: 100vh;
+                background: var(--primary-dark);
+                transition: var(--transition);
+                z-index: 1000;
+                padding-top: 80px;
+            }
+            
+            .nav-container.active {
+                right: 0;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+            }
+            
+            .nav-menu {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 20px;
+            }
+            
+            .nav-menu li {
+                width: 100%;
+                text-align: left;
+            }
+            
+            .nav-menu a {
+                padding: 15px;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+            
+            .close-menu {
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                background: none;
+                border: none;
+                color: white;
+                font-size: 1.5rem;
+                cursor: pointer;
+            }
+            
+            .overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.5);
+                opacity: 0;
+                visibility: hidden;
+                transition: var(--transition);
+                z-index: 999;
+            }
+            
+            .overlay.active {
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+
+        /* Animation enhancements */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .delay-1 {
+            transition-delay: 0.2s;
+        }
+
+        .delay-2 {
+            transition-delay: 0.4s;
+        }
+
+        .delay-3 {
+            transition-delay: 0.6s;
+        }
+        /* Container holding the cards */
+.leadership-cards {
+  display: flex;
+  justify-content: space-between;  /* Space cards evenly */
+  gap: 20px;                        /* Space between cards */
+  padding: 0 20px;
+}
+
+/* Each individual card */
+.leadership-card {
+  position: relative;
+  background: #fff;
+  padding: 20px;
+  flex: 1;                         /* Cards take equal width */
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  overflow: visible;
+  margin: 0 10px;
+}
+
+/* The red vertical bar */
+.leadership-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 10%;
+  width: 15px;                    /* width of red sidebar */
+  height: 80%;
+  background-color: #E8594E;      /* red color */
+  border-radius: 4px 0 0 4px;
+}
+
+/* Make sure icons and text inside cards are centered */
+.leadership-card .icon {
+  display: block;
+  margin: 0 auto 10px auto;
+  color: #213a66;                 /* matching icon color */
+}
+.card-section {
+  position: relative;
+  z-index: 1;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 40px 30px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  max-width: 1200px;
+  margin: 40px auto;
+  overflow: hidden;
+}  .card-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 8px;
+  background-color: #e8594e; /* or #f39c12 if it's orange */
+  z-index: 0;
+}
+  .info-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.info-item {
+  flex: 1;
+  min-width: 250px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}        .card-section .btn {
+  margin-top: 30px;
+  background-color: #e8594e;
+  color: #fff;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+ 
+        
+        
     </style>
 </head>
 <body>
-    <!-- Header Top -->
-    <div class="header-top">
-        <div class="header-container">
-            <div class="contact-info">
-                <div class="language-select">
-                    <span>Select Language ▼</span>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo" data-page="home">
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgdmlld0JveD0iMCAwIDYwIDYwIj48Y2lyY2xlIGN4PSIzMCIgY3k9IjMwIiByPSIyOCIgZmlsbD0iI2U3NGMzYyIvPjxwYXRoIGQ9Ik0zMCAxMEMzMCAxMCAzNy41IDI0IDM3LjUgMjRIMjVWNDVIMzdWMzVINDBWNDVINDVWMjVINDBDMzcgMjUgMzAgMTAgMzAgMTBaIiBmaWxsPSIjZmZmIi8+PC9zdmc+" alt="College Logo">
+                <div class="logo-text">
+                    <h1>Government Polytechnic College</h1>
+                    <span>Karwar, Karnataka</span>
                 </div>
-                <div class="phone">
-                    <span>📞 +91 9901773645</span>
-                </div>
             </div>
-            <div class="top-links">
-                <a href="#quick-links">Quick Links ▼</a>
-                <a href="#overview">Overview</a>
-                <a href="#help">Help</a>
-                <a href="#locate" class="locate-btn">Locate us</a>
-            </div>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
-    </div>
-
-    <!-- Logo Section -->
-    <div class="logo-section">
-        <div class="logo-container">
-            <div class="logo"></div>
-            <div class="school-title">
-                <h1>Government Schools and PU College, Rajanukunte</h1>
-                <div class="kannada">ಸರ್ಕಾರಿ ಶಾಲೆಗಳು ಮತ್ತು ಪಿ.ಯು ಕಾಲೇಜು, ರಾಜಾನುಕುಂಟೆ</div>
-            </div>
-        </div>
-    </div>
+    </header>
 
     <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <ul class="nav-menu">
-                <li class="nav-item">
-                    <a href="#home" class="nav-link">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#about" class="nav-link">About ▼</a>
-                    <div class="dropdown">
-                        <a href="#chairperson">👤 About Chairperson</a>
-                        <a href="#committee">👥 College Development Committee</a>
-                        <a href="#board">📋 Board of Members</a>
-                        <a href="#principals">👤 Principals</a>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a href="#admission" class="nav-link">Admission ▼</a>
-                    <div class="dropdown">
-                        <a href="#admission-overview">📋 Admission Overview</a>
-                        <a href="#fee-structure">💰 Fee Structure</a>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a href="#academics" class="nav-link">Academics ▼</a>
-                    <div class="dropdown">
-                        <a href="#academic-overview">📋 Academic Overview</a>
-                        <a href="#timetables">📅 Timetables</a>
-                        <a href="#scholarships">🎓 Scholarships</a>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a href="#department" class="nav-link">Department ▼</a>
-                    <div class="dropdown">
-                        <a href="#pu-college">🏛️ PU College</a>
-                        <a href="#high-school">🏫 High School</a>
-                        <a href="#primary-school">🏫 Primary School</a>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a href="#facilities" class="nav-link">Facilities</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#gallery" class="nav-link">Gallery ▼</a>
-                    <div class="dropdown">
-                        <a href="#school-images">🖼️ School Images</a>
-                        <a href="#school-videos">🎥 School Videos</a>
-                        <a href="#school-events">🏆 School Events</a>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a href="#contact" class="nav-link">Contact us</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+    <div class="nav-container">
+        <button class="close-menu">
+            <i class="fas fa-times"></i>
+        </button>
+        <ul class="nav-menu">
+            <li><a data-page="home" class="active"><i class="fas fa-home"></i> Home</a></li>
+            <li><a data-page="about"><i class="fas fa-info-circle"></i> About</a></li>
+            <li><a data-page="admission"><i class="fas fa-user-graduate"></i> Admission</a></li>
+            <li><a data-page="academics"><i class="fas fa-book-open"></i> Academics</a></li>
+            <li><a data-page="facilities"><i class="fas fa-building"></i> Facilities</a></li>
+            <li><a data-page="gallery"><i class="fas fa-images"></i> Gallery</a></li>
+            <li><a data-page="contact"><i class="fas fa-phone"></i> Contact us</a></li>
+        </ul>
+    </div>
+    <div class="overlay"></div>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h2>Welcome to Government Institution, Rajanukunte</h2>
-            <p>Educating Students For Success In A Changing World</p>
-            <a href="#about" class="cta-button">Learn More</a>
-        </div>
-    </section>
+    <!-- Page Container -->
+    <div class="page-container">
+        <!-- Home Page -->
+        <div id="home-page" class="page active">
+            <!-- Hero Section -->
+            <section class="hero">
+                <div class="container">
+                    <h1>Welcome to Government Polytechnic College</h1>
+                    <p>Empowering students with technical education and skills for a better future</p>
+                    <div class="hero-btns">
+                        <a data-page="admission" class="btn">Explore Programs</a>
+                        <a data-page="gallery" class="btn btn-outline">Campus Tour</a>
+                    </div>
+                </div>
+            </section>
 
-    <!-- Features Section -->
-    <section class="features">
-        <div class="container">
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">🏛️</div>
-                    <h3>Campus</h3>
-                    <p>To Nurture Greatness</p>
+            <!-- Features Section -->
+            <section class="section" id="features">
+                <div class="container">
+                    <div class="section-title">
+                        <h2>Why Choose Us</h2>
+                        <p>Excellence in technical education since 1985</p>
+                    </div>
+                    
+                    <div class="features-grid">
+                        <div class="feature-card animate-on-scroll">
+                            <div class="feature-icon">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <h3>Quality Education</h3>
+                            <p>Our programs are designed to meet industry standards and provide hands-on learning experiences.</p>
+                        </div>
+                        
+                        <div class="feature-card animate-on-scroll delay-1">
+                            <div class="feature-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <h3>Experienced Faculty</h3>
+                            <p>Learn from industry experts and experienced educators dedicated to your success.</p>
+                        </div>
+                        
+                        <div class="feature-card animate-on-scroll delay-2">
+                            <div class="feature-icon">
+                                <i class="fas fa-microscope"></i>
+                            </div>
+                            <h3>Modern Laboratories</h3>
+                            <p>State-of-the-art labs equipped with the latest technology for practical learning.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">⚛️</div>
-                    <h3>Innovation</h3>
-                    <p>To develop future</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">💻</div>
-                    <h3>Facilities</h3>
-                    <p>Dynamic hub</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🎓</div>
-                    <h3>Academics</h3>
-                    <p>Leading the pack</p>
-                </div>
-            </div>
-        </div>
-    </section>
+            </section>
 
-    <!-- History Section -->
-    <section class="history">
-        <div class="container">
-            <h2 class="section-title">History</h2>
-            <div class="history-grid">
-                <div class="history-card">
-                    <h3>The Government PU College, Rajanukunte</h3>
-                    <p>The Government PU College, Rajanukunte, Bangalore, Karnataka, has been a part of the educational landscape since 2020. Encompassing 3.15 acres, it is currently undergoing a transformative project supported by Manyata Embassy, with an investment of 4 crores. The college offers diverse courses in Arts, Commerce, and Science.</p>
+            <!-- News Section -->
+            <section class="news-container section" id="news">
+                <div class="container">
+                    <div class="section-title">
+                        <h2>Campus News & Events</h2>
+                        <p>Stay updated with the latest happenings</p>
+                    </div>
+                    
+                    <div class="news-grid">
+                        <div class="news-card animate-on-scroll">
+                            <div class="news-content">
+                                <div class="news-date">June 15, 2023</div>
+                                <h3>Annual Technical Festival</h3>
+                                <p>Our annual tech fest "TechXplore" will be held from July 10-12 with various competitions and workshops.</p>
+                                <a href="#" class="btn">Read More</a>
+                            </div>
+                        </div>
+                        
+                        <div class="news-card animate-on-scroll delay-1">
+                            <div class="news-content">
+                                <div class="news-date">June 5, 2023</div>
+                                <h3>New Computer Lab Inauguration</h3>
+                                <p>The new advanced computer lab with high-end systems was inaugurated by the Education Minister.</p>
+                                <a href="#" class="btn">Read More</a>
+                            </div>
+                        </div>
+                        
+                        <div class="news-card animate-on-scroll delay-2">
+                            <div class="news-content">
+                                <div class="news-date">May 28, 2023</div>
+                                <h3>Placement Drive</h3>
+                                <p>Over 85% of our final year students have been placed in top companies with attractive packages.</p>
+                                <a href="#" class="btn">Read More</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="history-card">
-                    <h3>The Government High School, Rajanukunte</h3>
-                    <p>Established in 2009, the Government High School in Rajanukunte, Bangalore, Karnataka, sprawls across 4.5 acres. This institution provides education for 9th and 10th grades in both Kannada and English mediums.</p>
-                </div>
-                <div class="history-card">
-                    <h3>The Government Primary School, Rajanukunte</h3>
-                    <p>The Government Primary School in Rajanukunte, Karnataka, traces its roots back to 1945. Nestled on a 3-acre expanse, it caters to students from Std 1 to 8. The medium of instruction for Std 1-5 is Kannada, while for 6th-8th, it extends to both Kannada and English.</p>
-                </div>
-            </div>
+            </section>
         </div>
-    </section>
 
-    <!-- Counter Section -->
-    <section class="counter">
-        <div class="container">
-            <div class="counter-grid">
-                <div class="counter-item">
-                    <h3 id="students-count">940</h3>
-                    <p>Students</p>
-                </div>
-                <div class="counter-item">
-                    <h3 id="faculty-count">25</h3>
-                    <p>Faculty</p>
-                </div>
-                <div class="counter-item">
-                    <h3 id="labs-count">4</h3>
-                    <p>Labs</p>
-                </div>
-            </div>
-        </div>
-    </section>
+        <!-- About Page -->
+        <div id="about-page" class="page">
+            <section class="about-section">
+                <div class="container">
+                    <div class="section-title">
+                        <h2>About Our College</h2>
+                        <p>Pioneering technical education for over three decades</p>
+                    </div>
+                    
+                    <div class="features-grid">
+                        <div class="feature-card animate-on-scroll">
+                            <div class="feature-icon">
+                                <i class="fas fa-history"></i>
+                            </div>
+                            <h3>Our History</h3>
+                            <p>Established in 1985, we have been at the forefront of technical education, producing skilled professionals who contribute to industry and society.</p>
+                        </div>
+                        
+                        <div class="feature-card animate-on-scroll delay-1">
+                            <div class="feature-icon">
+                                <i class="fas fa-bullseye"></i>
+                            </div>
+                            <h3>Our Mission</h3>
+                            <p>To provide quality technical education that transforms students into competent professionals with strong ethical values.</p>
+                        </div>
+                        
+                        <div class="feature-card animate-on-scroll delay-2">
+                            <div class="feature-icon">
+                                <i class="fas fa-eye"></i>
+                            </div>
+                            <h3>Our Vision</h3>
+                            <p>To be a center of excellence in technical education, innovation, and research that meets global standards.</p>
+                        </div>
+                    </div>
 
-    <!-- Vision & Mission -->
-    <section class="vision-mission">
-        <div class="container">
-            <h2 class="section-title">Vision & Mission</h2>
-            <div class="vm-container">
-                <div class="target-icon"></div>
-                <div class="vision-content">
-                    <h3>Vision</h3>
-                    <ul>
-                        <li>To provide quality education to students coming from all strata of the society. To shape the life of each student for a better future</li>
-                        <li>Fostering a sense of community by promoting collaboration and involvement of students, parents, and educators in the educational journey</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
+                    <div class="section-title" style="margin-top: 80px;">
+                        <h2>College Leadership</h2>
+                        <p>Meet our dedicated leadership team</p>
+                    </div>
 
-    <!-- Events Section -->
-    <section class="events">
-        <div class="container">
-            <h2 class="section-title">Events</h2>
-            <p style="text-align: center; margin-bottom: 50px; color: #666;">Dive into the joy of education with us! Join our school events and experience the magic of learning in a vibrant community</p>
-            <div class="events-grid">
-                <div class="event-card">
-                    <div class="event-image">
-                        <span>75th Independence Day Celebration</span>
-                    </div>
-                    <div class="event-content">
-                        <h3>75th INDEPENDENCE DAY</h3>
-                        <p>Reflecting on the Splendor of Our 75th Independence Day Celebration! Gratitude fills our hearts as we look back on an unforgettable event that brought our community together in the spirit of patriotism</p>
-                    </div>
-                </div>
-                <div class="event-card">
-                    <div class="event-image">
-                        <span>Badminton Court Inauguration</span>
-                    </div>
-                    <div class="event-content">
-                        <h3>Inauguration of Badminton Court</h3>
-                        <p>Celebrating the Grand Inauguration of Our New Badminton Court! The excitement and energy of the event still linger in the air as we reflect on a fantastic day filled with sportsmanship and camaraderie</p>
-                    </div>
-                </div>
-                <div class="event-card">
-                    <div class="event-image">
-                        <span>Eco Club Launch</span>
-                    </div>
-                    <div class="event-content">
-                        <h3>Inauguration of Eco Club</h3>
-                        <p>Reflecting on the Inauguration of Our Eco Club! It was a day of green beginnings and sustainable aspirations as we officially launched our Eco Club. The event brought together passionate individuals committed to environmental stewardship</p>
+                    <div class="features-grid">
+                        <div class="feature-card animate-on-scroll">
+                            <div class="feature-icon">
+                                <i class="fas fa-user-tie"></i>
+                            </div>
+                            <h3>Principal</h3>
+                            <p>Dr. S. R. Patil, Ph.D in Mechanical Engineering with over 25 years of experience in technical education.</p>
+                        </div>
+                        
+                        <div class="feature-card animate-on-scroll delay-1">
+                            <div class="feature-icon">
+                                <i class="fas fa-chalkboard-teacher"></i>
+                            </div>
+                            <h3>Vice Principal</h3>
+                            <p>Prof. M. L. Naik, M.Tech in Computer Science with specialization in Artificial Intelligence.</p>
+                        </div>
+                        
+                        <div class="feature-card animate-on-scroll delay-2">
+                            <div class="feature-icon">
+                                <i class="fas fa-award"></i>
+                            </div>
+                            <h3>Achievements</h3>
+                            <p>Recognized as "Best Polytechnic College" by the Department of Technical Education, Karnataka for three consecutive years.</p>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </section>
         </div>
-    </section>
+
+        <!-- Admission Page -->
+        <div id="admission-page" class="page">
+            <section class="admission-section">
+                <div class="container">
+                    <div class="section-title">
+                        <h2>Admission Process</h2>
+                        <p>Begin your journey to a successful career</p>
+                    </div>
+                    
+                    <div class="features-grid">
+                        <div class="feature-card animate-on-scroll">
+                            <div class="feature-icon">
+                                <i class="fas fa-clipboard-list"></i>
+                            </div>
+                            <h3>Eligibility</h3>
+                            <p>Students who have passed SSLC/10th standard or equivalent examination with minimum 35% marks in aggregate.</p>
+                        </div>
+                        
+                        <div class="feature-card animate-on-scroll delay-1">
+                            <div class="feature-icon">
+                                <i class="fas fa-calendar-alt"></i>
+                            </div>
+                            <h3>Academic Calendar</h3>
+                            <p>Admissions typically begin in June-July each year. The academic year is divided into two semesters.</p>
+                        </div>
+                        
+                        <div class="feature-card animate-on-scroll delay-2">
+                            <div class="feature-icon">
+                                <i class="fas fa-file-alt"></i>
+                            </div>
+                            <h3>Application Process</h3>
+                            <p>Applications are accepted online through the official website. Documents can be submitted in person or by post.</p>
+                        </div>
+                    </div>
+
+                    <div class="section-title" style="margin-top: 80px;">
+                        <h2>Fee Structure</h2>
+                        <p>Affordable education for all sections of society</p>
+                    </div>
+
+                    <div class="feature-card animate-on-scroll">
+                        <div class="program-details">
+                            <div class="program-detail">
+                                <i class="fas fa-rupee-sign"></i>
+                                <div>
+                                    <h4>Tuition Fee</h4>
+                                    <p>₹5,000 per semester</p>
+                                </div>
+                            </div>
+                            <div class="program-detail">
+                                <i class="fas fa-book"></i>
+                                <div>
+                                    <h4>Library Fee</h4>
+                                    <p>₹500 per semester</p>
+                                </div>
+                            </div>
+                            <div class="program-detail">
+                                <i class="fas fa-flask"></i>
+                                <div>
+                                    <h4>Laboratory Fee</h4>
+                                    <p>₹1,000 per semester</p>
+                                </div>
+                            </div>
+                            <div class="program-detail">
+                                <i class="fas fa-graduation-cap"></i>
+                                <div>
+                                    <h4>Examination Fee</h4>
+                                    <p>₹800 per semester</p>
+                                </div>
+                            </div>
+                        </div>
+                        <p style="text-align: center; margin-top: 20px; font-style: italic;">Scholarships available for eligible students</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Academics Page -->
+        <div id="academics-page" class="page">
+            <section class="academics-section">
+                <div class="container">
+                    <div class="section-title">
+                        <h2>Academics</h2>
+                        <p>Comprehensive programs for diverse career paths</p>
+                    </div>
+                    
+                    <div class="program-card animate-on-scroll">
+                        <div class="program-header">
+                            <h3>Computer Science Engineering</h3>
+                        </div>
+                        <div class="program-content">
+                            <p>This program provides students with a strong foundation in computer science principles and programming skills. Students learn to develop software applications, work with databases, and understand computer networks.</p>
+                            <div class="program-details">
+                                <div class="program-detail">
+                                    <i class="fas fa-clock"></i>
+                                    <div>
+                                        <h4>Duration</h4>
+                                        <p>3 years (6 semesters)</p>
+                                    </div>
+                                </div>
+                                <div class="program-detail">
+                                    <i class="fas fa-user-graduate"></i>
+                                    <div>
+                                        <h4>Intake</h4>
+                                        <p>60 students per year</p>
+                                    </div>
+                                </div>
+                                <div class="program-detail">
+                                    <i class="fas fa-briefcase"></i>
+                                    <div>
+                                        <h4>Careers</h4>
+                                        <p>Software Developer, Web Designer, Network Administrator</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="#" class="btn">Learn More</a>
+                        </div>
+                    </div>
+
+                    <div class="program-card animate-on-scroll delay-1">
+                        <div class="program-header">
+                            <h3>Electrical Engineering</h3>
+                        </div>
+                        <div class="program-content">
+                            <p>This program focuses on electrical systems, power generation, transmission, and distribution. Students gain practical knowledge in electrical machines, power electronics, and control systems.</p>
+                            <div class="program-details">
+                                <div class="program-detail">
+                                    <i class="fas fa-clock"></i>
+                                    <div>
+                                        <h4>Duration</h4>
+                                        <p>3 years (6 semesters)</p>
+                                    </div>
+                                </div>
+                                <div class="program-detail">
+                                    <i class="fas fa-user-graduate"></i>
+                                    <div>
+                                        <h4>Intake</h4>
+                                        <p>60 students per year</p>
+                                    </div>
+                                </div>
+                                <div class="program-detail">
+                                    <i class="fas fa-briefcase"></i>
+                                    <div>
+                                        <h4>Careers</h4>
+                                        <p>Electrical Technician, Power Plant Operator, Maintenance Engineer</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="#" class="btn">Learn More</a>
+                        </div>
+                    </div>
+
+                    <div class="program-card animate-on-scroll delay-2">
+                        <div class="program-header">
+                            <h3>Mechanical Engineering</h3>
+                        </div>
+                        <div class="program-content">
+                            <p>This program provides comprehensive knowledge of machine design, thermal engineering, production technology, and automation. Students learn to design, analyze, and maintain mechanical systems.</p>
+                            <div class="program-details">
+                                <div class="program-detail">
+                                    <i class="fas fa-clock"></i>
+                                    <div>
+                                        <h4>Duration</h4>
+                                        <p>3 years (6 semesters)</p>
+                                    </div>
+                                </div>
+                                <div class="program-detail">
+                                    <i class="fas fa-user-graduate"></i>
+                                    <div>
+                                        <h4>Intake</h4>
+                                        <p>60 students per year</p>
+                                    </div>
+                                </div>
+                                <div class="program-detail">
+                                    <i class="fas fa-briefcase"></i>
+                                    <div>
+                                        <h4>Careers</h4>
+                                        <p>Mechanical Technician, CAD Designer, Production Supervisor</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="#" class="btn">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Facilities Page -->
+        <div id="facilities-page" class="page">
+            <section class="facilities-section">
+                <div class="container">
+                    <div class="section-title">
+                        <h2>Our Facilities</h2>
+                        <p>State-of-the-art infrastructure for holistic development</p>
+                    </div>
+                    
+                    <div class="features-grid">
+                        <div class="feature-card animate-on-scroll">
+                            <div class="feature-icon">
+                                <i class="fas fa-flask"></i>
+                            </div>
+                            <h3>Modern Labs</h3>
+                            <p>Well-equipped laboratories for each department with latest equipment and technology.</p>
+                        </div>
+                        
+                        <div class="feature-card animate-on-scroll delay-1">
+                            <div class="feature-icon">
+                                <i class="fas fa-book"></i>
+                            </div>
+                            <h3>Library</h3>
+                            <p>Extensive collection of books, journals, and digital resources with reading rooms and computer access.</p>
+                        </div>
+                        
+                        <div class="feature-card animate-on-scroll delay-2">
+                            <div class="feature-icon">
+                                <i class="fas fa-basketball-ball"></i>
+                            </div>
+                            <h3>Sports Facilities</h3>
+                            <p>Indoor and outdoor sports facilities including cricket ground, basketball court, and gymnasium.</p>
+                        </div>
+                    </div>
+
+                    <div class="features-grid" style="margin-top: 50px;">
+                        <div class="feature-card animate-on-scroll">
+                            <div class="feature-icon">
+                                <i class="fas fa-wifi"></i>
+                            </div>
+                            <h3>Wi-Fi Campus</h3>
+                            <p>High-speed internet connectivity across the campus with 24/7 access for students and faculty.</p>
+                        </div>
+                        
+                        <div class="feature-card animate-on-scroll delay-1">
+                            <div class="feature-icon">
+                                <i class="fas fa-utensils"></i>
+                            </div>
+                            <h3>Cafeteria</h3>
+                            <p>Spacious cafeteria serving hygienic and nutritious food at subsidized rates for students.</p>
+                        </div>
+                        
+                        <div class="feature-card animate-on-scroll delay-2">
+                            <div class="feature-icon">
+                                <i class="fas fa-bus"></i>
+                            </div>
+                            <h3>Transportation</h3>
+                            <p>College bus service covering all major routes in and around Karwar for student convenience.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Gallery Page -->
+        <div id="gallery-page" class="page">
+            <section class="gallery-section">
+                <div class="container">
+                    <div class="section-title">
+                        <h2>Campus Gallery</h2>
+                        <p>Take a visual tour of our campus and facilities</p>
+                    </div>
+                    
+                    <div class="gallery-grid">
+                        <div class="gallery-item animate-on-scroll">
+                            <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="College Building">
+                        </div>
+                        <div class="gallery-item animate-on-scroll delay-1">
+                            <img src="https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlf极 Hx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Library">
+                        </div>
+                        <div class="gallery-item animate-on-scroll delay-2">
+                            <img src="https://images.unsplash.com/photo-1591123120675-6f7f1aae0e5b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Computer Lab">
+                        </div>
+                        <div class="gallery-item animate-on-scroll">
+                            <img src="https://images.unsplash.com/photo-1543269865-cbf427effbbe?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Students in Class">
+                        </div>
+                        <div class="gallery-item animate-on-scroll delay-1">
+                            <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="College Event">
+                        </div>
+                        <div class="gallery-item animate-on-scroll delay-2">
+                            <img src="https://images.unsplash.com/photo-1541336032412-2048a678540d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Graduation Day">
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Contact Page -->
+        <div id="contact-page" class="page">
+            <section class="contact-section">
+                <div class="container">
+                    <div class="section-title">
+                        <h2>Contact Us</h2>
+                        <p>Get in touch with us for any queries</p>
+                    </div>
+                    
+                    <div class="contact-info">
+                        <div class="contact-card animate-on-scroll">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <h3>Address</h3>
+                            <p>Government Polytechnic College, Karwar, Karnataka 581301</p>
+                        </div>
+                        
+                        <div class="contact-card animate-on-scroll delay-1">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <h3>Phone</h3>
+                            <p>+91 8382 123456</p>
+                            <p>+91 8382 123457</p>
+                        </div>
+                        
+                        <div class="contact-card animate-on-scroll delay-2">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <h3>Email</h3>
+                            <p>info@gpckarwar.edu.in</p>
+                            <p>principal@gpckarwar.edu.in</p>
+                        </div>
+                    </div>
+
+                    <div class="section-title" style="margin-top: 80px;">
+                        <h2>Send us a Message</h2>
+                        <p>We'd love to hear from you</p>
+                    </div>
+
+                    <form class="feature-card animate-on-scroll" style="max-width: 600px; margin: 0 auto;">
+                        <div style="margin-bottom: 20px;">
+                            <label for="name" style="display: block; margin-bottom: 8px; font-weight: 500;">Your Name</label>
+                            <input type="text" id="name" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 4px;" placeholder="Enter your name">
+                        </div>
+                        <div style="margin-bottom: 20px;">
+                            <label for="email" style="display: block; margin-bottom: 8px; font-weight: 500;">Email Address</label>
+                            <input type="email" id="email" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 4px;" placeholder="Enter your email">
+                        </div>
+                        <div style="margin-bottom: 20px;">
+                            <label for="message" style="display: block; margin-bottom: 8px; font-weight: 500;">Message</label>
+                            <textarea id="message" rows="5" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 4px;" placeholder="Type your message here"></textarea>
+                        </div>
+                        <button type="submit" class="btn" style="width: 100%;">Send Message</button>
+                    </form>
+                </div>
+            </section>
+        </div>
+    </div>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer>
         <div class="container">
-            <p>&copy; 2024 Government Schools and PU College, Rajanukunte. All rights reserved.</p>
-            <p>📞 +91 9901773645 | 📍 Rajanukunte, Bangalore, Karnataka</p>
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <h3 class="footer-heading">About Us</h3>
+                    <p>Government Polytechnic College, Karwar is a premier technical education institution established in 1985, providing quality education in various engineering disciplines.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h3 class="footer-heading">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a data-page="home"><i class="fas fa-home"></i> Home</a></li>
+                        <li><a data-page="about"><i class="fas fa-info-circle"></i> About</a></li>
+                        <li><a data-page="admission"><i class="fas fa-user-graduate"></i> Admission</a></li>
+                        <li><a data-page="academics"><i class="fas fa-book-open"></i> Academics</a></li>
+                        <li><a data-page="facilities"><i class="fas fa-building"></i> Facilities</a></li>
+                        <li><a data-page="gallery"><i class="fas fa-images"></i> Gallery</a></li>
+                        <li><a data-page="contact"><i class="fas fa-phone"></i> Contact us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h3 class="footer-heading">Contact Info</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Government Polytechnic College, Karwar, Karnataka 581301</p>
+                    <p><i class="fas fa-phone"></i> +91 8382 123456</p>
+                    <p><i class="fas fa-envelope"></i> info@gpckarwar.edu.in</p>
+                    <p><i class="fas fa-clock"></i> Mon - Sat: 9:00 AM - 4:00 PM</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Government Polytechnic College, Karwar. All Rights Reserved.</p>
+            </div>
         </div>
     </footer>
 
+    <!-- Back to top button -->
+    <a href="#" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
     <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Counter animation
-        function animateCounter(element, start, end, duration) {
-            const startTime = performance.now();
-            const range = end - start;
-
-            function updateCounter(currentTime) {
-                const elapsed = currentTime - startTime;
-                const progress = Math.min(elapsed / duration, 1);
-                const current = Math.floor(start + (range * progress));
-                
-                element.textContent = current + '+';
-                
-                if (progress < 1) {
-                    requestAnimationFrame(updateCounter);
-                }
-            }
-            
-            requestAnimationFrame(updateCounter);
-        }
-
-        // Intersection Observer for counter animation
-        const counterObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const target = entry.target;
-                    const finalValue = parseInt(target.textContent);
-                    animateCounter(target, 0, finalValue, 2000);
-                    counterObserver.unobserve(target);
-                }
-            });
-        });
-
-        // Observe counter elements
-        document.querySelectorAll('#students-count, #faculty-count, #labs-count').forEach(counter => {
-            counterObserver.observe(counter);
-        });
-
-        // Add scroll effect to navigation
-        window.addEventListener('scroll', () => {
-            const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 100) {
-                navbar.style.background = 'rgba(248, 249, 250, 0.95)';
-                navbar.style.backdropFilter = 'blur(10px)';
-            } else {
-                navbar.style.background = '#f8f9fa';
-                navbar.style.backdropFilter = 'none';
-            }
-        });
-
-        // Add hover effects to cards
-        document.querySelectorAll('.feature-card, .history-card, .event-card').forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-10px) scale(1.02)';
-            });
-            
-            card.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0) scale(1)';
-            });
-        });
-
-        // Mobile menu toggle (basic implementation)
-        function toggleMobileMenu() {
-            const navMenu = document.querySelector('.nav-menu');
-            navMenu.classList.toggle('mobile-active');
-        }
-
-        // Add some interactive elements
         document.addEventListener('DOMContentLoaded', function() {
-            // Add fade-in animation for elements
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
-
-            const fadeObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
+            // Page navigation functionality
+            const pages = document.querySelectorAll('.page');
+            const navLinks = document.querySelectorAll('[data-page]');
+            const pageContainer = document.querySelector('.page-container');
+            
+            // Function to switch pages
+            function switchPage(pageId) {
+                // Hide all pages
+                pages.forEach(page => {
+                    page.classList.remove('active');
+                });
+                
+                // Show the selected page
+                const targetPage = document.getElementById(`${pageId}-page`);
+                if (targetPage) {
+                    targetPage.classList.add('active');
+                    
+                    // Scroll to top
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Update active class in navigation
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('data-page') === pageId) {
+                            link.classList.add('active');
+                        }
+                    });
+                    
+                    // Reset animations for the new page
+                    resetAnimations();
+                    
+                    // Close mobile menu if open
+                    if (document.querySelector('.nav-container').classList.contains('active')) {
+                        toggleMobileMenu();
+                    }
+                }
+            }
+            
+            // Add click event to all navigation links
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const pageId = this.getAttribute('data-page');
+                    switchPage(pageId);
+                });
+            });
+            
+            // Reset animations for elements on the current page
+            function resetAnimations() {
+                const animatedElements = document.querySelectorAll('.animate-on-scroll');
+                animatedElements.forEach(el => {
+                    el.classList.remove('animated');
+                });
+                
+                // Trigger animation check after a short delay
+                setTimeout(checkScroll, 100);
+            }
+            
+            // Mobile menu functionality
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const closeMenuBtn = document.querySelector('.close-menu');
+            const navContainer = document.querySelector('.nav-container');
+            const overlay = document.querySelector('.overlay');
+            
+            function toggleMobileMenu() {
+                navContainer.classList.toggle('active');
+                overlay.classList.toggle('active');
+                document.body.style.overflow = navContainer.classList.contains('active') ? 'hidden' : '';
+            }
+            
+            mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+            closeMenuBtn.addEventListener('click', toggleMobileMenu);
+            overlay.addEventListener('click', toggleMobileMenu);
+            
+            // Header scroll effect
+            const header = document.querySelector('header');
+            
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+                
+                // Back to top button visibility
+                const backToTop = document.querySelector('.back-to-top');
+                if (window.scrollY > 300) {
+                    backToTop.classList.add('visible');
+                } else {
+                    backToTop.classList.remove('visible');
+                }
+                
+                // Check animations
+                checkScroll();
+            });
+            
+            // Scroll animations for elements
+            function checkScroll() {
+                const animatedElements = document.querySelectorAll('.animate-on-scroll');
+                const triggerPoint = window.innerHeight * 0.8;
+                
+                animatedElements.forEach((el, index) => {
+                    const elementTop = el.getBoundingClientRect().top;
+                    
+                    if (elementTop < triggerPoint) {
+                        setTimeout(() => {
+                            el.classList.add('animated');
+                        }, index * 100);
                     }
                 });
-            }, observerOptions);
-
-            // Apply fade-in to sections
-            document.querySelectorAll('section').forEach(section => {
-                section.style.opacity = '0';
-                section.style.transform = 'translateY(30px)';
-                section.style.transition = 'all 0.6s ease-out';
-                fadeObserver.observe(section);
+            }
+            
+            window.addEventListener('scroll', checkScroll);
+            window.addEventListener('load', checkScroll);
+            
+            // Back to top functionality
+            const backToTopBtn = document.querySelector('.back-to-top');
+            
+            backToTopBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
             });
         });
     </script>
 </body>
-</html>
+</html>         
