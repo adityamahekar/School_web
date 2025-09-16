@@ -1663,6 +1663,175 @@ body {
                 });
             });
         });
+        footer {
+    background-color: var(--primary-dark);
+    color: var(--white);
+    padding: 30px 0 15px;
+    position: fixed;
+    bottom: -200px;
+    left: 0;
+    width: 100%;
+    transition: bottom 0.5s ease;
+    z-index: 1000;
+    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.2);
+}
+
+footer.active {
+    bottom: 0;
+}
+
+footer:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, var(--accent), var(--secondary));
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.footer-heading {
+    color: var(--white);
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+    position: relative;
+    padding-bottom: 8px;
+}
+
+.footer-heading:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 30px;
+    height: 2px;
+    background-color: var(--secondary);
+}
+
+.footer-links li {
+    margin-bottom: 8px;
+}
+
+.footer-links a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: var(--transition);
+    display: block;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.footer-links a:hover {
+    color: var(--secondary);
+    padding-left: 5px;
+}
+
+.footer-contact p {
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+}
+
+.footer-contact i {
+    margin-right: 8px;
+    color: var(--secondary);
+}
+
+.social-links {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.social-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    transition: var(--transition);
+    color: var(--white);
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.social-links a:hover {
+    background-color: var(--accent);
+    transform: translateY(-3px);
+}
+
+.copyright {
+    text-align: center;
+    padding-top: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.8rem;
+}
+
+@media (max-width: 768px) {
+    footer {
+        padding: 20px 0 10px;
+    }
+    
+    .footer-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 15px;
+    }
+    
+    .footer-heading:after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    .footer-contact p {
+        justify-content: center;
+    }
+}
+</style>
+
+<script>
+// Footer scroll behavior
+let lastScrollTop = 0;
+const footer = document.querySelector('footer');
+const footerHeight = footer.offsetHeight;
+
+window.addEventListener('scroll', function() {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const windowHeight = window.innerHeight;
+    const documentHeight = document.documentElement.scrollHeight;
+    
+    // Show footer when scrolled to bottom
+    if (windowHeight + scrollTop >= documentHeight - 50) {
+        footer.classList.add('active');
+    } 
+    // Hide footer when scrolling up
+    else if (scrollTop < lastScrollTop && scrollTop > 100) {
+        footer.classList.remove('active');
+    }
+    
+    lastScrollTop = scrollTop;
+});
+
+// Also show footer on mouse movement near bottom of screen
+document.addEventListener('mousemove', function(e) {
+    const mouseY = e.clientY;
+    const windowHeight = window.innerHeight;
+    
+    if (windowHeight - mouseY < 50) {
+        footer.classList.add('active');
+    }
+});
     </script>
 </body>
 </html>         
