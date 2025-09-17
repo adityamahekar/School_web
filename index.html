@@ -3,384 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Government Polytechnic College Karwar</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Government Polytechnic College</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <style>
-        :root {
-            --primary: #1e3a5f;
-            --primary-dark: #152942;
-            --accent: #e74c3c;
-            --secondary: #f39c12;
-            --white: #ffffff;
-            --light-gray: #f5f5f5;
-            --text: #333;
-            --transition: all 0.3s ease;
-        }
-
+        /* Global Styles */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        :root {
+            --primary: #1a5276;
+            --secondary: #2e86c1;
+            --accent: #f39c12;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
-            color: var(--text);
-            line-height: 1.6;
-            background-color: var(--white);
+            background-color: #f9f9f9;
+            color: #333;
             overflow-x: hidden;
         }
-body {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-.page-container {
-  flex: 1;
-}
 
         .container {
-            width: 90%;
+            width: 100%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 15px;
+            padding: 0 20px;
         }
 
-        /* Page Container for transitions */
-        .page-container {
-            position: relative;
-            width: 100%;
-            min-height: 100vh;
-        }
-
-        .page {
-            position: absolute;
-            width: 100%;
-            top: 0;
-            left: 0;
-            opacity: 0;
-            transform: translateX(50px);
-            pointer-events: none;
-            transition: opacity 0.5s ease, transform 0.5s ease;
-            z-index: 1;
-        }
-
-        .page.active {
-            opacity: 1;
-            transform: translateX(0);
-            pointer-events: all;
-            z-index: 2;
-        }
-
-        /* Header Styles */
-        header {
-            background: linear-gradient(to right, var(--primary), var(--primary-dark));
-            color: var(--white);
-            padding: 15px 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            transition: var(--transition);
-        }
-
-        header.scrolled {
-            padding: 10px 0;
-            background: rgba(30, 58, 95, 0.98);
-            backdrop-filter: blur(10px);
-        }
-
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            cursor: pointer;
-        }
-
-        .logo img {
-            height: 60px;
-            width: auto;
-            transition: var(--transition);
-        }
-
-        header.scrolled .logo img {
-            height: 50px;
-        }
-
-        .logo-text {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .logo-text h1 {
-            font-size: 1.8rem;
-            line-height: 1.2;
-            margin: 0;
-            color: var(--white);
-            transition: var(--transition);
-        }
-
-        header.scrolled .logo-text h1 {
-            font-size: 1.5rem;
-        }
-
-        .logo-text span {
-            font-size: 0.9rem;
-            opacity: 0.9;
-            transition: var(--transition);
-        }
-
-        header.scrolled .logo-text span {
-            font-size: 0.8rem;
-        }
-
-        /* Navigation */
-        .nav-container {
-            background-color: var(--primary-dark);
-            padding: 0;
-            transition: var(--transition);
-        }
-
-        header.scrolled + .nav-container {
-            position: fixed;
-            top: 70px;
-            width: 100%;
-            z-index: 999;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .nav-menu {
-            display: flex;
-            justify-content: center;
-            list-style: none;
-            padding: 0;
-        }
-
-        .nav-menu li {
-            margin: 0;
-        }
-
-        .nav-menu a {
-            display: block;
-            color: var(--white);
-            text-decoration: none;
-            padding: 18px 25px;
-            font-weight: 500;
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-            cursor: pointer;
-        }
-
-        .nav-menu a:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: var(--transition);
-        }
-
-        .nav-menu a:hover:before {
-            left: 100%;
-        }
-
-        .nav-menu a:hover, 
-        .nav-menu a.active {
-            background-color: rgba(255, 255, 255, 0.1);
-        }
-
-        .nav-menu a:hover::after,
-        .nav-menu a.active::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background-color: var(--secondary);
-            animation: lineGrow 0.3s ease-out;
-        }
-
-        @keyframes lineGrow {
-            from { width: 0; }
-            to { width: 100%; }
-        }
-
-        .nav-menu i {
-            margin-right: 8px;
-            font-size: 1.1rem;
-        }
-
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(rgba(30, 58, 95, 0.8), rgba(30, 58, 95, 0.9)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3') no-repeat center center/cover;
-            color: var(--white);
-            padding: 150px 0 100px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            min-height: 80vh;
-            display: flex;
-            align-items: center;
-        }
-
-        .hero:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,128L48,117.3C96,107,192,85,288,112C384,139,480,213,576,224C672,235,768,181,864,181.3C960,181,1056,235,1152,234.7C1248,235,1344,181,1392,154.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,极 320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
-            background-size: cover;
-            background-position: bottom;
-            animation: waveAnim 15s linear infinite;
-        }
-
-        @keyframes waveAnim {
-            0% { background-position-x: 0; }
-            100% { background-position-x: 1440px; }
-        }
-
-        .hero h1 {
-            font-size: 2.8rem;
-            margin-bottom: 20px;
-            position: relative;
-            animation: fadeInUp 1s ease-out;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto 30px;
-            position: relative;
-            animation: fadeInUp 1s ease-out 0.2s;
-            animation-fill-mode: both;
-        }
-
-        .hero-btns {
-            position: relative;
-            animation: fadeInUp 1s ease-out 0.4s;
-            animation-fill-mode: both;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 14px 30px;
-            background-color: var(--accent);
-            color: var(--white);
-            border-radius: 4px;
-            font-weight: 500;
-            transition: var(--transition);
-            text-decoration: none;
-            margin: 10px;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-            cursor: pointer;
-            border: none;
-        }
-
-        .btn:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 0%;
-            height: 100%;
-            background: var(--primary);
-            transition: var(--transition);
-            z-index: -1;
-        }
-
-        .btn:hover:before {
-            width: 100%;
-        }
-
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        .btn-outline {
-            background: transparent;
-            border: 2px solid var(--white);
-        }
-
-        .btn-outline:before {
-            background: var(--white);
-        }
-
-        .btn-outline:hover {
-            color: var(--primary);
-        }
-
-        /* Animation keyframes */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes fadeInRight {
-            from {
-                opacity: 0;
-                transform: translateX(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        /* Section Styles */
-        .section {
+        section {
             padding: 80px 0;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-
-        .section.visible {
-            opacity: 1;
-            transform: translateY(0);
         }
 
         .section-title {
@@ -390,272 +50,352 @@ body {
         }
 
         .section-title h2 {
-            font-size: 2.2rem;
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent);
+            border-radius: 2px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            color: var(--primary);
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(26, 82, 118, 0.8), rgba(26, 82, 118, 0.8)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            animation: fadeIn 1.5s ease;
+        }
+
+        .hero-content h2 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            animation: slideInFromTop 1s ease;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            animation: slideInFromBottom 1s ease;
+        }
+
+        .hero-btns {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            animation: fadeIn 2s ease;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .about-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+        }
+
+        .about-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-card i {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .about-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        .leadership {
+            margin-top: 60px;
+        }
+
+        .leadership-cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .leader-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+
+        .leader-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            overflow: hidden;
+            border: 5px solid var(--light);
+        }
+
+        .leader-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Admission Section */
+        .admission-process {
+            background-color: var(--light);
+            padding: 60px 0;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .process-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .process-card h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .fee-structure {
+            margin-top: 60px;
+        }
+
+        .fee-cards {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .fee-card {
+            background-color: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .fee-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .fee-card h4 {
             color: var(--primary);
             margin-bottom: 15px;
         }
 
-        .section-title:after {
-            content: '';
-            display: block;
-            width: 80px;
-            height: 4px;
-            background-color: var(--accent);
-            margin: 15px auto 0;
-            border-radius: 2px;
-            animation: lineGrow 1s ease-out;
+        .fee-card .amount {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent);
         }
 
-        /* Features */
-        .features-grid {
+        /* Programs Section */
+        .programs-cards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 30px;
         }
 
-        .feature-card {
-            background-color: var(--white);
-            border-radius: 8px;
+        .program-card {
+            background-color: white;
             padding: 30px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: var(--transition);
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-        }
-
-        .feature-card:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 5px;
-            height: 100%;
-            background: var(--accent);
-            transition: var(--transition);
-            z-index: -1;
-        }
-
-        .feature-card:hover:before {
-            width: 100%;
-            opacity: 0.1;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .feature-icon {
-            font-size: 40px;
-            color: var(--primary);
-            margin-bottom: 20px;
-            transition: var(--transition);
-        }
-
-        .feature-card:hover .feature-icon {
-            color: var(--accent);
-            transform: scale(1.1);
-        }
-
-        /* News Section */
-        .news-container {
-            background-color: var(--light-gray);
-            padding: 60px 0;
-        }
-
-        .news-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-        }
-
-        .news-card {
-            background-color: var(--white);
             border-radius: 8px;
-            overflow: hidden;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: var(--transition);
-            transform: translateY(50px);
-            opacity: 0;
+            transition: transform 0.3s ease;
         }
 
-        .news-card.visible {
-            transform: translateY(0);
-            opacity: 1;
-        }
-
-        .news-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .news-content {
-            padding: 25px;
-        }
-
-        .news-date {
-            color: var(--accent);
-            font-weight: 500;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-        }
-
-        .news-date:before {
-            content: '\f133';
-            font-family: 'Font Awesome 5 Free';
-            font-weight: 900;
-            margin-right: 8px;
-        }
-
-        /* Back to top button */
-        .back-to-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 50px;
-            height: 50px;
-            background: var(--accent);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-            transition: var(--transition);
-            opacity: 0;
-            visibility: hidden;
-            z-index: 999;
-        }
-
-        .back-to-top.visible {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .back-to-top:hover {
-            background: var(--primary);
+        .program-card:hover {
             transform: translateY(-5px);
         }
 
-        /* Footer */
-        footer {
-            background-color: var(--primary-dark);
-            color: var(--white);
-            padding: 60px 0 30px;
-            position: relative;
+        .program-card h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
         }
 
-        footer:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 10px;
-            background: linear-gradient(90deg, var(--accent), var(--secondary));
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-bottom: 40px;
-        }
-
-        .footer-heading {
-            color: var(--white);
-            margin-bottom: 20px;
-            font-size: 1.3rem;
-            position: relative;
-            padding-bottom: 10px;
-        }
-
-        .footer-heading:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 40px;
-            height: 3px;
-            background-color: var(--secondary);
-            animation: lineGrow 1s ease-out;
-        }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 12px;
-        }
-
-        .footer-links a {
-            color: rgba(255, 255, 255, 0.8);
-            text-decoration: none;
-            transition: var(--transition);
-            display: block;
-            cursor: pointer;
-        }
-
-        .footer-links a:hover {
-            color: var(--secondary);
-            padding-left: 5px;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 15px;
+        .program-details {
             margin-top: 20px;
         }
 
-        .social-links a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            transition: var(--transition);
-            color: var(--white);
-            text-decoration: none;
+        .program-details p {
+            margin-bottom: 10px;
         }
 
-        .social-links a:hover {
-            background-color: var(--accent);
+        /* Facilities Section */
+        .facilities {
+            background-color: var(--light);
+        }
+
+        .facilities-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .facility-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .facility-card:hover {
             transform: translateY(-5px);
         }
 
-        .copyright {
-            text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: rgba(255, 255, 255, 0.7);
+        .facility-card i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
         }
 
-        /* Page specific styles */
-        .about-section, .admission-section, .academics-section, 
-        .facilities-section, .gallery-section, .contact-section {
-            padding: 80px 0;
+        .facility-card h3 {
+            color: var(--dark);
+            margin-bottom: 15px;
         }
 
+        /* Gallery Section */
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 15px;
-            margin-top: 30px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
         }
 
         .gallery-item {
-            height: 200px;
+            height: 250px;
             border-radius: 8px;
             overflow: hidden;
             position: relative;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             cursor: pointer;
         }
 
@@ -670,2904 +410,526 @@ body {
             transform: scale(1.1);
         }
 
-        .contact-info {
+        .gallery-item::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover::after {
+            opacity: 1;
+        }
+
+        /* Contact Section */
+        .contact-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 30px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 50px;
         }
 
-        .contact-card {
-            background: var(--white);
-            padding: 25px;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            text-align: center;
+        .contact-info h3 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-size: 1.8rem;
         }
 
-        .contact-icon {
-            font-size: 2rem;
-            color: var(--accent);
-            margin-bottom: 15px;
-        }
-
-        /* Program cards */
-        .program-card {
-            background: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: var(--transition);
+        .contact-details {
             margin-bottom: 30px;
         }
 
-        .program-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .program-header {
-            background: var(--primary);
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
-
-        .program-content {
-            padding: 25px;
-        }
-
-        .program-details {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin: 20px 0;
-        }
-
-        .program-detail {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .program-detail i {
-            color: var(--accent);
-            font-size: 1.2rem;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 992px) {
-            .nav-menu {
-                flex-wrap: wrap;
-            }
-            
-            .nav-menu a {
-                padding: 15px 20px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .header-container {
-                flex-direction: row;
-                text-align: center;
-                gap: 15px;
-            }
-            
-            .logo {
-                justify-content: flex-start;
-            }
-            
-            .mobile-menu-btn {
-                display: block;
-            }
-            
-            .nav-container {
-                position: fixed;
-                top: 0;
-                right: -300px;
-                width: 300px;
-                height: 100vh;
-                background: var(--primary-dark);
-                transition: var(--transition);
-                z-index: 1000;
-                padding-top: 80px;
-            }
-            
-            .nav-container.active {
-                right: 0;
-                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
-            }
-            
-            .nav-menu {
-                flex-direction: column;
-                align-items: flex-start;
-                padding: 20px;
-            }
-            
-            .nav-menu li {
-                width: 100%;
-                text-align: left;
-            }
-            
-            .nav-menu a {
-                padding: 15px;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            }
-            
-            .close-menu {
-                position: absolute;
-                top: 20px;
-                right: 20px;
-                background: none;
-                border: none;
-                color: white;
-                font-size: 1.5rem;
-                cursor: pointer;
-            }
-            
-            .overlay {
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: rgba(0, 0, 0, 0.5);
-                opacity: 0;
-                visibility: hidden;
-                transition: var(--transition);
-                z-index: 999;
-            }
-            
-            .overlay.active {
-                opacity: 1;
-                visibility: visible;
-            }
-            
-            .hero h1 {
-                font-size: 2.2rem;
-            }
-            
-            .hero p {
-                font-size: 1rem;
-            }
-        }
-
-        /* Animation enhancements */
-        .animate-on-scroll {
-            opacity: 0;
-            transform: translateY(50px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-
-        .animate-on-scroll.animated {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .delay-1 {
-            transition-delay: 0.2s;
-        }
-
-        .delay-2 {
-            transition-delay: 0.4s;
-        }
-
-        .delay-3 {
-            transition-delay: 0.6s;
-        }
-        /* Container holding the cards */
-.leadership-cards {
-  display: flex;
-  justify-content: space-between;  /* Space cards evenly */
-  gap: 20px;                        /* Space between cards */
-  padding: 0 20px;
-}
-
-/* Each individual card */
-.leadership-card {
-  position: relative;
-  background: #fff;
-  padding: 20px;
-  flex: 1;                         /* Cards take equal width */
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  overflow: visible;
-  margin: 0 10px;
-}
-
-/* The red vertical bar */
-.leadership-card::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 10%;
-  width: 15px;                    /* width of red sidebar */
-  height: 80%;
-  background-color: #E8594E;      /* red color */
-  border-radius: 4px 0 0 4px;
-}
-
-/* Make sure icons and text inside cards are centered */
-.leadership-card .icon {
-  display: block;
-  margin: 0 auto 10px auto;
-  color: #213a66;                 /* matching icon color */
-}
-.card-section {
-  position: relative;
-  z-index: 1;
-  background-color: #fff;
-  border-radius: 10px;
-  padding: 40px 30px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  max-width: 1200px;
-  margin: 40px auto;
-  overflow: hidden;
-}  .card-section::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 8px;
-  background-color: #e8594e; /* or #f39c12 if it's orange */
-  z-index: 0;
-}
-  .info-row {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 30px;
-  margin-top: 20px;
-}
-
-.info-item {
-  flex: 1;
-  min-width: 250px;
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-}        .card-section .btn {
-  margin-top: 30px;
-  background-color: #e8594e;
-  color: #fff;
-  padding: 12px 24px;
-  border: none;
-  border-radius: 6px;
-  font-weight: bold;
-  cursor: pointer;
-}
- 
-        
-        
-    </style>
-</head>
-<body>
-    <!-- Header -->
-    <header>
-        <div class="container header-container">
-            <div class="logo" data-page="home">
-                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgdmlld0JveD0iMCAwIDYwIDYwIj48Y2lyY2xlIGN4PSIzMCIgY3k9IjMwIiByPSIyOCIgZmlsbD0iI2U3NGMzYyIvPjxwYXRoIGQ9Ik0zMCAxMEMzMCAxMCAzNy41IDI0IDM3LjUgMjRIMjVWNDVIMzdWMzVINDBWNDVINDVWMjVINDBDMzcgMjUgMzAgMTAgMzAgMTBaIiBmaWxsPSIjZmZmIi8+PC9zdmc+" alt="College Logo">
-                <div class="logo-text">
-                    <h1>Government Polytechnic College</h1>
-                    <span>Karwar, Karnataka</span>
-                </div>
-            </div>
-            <button class="mobile-menu-btn">
-                <i class="fas fa-bars"></i>
-            </button>
-        </div>
-    </header>
-
-    <!-- Navigation -->
-    <div class="nav-container">
-        <button class="close-menu">
-            <i class="fas fa-times"></i>
-        </button>
-        <ul class="nav-menu">
-            <li><a data-page="home" class="active"><i class="fas fa-home"></i> Home</a></li>
-            <li><a data-page="about"><i class="fas fa-info-circle"></i> About</a></li>
-            <li><a data-page="admission"><i class="fas fa-user-graduate"></i> Admission</a></li>
-            <li><a data-page="academics"><i class="fas fa-book-open"></i> Academics</a></li>
-            <li><a data-page="facilities"><i class="fas fa-building"></i> Facilities</a></li>
-            <li><a data-page="gallery"><i class="fas fa-images"></i> Gallery</a></li>
-            <li><a data-page="contact"><i class="fas fa-phone"></i> Contact us</a></li>
-        </ul>
-    </div>
-    <div class="overlay"></div>
-
-    <!-- Page Container -->
-    <div class="page-container">
-        <!-- Home Page -->
-        <div id="home-page" class="page active">
-            <!-- Hero Section -->
-            <section class="hero">
-                <div class="container">
-                    <h1>Welcome to Government Polytechnic College</h1>
-                    <p>Empowering students with technical education and skills for a better future</p>
-                    <div class="hero-btns">
-                        <a data-page="admission" class="btn">Explore Programs</a>
-                        <a data-page="gallery" class="btn btn-outline">Campus Tour</a>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Features Section -->
-            <section class="section" id="features">
-                <div class="container">
-                    <div class="section-title">
-                        <h2>Why Choose Us</h2>
-                        <p>Excellence in technical education since 1985</p>
-                    </div>
-                    
-                    <div class="features-grid">
-                        <div class="feature-card animate-on-scroll">
-                            <div class="feature-icon">
-                                <i class="fas fa-graduation-cap"></i>
-                            </div>
-                            <h3>Quality Education</h3>
-                            <p>Our programs are designed to meet industry standards and provide hands-on learning experiences.</p>
-                        </div>
-                        
-                        <div class="feature-card animate-on-scroll delay-1">
-                            <div class="feature-icon">
-                                <i class="fas fa-users"></i>
-                            </div>
-                            <h3>Experienced Faculty</h3>
-                            <p>Learn from industry experts and experienced educators dedicated to your success.</p>
-                        </div>
-                        
-                        <div class="feature-card animate-on-scroll delay-2">
-                            <div class="feature-icon">
-                                <i class="fas fa-microscope"></i>
-                            </div>
-                            <h3>Modern Laboratories</h3>
-                            <p>State-of-the-art labs equipped with the latest technology for practical learning.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- News Section -->
-            <section class="news-container section" id="news">
-                <div class="container">
-                    <div class="section-title">
-                        <h2>Campus News & Events</h2>
-                        <p>Stay updated with the latest happenings</p>
-                    </div>
-                    
-                    <div class="news-grid">
-                        <div class="news-card animate-on-scroll">
-                            <div class="news-content">
-                                <div class="news-date">June 15, 2023</div>
-                                <h3>Annual Technical Festival</h3>
-                                <p>Our annual tech fest "TechXplore" will be held from July 10-12 with various competitions and workshops.</p>
-                                <a href="#" class="btn">Read More</a>
-                            </div>
-                        </div>
-                        
-                        <div class="news-card animate-on-scroll delay-1">
-                            <div class="news-content">
-                                <div class="news-date">June 5, 2023</div>
-                                <h3>New Computer Lab Inauguration</h3>
-                                <p>The new advanced computer lab with high-end systems was inaugurated by the Education Minister.</p>
-                                <a href="#" class="btn">Read More</a>
-                            </div>
-                        </div>
-                        
-                        <div class="news-card animate-on-scroll delay-2">
-                            <div class="news-content">
-                                <div class="news-date">May 28, 2023</div>
-                                <h3>Placement Drive</h3>
-                                <p>Over 85% of our final year students have been placed in top companies with attractive packages.</p>
-                                <a href="#" class="btn">Read More</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-
-        <!-- About Page -->
-        <div id="about-page" class="page">
-            <section class="about-section">
-                <div class="container">
-                    <div class="section-title">
-                        <h2>About Our College</h2>
-                        <p>Pioneering technical education for over three decades</p>
-                    </div>
-                    
-                    <div class="features-grid">
-                        <div class="feature-card animate-on-scroll">
-                            <div class="feature-icon">
-                                <i class="fas fa-history"></i>
-                            </div>
-                            <h3>Our History</h3>
-                            <p>Established in 1985, we have been at the forefront of technical education, producing skilled professionals who contribute to industry and society.</p>
-                        </div>
-                        
-                        <div class="feature-card animate-on-scroll delay-1">
-                            <div class="feature-icon">
-                                <i class="fas fa-bullseye"></i>
-                            </div>
-                            <h3>Our Mission</h3>
-                            <p>To provide quality technical education that transforms students into competent professionals with strong ethical values.</p>
-                        </div>
-                        
-                        <div class="feature-card animate-on-scroll delay-2">
-                            <div class="feature-icon">
-                                <i class="fas fa-eye"></i>
-                            </div>
-                            <h3>Our Vision</h3>
-                            <p>To be a center of excellence in technical education, innovation, and research that meets global standards.</p>
-                        </div>
-                    </div>
-
-                    <div class="section-title" style="margin-top: 80px;">
-                        <h2>College Leadership</h2>
-                        <p>Meet our dedicated leadership team</p>
-                    </div>
-
-                    <div class="features-grid">
-                        <div class="feature-card animate-on-scroll">
-                            <div class="feature-icon">
-                                <i class="fas fa-user-tie"></i>
-                            </div>
-                            <h3>Principal</h3>
-                            <p>Dr. S. R. Patil, Ph.D in Mechanical Engineering with over 25 years of experience in technical education.</p>
-                        </div>
-                        
-                        <div class="feature-card animate-on-scroll delay-1">
-                            <div class="feature-icon">
-                                <i class="fas fa-chalkboard-teacher"></i>
-                            </div>
-                            <h3>Vice Principal</h3>
-                            <p>Prof. M. L. Naik, M.Tech in Computer Science with specialization in Artificial Intelligence.</p>
-                        </div>
-                        
-                        <div class="feature-card animate-on-scroll delay-2">
-                            <div class="feature-icon">
-                                <i class="fas fa-award"></i>
-                            </div>
-                            <h3>Achievements</h3>
-                            <p>Recognized as "Best Polytechnic College" by the Department of Technical Education, Karnataka for three consecutive years.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-
-        <!-- Admission Page -->
-        <div id="admission-page" class="page">
-            <section class="admission-section">
-                <div class="container">
-                    <div class="section-title">
-                        <h2>Admission Process</h2>
-                        <p>Begin your journey to a successful career</p>
-                    </div>
-                    
-                    <div class="features-grid">
-                        <div class="feature-card animate-on-scroll">
-                            <div class="feature-icon">
-                                <i class="fas fa-clipboard-list"></i>
-                            </div>
-                            <h3>Eligibility</h3>
-                            <p>Students who have passed SSLC/10th standard or equivalent examination with minimum 35% marks in aggregate.</p>
-                        </div>
-                        
-                        <div class="feature-card animate-on-scroll delay-1">
-                            <div class="feature-icon">
-                                <i class="fas fa-calendar-alt"></i>
-                            </div>
-                            <h3>Academic Calendar</h3>
-                            <p>Admissions typically begin in June-July each year. The academic year is divided into two semesters.</p>
-                        </div>
-                        
-                        <div class="feature-card animate-on-scroll delay-2">
-                            <div class="feature-icon">
-                                <i class="fas fa-file-alt"></i>
-                            </div>
-                            <h3>Application Process</h3>
-                            <p>Applications are accepted online through the official website. Documents can be submitted in person or by post.</p>
-                        </div>
-                    </div>
-
-                    <div class="section-title" style="margin-top: 80px;">
-                        <h2>Fee Structure</h2>
-                        <p>Affordable education for all sections of society</p>
-                    </div>
-
-                    <div class="feature-card animate-on-scroll">
-                        <div class="program-details">
-                            <div class="program-detail">
-                                <i class="fas fa-rupee-sign"></i>
-                                <div>
-                                    <h4>Tuition Fee</h4>
-                                    <p>₹5,000 per semester</p>
-                                </div>
-                            </div>
-                            <div class="program-detail">
-                                <i class="fas fa-book"></i>
-                                <div>
-                                    <h4>Library Fee</h4>
-                                    <p>₹500 per semester</p>
-                                </div>
-                            </div>
-                            <div class="program-detail">
-                                <i class="fas fa-flask"></i>
-                                <div>
-                                    <h4>Laboratory Fee</h4>
-                                    <p>₹1,000 per semester</p>
-                                </div>
-                            </div>
-                            <div class="program-detail">
-                                <i class="fas fa-graduation-cap"></i>
-                                <div>
-                                    <h4>Examination Fee</h4>
-                                    <p>₹800 per semester</p>
-                                </div>
-                            </div>
-                        </div>
-                        <p style="text-align: center; margin-top: 20px; font-style: italic;">Scholarships available for eligible students</p>
-                    </div>
-                </div>
-            </section>
-        </div>
-
-        <!-- Academics Page -->
-        <div id="academics-page" class="page">
-            <section class="academics-section">
-                <div class="container">
-                    <div class="section-title">
-                        <h2>Academics</h2>
-                        <p>Comprehensive programs for diverse career paths</p>
-                    </div>
-                    
-                    <div class="program-card animate-on-scroll">
-                        <div class="program-header">
-                            <h3>Computer Science Engineering</h3>
-                        </div>
-                        <div class="program-content">
-                            <p>This program provides students with a strong foundation in computer science principles and programming skills. Students learn to develop software applications, work with databases, and understand computer networks.</p>
-                            <div class="program-details">
-                                <div class="program-detail">
-                                    <i class="fas fa-clock"></i>
-                                    <div>
-                                        <h4>Duration</h4>
-                                        <p>3 years (6 semesters)</p>
-                                    </div>
-                                </div>
-                                <div class="program-detail">
-                                    <i class="fas fa-user-graduate"></i>
-                                    <div>
-                                        <h4>Intake</h4>
-                                        <p>60 students per year</p>
-                                    </div>
-                                </div>
-                                <div class="program-detail">
-                                    <i class="fas fa-briefcase"></i>
-                                    <div>
-                                        <h4>Careers</h4>
-                                        <p>Software Developer, Web Designer, Network Administrator</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <a href="#" class="btn">Learn More</a>
-                        </div>
-                    </div>
-
-                    <div class="program-card animate-on-scroll delay-1">
-                        <div class="program-header">
-                            <h3>Electrical Engineering</h3>
-                        </div>
-                        <div class="program-content">
-                            <p>This program focuses on electrical systems, power generation, transmission, and distribution. Students gain practical knowledge in electrical machines, power electronics, and control systems.</p>
-                            <div class="program-details">
-                                <div class="program-detail">
-                                    <i class="fas fa-clock"></i>
-                                    <div>
-                                        <h4>Duration</h4>
-                                        <p>3 years (6 semesters)</p>
-                                    </div>
-                                </div>
-                                <div class="program-detail">
-                                    <i class="fas fa-user-graduate"></i>
-                                    <div>
-                                        <h4>Intake</h4>
-                                        <p>60 students per year</p>
-                                    </div>
-                                </div>
-                                <div class="program-detail">
-                                    <i class="fas fa-briefcase"></i>
-                                    <div>
-                                        <h4>Careers</h4>
-                                        <p>Electrical Technician, Power Plant Operator, Maintenance Engineer</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <a href="#" class="btn">Learn More</a>
-                        </div>
-                    </div>
-
-                    <div class="program-card animate-on-scroll delay-2">
-                        <div class="program-header">
-                            <h3>Mechanical Engineering</h3>
-                        </div>
-                        <div class="program-content">
-                            <p>This program provides comprehensive knowledge of machine design, thermal engineering, production technology, and automation. Students learn to design, analyze, and maintain mechanical systems.</p>
-                            <div class="program-details">
-                                <div class="program-detail">
-                                    <i class="fas fa-clock"></i>
-                                    <div>
-                                        <h4>Duration</h4>
-                                        <p>3 years (6 semesters)</p>
-                                    </div>
-                                </div>
-                                <div class="program-detail">
-                                    <i class="fas fa-user-graduate"></i>
-                                    <div>
-                                        <h4>Intake</h4>
-                                        <p>60 students per year</p>
-                                    </div>
-                                </div>
-                                <div class="program-detail">
-                                    <i class="fas fa-briefcase"></i>
-                                    <div>
-                                        <h4>Careers</h4>
-                                        <p>Mechanical Technician, CAD Designer, Production Supervisor</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <a href="#" class="btn">Learn More</a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-
-        <!-- Facilities Page -->
-        <div id="facilities-page" class="page">
-            <section class="facilities-section">
-                <div class="container">
-                    <div class="section-title">
-                        <h2>Our Facilities</h2>
-                        <p>State-of-the-art infrastructure for holistic development</p>
-                    </div>
-                    
-                    <div class="features-grid">
-                        <div class="feature-card animate-on-scroll">
-                            <div class="feature-icon">
-                                <i class="fas fa-flask"></i>
-                            </div>
-                            <h3>Modern Labs</h3>
-                            <p>Well-equipped laboratories for each department with latest equipment and technology.</p>
-                        </div>
-                        
-                        <div class="feature-card animate-on-scroll delay-1">
-                            <div class="feature-icon">
-                                <i class="fas fa-book"></i>
-                            </div>
-                            <h3>Library</h3>
-                            <p>Extensive collection of books, journals, and digital resources with reading rooms and computer access.</p>
-                        </div>
-                        
-                        <div class="feature-card animate-on-scroll delay-2">
-                            <div class="feature-icon">
-                                <i class="fas fa-basketball-ball"></i>
-                            </div>
-                            <h3>Sports Facilities</h3>
-                            <p>Indoor and outdoor sports facilities including cricket ground, basketball court, and gymnasium.</p>
-                        </div>
-                    </div>
-
-                    <div class="features-grid" style="margin-top: 50px;">
-                        <div class="feature-card animate-on-scroll">
-                            <div class="feature-icon">
-                                <i class="fas fa-wifi"></i>
-                            </div>
-                            <h3>Wi-Fi Campus</h3>
-                            <p>High-speed internet connectivity across the campus with 24/7 access for students and faculty.</p>
-                        </div>
-                        
-                        <div class="feature-card animate-on-scroll delay-1">
-                            <div class="feature-icon">
-                                <i class="fas fa-utensils"></i>
-                            </div>
-                            <h3>Cafeteria</h3>
-                            <p>Spacious cafeteria serving hygienic and nutritious food at subsidized rates for students.</p>
-                        </div>
-                        
-                        <div class="feature-card animate-on-scroll delay-2">
-                            <div class="feature-icon">
-                                <i class="fas fa-bus"></i>
-                            </div>
-                            <h3>Transportation</h3>
-                            <p>College bus service covering all major routes in and around Karwar for student convenience.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-
-        <!-- Gallery Page -->
-        <div id="gallery-page" class="page">
-            <section class="gallery-section">
-                <div class="container">
-                    <div class="section-title">
-                        <h2>Campus Gallery</h2>
-                        <p>Take a visual tour of our campus and facilities</p>
-                    </div>
-                    
-                    <div class="gallery-grid">
-                        <div class="gallery-item animate-on-scroll">
-                            <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="College Building">
-                        </div>
-                        <div class="gallery-item animate-on-scroll delay-1">
-                            <img src="https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlf极 Hx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Library">
-                        </div>
-                        <div class="gallery-item animate-on-scroll delay-2">
-                            <img src="https://images.unsplash.com/photo-1591123120675-6f7f1aae0e5b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Computer Lab">
-                        </div>
-                        <div class="gallery-item animate-on-scroll">
-                            <img src="https://images.unsplash.com/photo-1543269865-cbf427effbbe?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Students in Class">
-                        </div>
-                        <div class="gallery-item animate-on-scroll delay-1">
-                            <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="College Event">
-                        </div>
-                        <div class="gallery-item animate-on-scroll delay-2">
-                            <img src="https://images.unsplash.com/photo-1541336032412-2048a678540d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Graduation Day">
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-
-        <!-- Contact Page -->
-        <div id="contact-page" class="page">
-            <section class="contact-section">
-                <div class="container">
-                    <div class="section-title">
-                        <h2>Contact Us</h2>
-                        <p>Get in touch with us for any queries</p>
-                    </div>
-                    
-                    <div class="contact-info">
-                        <div class="contact-card animate-on-scroll">
-                            <div class="contact-icon">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <h3>Address</h3>
-                            <p>Government Polytechnic College, Karwar, Karnataka 581301</p>
-                        </div>
-                        
-                        <div class="contact-card animate-on-scroll delay-1">
-                            <div class="contact-icon">
-                                <i class="fas fa-phone"></i>
-                            </div>
-                            <h3>Phone</h3>
-                            <p>+91 8382 123456</p>
-                            <p>+91 8382 123457</p>
-                        </div>
-                        
-                        <div class="contact-card animate-on-scroll delay-2">
-                            <div class="contact-icon">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <h3>Email</h3>
-                            <p>info@gpckarwar.edu.in</p>
-                            <p>principal@gpckarwar.edu.in</p>
-                        </div>
-                    </div>
-
-                    <div class="section-title" style="margin-top: 80px;">
-                        <h2>Send us a Message</h2>
-                        <p>We'd love to hear from you</p>
-                    </div>
-
-                    <form class="feature-card animate-on-scroll" style="max-width: 600px; margin: 0 auto;">
-                        <div style="margin-bottom: 20px;">
-                            <label for="name" style="display: block; margin-bottom: 8px; font-weight: 500;">Your Name</label>
-                            <input type="text" id="name" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 4px;" placeholder="Enter your name">
-                        </div>
-                        <div style="margin-bottom: 20px;">
-                            <label for="email" style="display: block; margin-bottom: 8px; font-weight: 500;">Email Address</label>
-                            <input type="email" id="email" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 4px;" placeholder="Enter your email">
-                        </div>
-                        <div style="margin-bottom: 20px;">
-                            <label for="message" style="display: block; margin-bottom: 8px; font-weight: 500;">Message</label>
-                            <textarea id="message" rows="5" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 4px;" placeholder="Type your message here"></textarea>
-                        </div>
-                        <button type="submit" class="btn" style="width: 100%;">Send Message</button>
-                    </form>
-                </div>
-            </section>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <footer id="mainFooter" style="background-color: #1a1a2e; color: white; padding: 30px 0 15px; position: fixed; bottom: -250px; left: 0; width: 100%; transition: bottom 0.5s ease; z-index: 1000; box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.2);">
-        <div style="width: 90%; max-width: 1200px; margin: 0 auto; padding: 0 15px;">
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 20px;">
-                <div>
-                    <h3 style="color: white; margin-bottom: 15px; font-size: 1.1rem; position: relative; padding-bottom: 8px;">About Us</h3>
-                    <p style="font-size: 0.9rem; line-height: 1.5;">Government Polytechnic College is a premier technical education institution established in 1985, providing quality education in various engineering disciplines.</p>
-                    <div style="display: flex; gap: 10px; margin-top: 15px;">
-                        <a href="#" style="display: flex; align-items: center; justify-content: center; width: 35px; height: 35px; background-color: rgba(255, 255, 255, 0.1); border-radius: 50%; transition: all 0.3s ease; color: white; text-decoration: none;">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="#" style="display: flex; align-items: center; justify-content: center; width: 35px; height: 35px; background-color: rgba(255, 255, 255, 0.1); border-radius: 50%; transition: all 0.3s ease; color: white; text-decoration: none;">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="#" style="display: flex; align-items: center; justify-content: center; width: 35px; height: 35px; background-color: rgba(255, 255, 255, 0.1); border-radius: 50%; transition: all 0.3s ease; color: white; text-decoration: none;">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="#" style="display: flex; align-items: center; justify-content: center; width: 35px; height: 35px; background-color: rgba(255, 255, 255, 0.1); border-radius: 50%; transition: all 0.3s ease; color: white; text-decoration: none;">
-                            <i class="fab fa-youtube"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <div>
-                    <h3 style="color: white; margin-bottom: 15px; font-size: 1.1rem; position: relative; padding-bottom: 8px;">Quick Links</h3>
-                    <ul style="list-style: none; padding: 0;">
-                        <li style="margin-bottom: 8px;"><a href="#" style="color: rgba(255, 255, 255, 0.8); text-decoration: none; transition: all 0.3s ease; display: block; font-size: 0.9rem;"><i class="fas fa-home" style="margin-right: 8px;"></i> Home</a></li>
-                        <li style="margin-bottom: 8px;"><a href="#" style="color: rgba(255, 255, 255, 0.8); text-decoration: none; transition: all 0.3s ease; display: block; font-size: 0.9rem;"><i class="fas fa-info-circle" style="margin-right: 8px;"></i> About</a></li>
-                        <li style="margin-bottom: 8px;"><a href="#" style="color: rgba(255, 255, 255, 0.8); text-decoration: none; transition: all 0.3s ease; display: block; font-size: 极 0.9rem;"><i class="fas fa-user-graduate" style="margin-right: 8px;"></i> Admission</a></li>
-                        <li style="margin-bottom: 8px;"><a href="#" style="color: rgba(255, 255, 255, 0.8); text-decoration: none; transition: all 0.3s ease; display: block; font-size: 0.9rem;"><i class="fas fa-book-open" style="margin-right: 8px;"></i> Academics</a></li>
-                        <li style="margin-bottom: 8px;"><a href="#" style="color: rgba(255, 255, 255, 0.8); text-decoration: none; transition: all 0.3s ease; display: block; font-size: 0.9rem;"><i class="fas fa-phone" style="margin-right: 8px;"></i> Contact us</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h3 style="color: white; margin-bottom: 15px; font-size: 1.1rem; position: relative; padding-bottom: 8px;">Contact Info</h3>
-                    <p style="font-size: 0.9rem; margin-bottom: 8px; display: flex; align-items: center;"><i class="fas fa-map-marker-alt" style="margin-right: 8px; color: #f39c12;"></i> College Campus, City, State 12345</p>
-                    <p style="font-size: 0.9rem; margin-bottom: 8px; display: flex; align-items: center;"><i class="fas fa-phone" style="margin-right: 8px; color: #f39c12;"></i> +91 8382 123456</p>
-                    <p style="font-size: 0.9rem; margin-bottom: 8px; display: flex; align-items: center;"><i class="fas fa-envelope" style="margin-right: 8px; color: #f39c12;"></i> info@college.edu.in</p>
-                    <p style="font-size: 0.9rem; margin-bottom: 8px; display: flex; align-items: center;"><i class="fas fa-clock" style="margin-right: 8px; color: #f39c12;"></i> Mon - Sat: 9:00 AM - 4:00 PM</p>
-                </div>
-            </div>
-            
-            <div style="text-align: center; padding-top: 15px; border-top: 1px solid rgba(255, 255, 255, 0.1); color: rgba(255, 255, 255, 0.7); font-size: 0.8rem;">
-                <p>&copy; 2023 Government Polytechnic College. All Rights Reserved.</p>
-            </div>
-        </div>
-        
-        <!-- Red bar at the top of footer -->
-        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 5px; background: linear-gradient(90deg, #e74c3c, #f39c12);"></div>
-    </footer>
-    </footer>
-
-    <!-- Back to top button -->
-    <a href="#" class="back-to-top">
-        <i class="fas fa-arrow-up"></i>
-    </a>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Page navigation functionality
-            const pages = document.querySelectorAll('.page');
-            const navLinks = document.querySelectorAll('[data-page]');
-            const pageContainer = document.querySelector('.page-container');
-            
-            // Function to switch pages
-            function switchPage(pageId) {
-                // Hide all pages
-                pages.forEach(page => {
-                    page.classList.remove('active');
-                });
-                
-                // Show the selected page
-                const targetPage = document.getElementById(`${pageId}-page`);
-                if (targetPage) {
-                    targetPage.classList.add('active');
-                    
-                    // Scroll to top
-                    window.scrollTo({
-                        top: 0,
-                        behavior: 'smooth'
-                    });
-                    
-                    // Update active class in navigation
-                    navLinks.forEach(link => {
-                        link.classList.remove('active');
-                        if (link.getAttribute('data-page') === pageId) {
-                            link.classList.add('active');
-                        }
-                    });
-                    
-                    // Reset animations for the new page
-                    resetAnimations();
-                    
-                    // Close mobile menu if open
-                    if (document.querySelector('.nav-container').classList.contains('active')) {
-                        toggleMobileMenu();
-                    }
-                }
-            }
-            
-            // Add click event to all navigation links
-            navLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const pageId = this.getAttribute('data-page');
-                    switchPage(pageId);
-                });
-            });
-            
-            // Reset animations for elements on the current page
-            function resetAnimations() {
-                const animatedElements = document.querySelectorAll('.animate-on-scroll');
-                animatedElements.forEach(el => {
-                    el.classList.remove('animated');
-                });
-                
-                // Trigger animation check after a short delay
-                setTimeout(checkScroll, 100);
-            }
-            
-            // Mobile menu functionality
-            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-            const closeMenuBtn = document.querySelector('.close-menu');
-            const navContainer = document.querySelector('.nav-container');
-            const overlay = document.querySelector('.overlay');
-            
-            function toggleMobileMenu() {
-                navContainer.classList.toggle('active');
-                overlay.classList.toggle('active');
-                document.body.style.overflow = navContainer.classList.contains('active') ? 'hidden' : '';
-            }
-            
-            mobileMenuBtn.addEventListener('click', toggleMobileMenu);
-            closeMenuBtn.addEventListener('click', toggleMobileMenu);
-            overlay.addEventListener('click', toggleMobileMenu);
-            
-            // Header scroll effect
-            const header = document.querySelector('header');
-            
-            window.addEventListener('scroll', function() {
-                if (window.scrollY > 50) {
-                    header.classList.add('scrolled');
-                } else {
-                    header.classList.remove('scrolled');
-                }
-                
-                // Back to top button visibility
-                const backToTop = document.querySelector('.back-to-top');
-                if (window.scrollY > 300) {
-                    backToTop.classList.add('visible');
-                } else {
-                    backToTop.classList.remove('visible');
-                }
-                
-                // Check animations
-                checkScroll();
-            });
-            
-            // Scroll animations for elements
-            function checkScroll() {
-                const animatedElements = document.querySelectorAll('.animate-on-scroll');
-                const triggerPoint = window.innerHeight * 0.8;
-                
-                animatedElements.forEach((el, index) => {
-                    const elementTop = el.getBoundingClientRect().top;
-                    
-                    if (elementTop < triggerPoint) {
-                        setTimeout(() => {
-                            el.classList.add('animated');
-                        }, index * 100);
-                    }
-                });
-            }
-            
-            window.addEventListener('scroll', checkScroll);
-            window.addEventListener('load', checkScroll);
-            
-            // Back to top functionality
-            const backToTopBtn = document.querySelector('.back-to-top');
-            
-            backToTopBtn.addEventListener('click', function(e) {
-                e.preventDefault();
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-            });
-        });
-      // Footer scroll behavior
-        let lastScrollTop = 0;
-        const footer = document.getElementById('mainFooter');
-        
-        window.addEventListener('scroll', function() {
-            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            const windowHeight = window.innerHeight;
-            const documentHeight = document.documentElement.scrollHeight;
-            
-            // Show footer when scrolled to bottom
-            if (windowHeight + scrollTop >= documentHeight - 50) {
-                footer.style.bottom = '0';
-            } 
-            // Hide footer when scrolling up
-            else if (scrollTop < lastScrollTop && scrollTop > 100) {
-                footer.style.bottom = '-250px';
-            }
-            
-            lastScrollTop = scrollTop;
-        });
-
-        // Also show footer on mouse movement near bottom of screen
-        document.addEventListener('mousemove', function(e) {
-            const mouseY = e.clientY;
-            const windowHeight = window.innerHeight;
-            
-            if (windowHeight - mouseY < 50) {
-                footer.style.bottom = '0';
-            }
-        });
-
-        // Add hover effects to links
-        const footerLinks = document.querySelectorAll('#mainFooter a');
-        footerLinks.forEach(link => {
-            link.addEventListener('mouseenter', function() {
-                this.style.color = '#f39c12';
-                this.style.paddingLeft = '5px';
-            });
-            
-            link.addEventListener('mouseleave', function() {
-                this.style.color = 'rgba(255, 255, 255, 0.8)';
-                this.style.paddingLeft = '0';
-            });
-        });
-
-        // Add hover effects to social icons
-        const socialIcons = document.querySelectorAll('#mainFooter .fa-facebook-f, #mainFooter .fa-twitter, #mainFooter .fa-instagram, #mainFooter .fa-youtube');
-        socialIcons.forEach(icon => {
-            icon.parentElement.addEventListener('mouseenter', function() {
-                this.style.backgroundColor = '#e74c3c';
-                this.style.transform = 'translateY(-3px)';
-            });
-            
-            icon.parentElement.addEventListener('mouseleave', function() {
-                this.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
-                this.style.transform = 'translateY(0)';
-            });
-        });
-</script>
-
-</body>
-</html>         <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Government Polytechnic College Karwar</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-    <style>
-        :root {
-            --primary: #1e3a5f;
-            --primary-dark: #152942;
-            --accent: #e74c3c;
-            --secondary: #f39c12;
-            --white: #ffffff;
-            --light-gray: #f5f5f5;
-            --text: #333;
-            --transition: all 0.3s ease;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            color: var(--text);
-            line-height: 1.6;
-            background-color: var(--white);
-            overflow-x: hidden;
-        }
-body {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-.page-container {
-  flex: 1;
-}
-
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
-
-        /* Page Container for transitions */
-        .page-container {
-            position: relative;
-            width: 100%;
-            min-height: 100vh;
-        }
-
-        .page {
-            position: absolute;
-            width: 100%;
-            top: 0;
-            left: 0;
-            opacity: 0;
-            transform: translateX(50px);
-            pointer-events: none;
-            transition: opacity 0.5s ease, transform 0.5s ease;
-            z-index: 1;
-        }
-
-        .page.active {
-            opacity: 1;
-            transform: translateX(0);
-            pointer-events: all;
-            z-index: 2;
-        }
-
-        /* Header Styles */
-        header {
-            background: linear-gradient(to right, var(--primary), var(--primary-dark));
-            color: var(--white);
-            padding: 15px 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            transition: var(--transition);
-        }
-
-        header.scrolled {
-            padding: 10px 0;
-            background: rgba(30, 58, 95, 0.98);
-            backdrop-filter: blur(10px);
-        }
-
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            cursor: pointer;
-        }
-
-        .logo img {
-            height: 60px;
-            width: auto;
-            transition: var(--transition);
-        }
-
-        header.scrolled .logo img {
-            height: 50px;
-        }
-
-        .logo-text {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .logo-text h1 {
-            font-size: 1.8rem;
-            line-height: 1.2;
-            margin: 0;
-            color: var(--white);
-            transition: var(--transition);
-        }
-
-        header.scrolled .logo-text h1 {
-            font-size: 1.5rem;
-        }
-
-        .logo-text span {
-            font-size: 0.9rem;
-            opacity: 0.9;
-            transition: var(--transition);
-        }
-
-        header.scrolled .logo-text span {
-            font-size: 0.8rem;
-        }
-
-        /* Navigation */
-        .nav-container {
-            background-color: var(--primary-dark);
-            padding: 0;
-            transition: var(--transition);
-        }
-
-        header.scrolled + .nav-container {
-            position: fixed;
-            top: 70px;
-            width: 100%;
-            z-index: 999;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .nav-menu {
-            display: flex;
-            justify-content: center;
-            list-style: none;
-            padding: 0;
-        }
-
-        .nav-menu li {
-            margin: 0;
-        }
-
-        .nav-menu a {
-            display: block;
-            color: var(--white);
-            text-decoration: none;
-            padding: 18px 25px;
-            font-weight: 500;
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-            cursor: pointer;
-        }
-
-        .nav-menu a:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: var(--transition);
-        }
-
-        .nav-menu a:hover:before {
-            left: 100%;
-        }
-
-        .nav-menu a:hover, 
-        .nav-menu a.active {
-            background-color: rgba(255, 255, 255, 0.1);
-        }
-
-        .nav-menu a:hover::after,
-        .nav-menu a.active::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background-color: var(--secondary);
-            animation: lineGrow 0.3s ease-out;
-        }
-
-        @keyframes lineGrow {
-            from { width: 0; }
-            to { width: 100%; }
-        }
-
-        .nav-menu i {
-            margin-right: 8px;
-            font-size: 1.1rem;
-        }
-
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(rgba(30, 58, 95, 0.8), rgba(30, 58, 95, 0.9)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3') no-repeat center center/cover;
-            color: var(--white);
-            padding: 150px 0 100px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            min-height: 80vh;
-            display: flex;
-            align-items: center;
-        }
-
-        .hero:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,128L48,117.3C96,107,192,85,288,112C384,139,480,213,576,224C672,235,768,181,864,181.3C960,181,1056,235,1152,234.7C1248,235,1344,181,1392,154.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,极 320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
-            background-size: cover;
-            background-position: bottom;
-            animation: waveAnim 15s linear infinite;
-        }
-
-        @keyframes waveAnim {
-            0% { background-position-x: 0; }
-            100% { background-position-x: 1440px; }
-        }
-
-        .hero h1 {
-            font-size: 2.8rem;
-            margin-bottom: 20px;
-            position: relative;
-            animation: fadeInUp 1s ease-out;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto 30px;
-            position: relative;
-            animation: fadeInUp 1s ease-out 0.2s;
-            animation-fill-mode: both;
-        }
-
-        .hero-btns {
-            position: relative;
-            animation: fadeInUp 1s ease-out 0.4s;
-            animation-fill-mode: both;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 14px 30px;
-            background-color: var(--accent);
-            color: var(--white);
-            border-radius: 4px;
-            font-weight: 500;
-            transition: var(--transition);
-            text-decoration: none;
-            margin: 10px;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-            cursor: pointer;
-            border: none;
-        }
-
-        .btn:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 0%;
-            height: 100%;
-            background: var(--primary);
-            transition: var(--transition);
-            z-index: -1;
-        }
-
-        .btn:hover:before {
-            width: 100%;
-        }
-
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        .btn-outline {
-            background: transparent;
-            border: 2px solid var(--white);
-        }
-
-        .btn-outline:before {
-            background: var(--white);
-        }
-
-        .btn-outline:hover {
-            color: var(--primary);
-        }
-
-        /* Animation keyframes */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes fadeInRight {
-            from {
-                opacity: 0;
-                transform: translateX(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        /* Section Styles */
-        .section {
-            padding: 80px 0;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-
-        .section.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 50px;
-            position: relative;
-        }
-
-        .section-title h2 {
-            font-size: 2.2rem;
-            color: var(--primary);
-            margin-bottom: 15px;
-        }
-
-        .section-title:after {
-            content: '';
-            display: block;
-            width: 80px;
-            height: 4px;
-            background-color: var(--accent);
-            margin: 15px auto 0;
-            border-radius: 2px;
-            animation: lineGrow 1s ease-out;
-        }
-
-        /* Features */
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .feature-card {
-            background-color: var(--white);
-            border-radius: 8px;
-            padding: 30px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: var(--transition);
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-        }
-
-        .feature-card:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 5px;
-            height: 100%;
-            background: var(--accent);
-            transition: var(--transition);
-            z-index: -1;
-        }
-
-        .feature-card:hover:before {
-            width: 100%;
-            opacity: 0.1;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .feature-icon {
-            font-size: 40px;
-            color: var(--primary);
-            margin-bottom: 20px;
-            transition: var(--transition);
-        }
-
-        .feature-card:hover .feature-icon {
-            color: var(--accent);
-            transform: scale(1.1);
-        }
-
-        /* News Section */
-        .news-container {
-            background-color: var(--light-gray);
-            padding: 60px 0;
-        }
-
-        .news-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-        }
-
-        .news-card {
-            background-color: var(--white);
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: var(--transition);
-            transform: translateY(50px);
-            opacity: 0;
-        }
-
-        .news-card.visible {
-            transform: translateY(0);
-            opacity: 1;
-        }
-
-        .news-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .news-content {
-            padding: 25px;
-        }
-
-        .news-date {
-            color: var(--accent);
-            font-weight: 500;
+        .contact-details p {
             margin-bottom: 10px;
             display: flex;
             align-items: center;
         }
 
-        .news-date:before {
-            content: '\f133';
-            font-family: 'Font Awesome 5 Free';
-            font-weight: 900;
-            margin-right: 8px;
+        .contact-details i {
+            margin-right: 10px;
+            color: var(--primary);
         }
 
-        /* Back to top button */
-        .back-to-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 50px;
-            height: 50px;
-            background: var(--accent);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-            transition: var(--transition);
-            opacity: 0;
-            visibility: hidden;
-            z-index: 999;
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px 15px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
         }
 
-        .back-to-top.visible {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .back-to-top:hover {
-            background: var(--primary);
-            transform: translateY(-5px);
+        .contact-form textarea {
+            min-height: 150px;
+            resize: vertical;
         }
 
         /* Footer */
         footer {
-            background-color: var(--primary-dark);
-            color: var(--white);
-            padding: 60px 0 30px;
-            position: relative;
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 20px;
         }
 
-        footer:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 10px;
-            background: linear-gradient(90deg, var(--accent), var(--secondary));
-        }
-
-        .footer-grid {
+        .footer-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
             margin-bottom: 40px;
         }
 
-        .footer-heading {
-            color: var(--white);
+        .footer-column h3 {
+            font-size: 1.5rem;
             margin-bottom: 20px;
-            font-size: 1.3rem;
-            position: relative;
-            padding-bottom: 10px;
+            color: var(--accent);
         }
 
-        .footer-heading:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 40px;
-            height: 3px;
-            background-color: var(--secondary);
-            animation: lineGrow 1s ease-out;
-        }
-
-        .footer-links {
+        .footer-column ul {
             list-style: none;
         }
 
-        .footer-links li {
-            margin-bottom: 12px;
+        .footer-column ul li {
+            margin-bottom: 10px;
         }
 
-        .footer-links a {
-            color: rgba(255, 255, 255, 0.8);
+        .footer-column ul li a {
+            color: #ddd;
             text-decoration: none;
-            transition: var(--transition);
-            display: block;
-            cursor: pointer;
+            transition: color 0.3s ease;
         }
 
-        .footer-links a:hover {
-            color: var(--secondary);
-            padding-left: 5px;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .social-links a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            transition: var(--transition);
-            color: var(--white);
-            text-decoration: none;
-        }
-
-        .social-links a:hover {
-            background-color: var(--accent);
-            transform: translateY(-5px);
+        .footer-column ul li a:hover {
+            color: var(--accent);
         }
 
         .copyright {
             text-align: center;
-            padding-top: 30px;
+            padding-top: 20px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: rgba(255, 255, 255, 0.7);
         }
 
-        /* Page specific styles */
-        .about-section, .admission-section, .academics-section, 
-        .facilities-section, .gallery-section, .contact-section {
-            padding: 80px 0;
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 15px;
-            margin-top: 30px;
+        @keyframes slideInFromTop {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
 
-        .gallery-item {
-            height: 200px;
-            border-radius: 8px;
-            overflow: hidden;
-            position: relative;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            cursor: pointer;
+        @keyframes slideInFromBottom {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
 
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
         }
 
-        .gallery-item:hover img {
-            transform: scale(1.1);
-        }
-
-        .contact-info {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 30px;
-        }
-
-        .contact-card {
-            background: var(--white);
-            padding: 25px;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            text-align: center;
-        }
-
-        .contact-icon {
-            font-size: 2rem;
-            color: var(--accent);
-            margin-bottom: 15px;
-        }
-
-        /* Program cards */
-        .program-card {
-            background: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: var(--transition);
-            margin-bottom: 30px;
-        }
-
-        .program-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .program-header {
-            background: var(--primary);
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
-
-        .program-content {
-            padding: 25px;
-        }
-
-        .program-details {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin: 20px 0;
-        }
-
-        .program-detail {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .program-detail i {
-            color: var(--accent);
-            font-size: 1.2rem;
+        .is-visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         /* Responsive Design */
         @media (max-width: 992px) {
-            .nav-menu {
-                flex-wrap: wrap;
-            }
-            
-            .nav-menu a {
-                padding: 15px 20px;
+            .about-content,
+            .leadership-cards,
+            .process-steps,
+            .fee-cards,
+            .programs-cards,
+            .facilities-cards,
+            .gallery-grid,
+            .contact-container,
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
 
         @media (max-width: 768px) {
             .header-container {
-                flex-direction: row;
-                text-align: center;
-                gap: 15px;
-            }
-            
-            .logo {
-                justify-content: flex-start;
-            }
-            
-            .mobile-menu-btn {
-                display: block;
-            }
-            
-            .nav-container {
-                position: fixed;
-                top: 0;
-                right: -300px;
-                width: 300px;
-                height: 100vh;
-                background: var(--primary-dark);
-                transition: var(--transition);
-                z-index: 1000;
-                padding-top: 80px;
-            }
-            
-            .nav-container.active {
-                right: 0;
-                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
-            }
-            
-            .nav-menu {
                 flex-direction: column;
-                align-items: flex-start;
-                padding: 20px;
             }
             
-            .nav-menu li {
-                width: 100%;
-                text-align: left;
+            nav ul {
+                margin-top: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
             }
             
-            .nav-menu a {
-                padding: 15px;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            nav ul li {
+                margin: 0 10px 10px;
             }
             
-            .close-menu {
-                position: absolute;
-                top: 20px;
-                right: 20px;
-                background: none;
-                border: none;
-                color: white;
-                font-size: 1.5rem;
-                cursor: pointer;
+            .hero-content h2 {
+                font-size: 2.5rem;
             }
             
-            .overlay {
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: rgba(0, 0, 0, 0.5);
-                opacity: 0;
-                visibility: hidden;
-                transition: var(--transition);
-                z-index: 999;
-            }
-            
-            .overlay.active {
-                opacity: 1;
-                visibility: visible;
-            }
-            
-            .hero h1 {
-                font-size: 2.2rem;
-            }
-            
-            .hero p {
-                font-size: 1rem;
+            .about-content,
+            .leadership-cards,
+            .process-steps,
+            .fee-cards,
+            .programs-cards,
+            .facilities-cards,
+            .gallery-grid,
+            .contact-container,
+            .footer-content {
+                grid-template-columns: 1fr;
             }
         }
-
-        /* Animation enhancements */
-        .animate-on-scroll {
-            opacity: 0;
-            transform: translateY(50px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-
-        .animate-on-scroll.animated {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .delay-1 {
-            transition-delay: 0.2s;
-        }
-
-        .delay-2 {
-            transition-delay: 0.4s;
-        }
-
-        .delay-3 {
-            transition-delay: 0.6s;
-        }
-        /* Container holding the cards */
-.leadership-cards {
-  display: flex;
-  justify-content: space-between;  /* Space cards evenly */
-  gap: 20px;                        /* Space between cards */
-  padding: 0 20px;
-}
-
-/* Each individual card */
-.leadership-card {
-  position: relative;
-  background: #fff;
-  padding: 20px;
-  flex: 1;                         /* Cards take equal width */
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  overflow: visible;
-  margin: 0 10px;
-}
-
-/* The red vertical bar */
-.leadership-card::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 10%;
-  width: 15px;                    /* width of red sidebar */
-  height: 80%;
-  background-color: #E8594E;      /* red color */
-  border-radius: 4px 0 0 4px;
-}
-
-/* Make sure icons and text inside cards are centered */
-.leadership-card .icon {
-  display: block;
-  margin: 0 auto 10px auto;
-  color: #213a66;                 /* matching icon color */
-}
-.card-section {
-  position: relative;
-  z-index: 1;
-  background-color: #fff;
-  border-radius: 10px;
-  padding: 40px 30px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  max-width: 1200px;
-  margin: 40px auto;
-  overflow: hidden;
-}  .card-section::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 8px;
-  background-color: #e8594e; /* or #f39c12 if it's orange */
-  z-index: 0;
-}
-  .info-row {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 30px;
-  margin-top: 20px;
-}
-
-.info-item {
-  flex: 1;
-  min-width: 250px;
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-}        .card-section .btn {
-  margin-top: 30px;
-  background-color: #e8594e;
-  color: #fff;
-  padding: 12px 24px;
-  border: none;
-  border-radius: 6px;
-  font-weight: bold;
-  cursor: pointer;
-}
- 
-        
-        
     </style>
 </head>
 <body>
     <!-- Header -->
     <header>
         <div class="container header-container">
-            <div class="logo" data-page="home">
-                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgdmlld0JveD0iMCAwIDYwIDYwIj48Y2lyY2xlIGN4PSIzMCIgY3k9IjMwIiByPSIyOCIgZmlsbD0iI2U3NGMzYyIvPjxwYXRoIGQ9Ik0zMCAxMEMzMCAxMCAzNy41IDI0IDM3LjUgMjRIMjVWNDVIMzdWMzVINDBWNDVINDVWMjVINDBDMzcgMjUgMzAgMTAgMzAgMTBaIiBmaWxsPSIjZmZmIi8+PC9zdmc+" alt="College Logo">
-                <div class="logo-text">
-                    <h1>Government Polytechnic College</h1>
-                    <span>Karwar, Karnataka</span>
-                </div>
+            <div class="logo">
+                <h1>GP<span>Korwar</span></h1>
             </div>
-            <button class="mobile-menu-btn">
-                <i class="fas fa-bars"></i>
-            </button>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#admission">Admission</a></li>
+                    <li><a href="#academics">Academics</a></li>
+                    <li><a href="#facilities">Facilities</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
         </div>
     </header>
 
-    <!-- Navigation -->
-    <div class="nav-container">
-        <button class="close-menu">
-            <i class="fas fa-times"></i>
-        </button>
-        <ul class="nav-menu">
-            <li><a data-page="home" class="active"><i class="fas fa-home"></i> Home</a></li>
-            <li><a data-page="about"><i class="fas fa-info-circle"></i> About</a></li>
-            <li><a data-page="admission"><i class="fas fa-user-graduate"></i> Admission</a></li>
-            <li><a data-page="academics"><i class="fas fa-book-open"></i> Academics</a></li>
-            <li><a data-page="facilities"><i class="fas fa-building"></i> Facilities</a></li>
-            <li><a data-page="gallery"><i class="fas fa-images"></i> Gallery</a></li>
-            <li><a data-page="contact"><i class="fas fa-phone"></i> Contact us</a></li>
-        </ul>
-    </div>
-    <div class="overlay"></div>
-
-    <!-- Page Container -->
-    <div class="page-container">
-        <!-- Home Page -->
-        <div id="home-page" class="page active">
-            <!-- Hero Section -->
-            <section class="hero">
-                <div class="container">
-                    <h1>Welcome to Government Polytechnic College</h1>
-                    <p>Empowering students with technical education and skills for a better future</p>
-                    <div class="hero-btns">
-                        <a data-page="admission" class="btn">Explore Programs</a>
-                        <a data-page="gallery" class="btn btn-outline">Campus Tour</a>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Features Section -->
-            <section class="section" id="features">
-                <div class="container">
-                    <div class="section-title">
-                        <h2>Why Choose Us</h2>
-                        <p>Excellence in technical education since 1985</p>
-                    </div>
-                    
-                    <div class="features-grid">
-                        <div class="feature-card animate-on-scroll">
-                            <div class="feature-icon">
-                                <i class="fas fa-graduation-cap"></i>
-                            </div>
-                            <h3>Quality Education</h3>
-                            <p>Our programs are designed to meet industry standards and provide hands-on learning experiences.</p>
-                        </div>
-                        
-                        <div class="feature-card animate-on-scroll delay-1">
-                            <div class="feature-icon">
-                                <i class="fas fa-users"></i>
-                            </div>
-                            <h3>Experienced Faculty</h3>
-                            <p>Learn from industry experts and experienced educators dedicated to your success.</p>
-                        </div>
-                        
-                        <div class="feature-card animate-on-scroll delay-2">
-                            <div class="feature-icon">
-                                <i class="fas fa-microscope"></i>
-                            </div>
-                            <h3>Modern Laboratories</h3>
-                            <p>State-of-the-art labs equipped with the latest technology for practical learning.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- News Section -->
-            <section class="news-container section" id="news">
-                <div class="container">
-                    <div class="section-title">
-                        <h2>Campus News & Events</h2>
-                        <p>Stay updated with the latest happenings</p>
-                    </div>
-                    
-                    <div class="news-grid">
-                        <div class="news-card animate-on-scroll">
-                            <div class="news-content">
-                                <div class="news-date">June 15, 2023</div>
-                                <h3>Annual Technical Festival</h3>
-                                <p>Our annual tech fest "TechXplore" will be held from July 10-12 with various competitions and workshops.</p>
-                                <a href="#" class="btn">Read More</a>
-                            </div>
-                        </div>
-                        
-                        <div class="news-card animate-on-scroll delay-1">
-                            <div class="news-content">
-                                <div class="news-date">June 5, 2023</div>
-                                <h3>New Computer Lab Inauguration</h3>
-                                <p>The new advanced computer lab with high-end systems was inaugurated by the Education Minister.</p>
-                                <a href="#" class="btn">Read More</a>
-                            </div>
-                        </div>
-                        
-                        <div class="news-card animate-on-scroll delay-2">
-                            <div class="news-content">
-                                <div class="news-date">May 28, 2023</div>
-                                <h3>Placement Drive</h3>
-                                <p>Over 85% of our final year students have been placed in top companies with attractive packages.</p>
-                                <a href="#" class="btn">Read More</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container hero-content">
+            <h2>Welcome to Government Polytechnic College</h2>
+            <p>Empowering students with technical education and skills for a better future</p>
+            <div class="hero-btns">
+                <a href="#programs" class="btn">Explore Programs</a>
+                <a href="#gallery" class="btn" style="background-color: var(--accent);">Campus Tour</a>
+            </div>
         </div>
+    </section>
 
-        <!-- About Page -->
-        <div id="about-page" class="page">
-            <section class="about-section">
-                <div class="container">
-                    <div class="section-title">
-                        <h2>About Our College</h2>
-                        <p>Pioneering technical education for over three decades</p>
-                    </div>
-                    
-                    <div class="features-grid">
-                        <div class="feature-card animate-on-scroll">
-                            <div class="feature-icon">
-                                <i class="fas fa-history"></i>
-                            </div>
-                            <h3>Our History</h3>
-                            <p>Established in 1985, we have been at the forefront of technical education, producing skilled professionals who contribute to industry and society.</p>
-                        </div>
-                        
-                        <div class="feature-card animate-on-scroll delay-1">
-                            <div class="feature-icon">
-                                <i class="fas fa-bullseye"></i>
-                            </div>
-                            <h3>Our Mission</h3>
-                            <p>To provide quality technical education that transforms students into competent professionals with strong ethical values.</p>
-                        </div>
-                        
-                        <div class="feature-card animate-on-scroll delay-2">
-                            <div class="feature-icon">
-                                <i class="fas fa-eye"></i>
-                            </div>
-                            <h3>Our Vision</h3>
-                            <p>To be a center of excellence in technical education, innovation, and research that meets global standards.</p>
-                        </div>
-                    </div>
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Us</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-card animate-on-scroll">
+                    <i class="fas fa-history"></i>
+                    <h3>Our History</h3>
+                    <p>Established in 1985, we have been at the forefront of technical education, producing skilled professionals who contribute to industry and society.</p>
+                </div>
+                <div class="about-card animate-on-scroll">
+                    <i class="fas fa-bullseye"></i>
+                    <h3>Our Mission</h3>
+                    <p>To provide quality technical education that transforms students into competent professionals with strong ethical values.</p>
+                </div>
+                <div class="about-card animate-on-scroll">
+                    <i class="fas fa-eye"></i>
+                    <h3>Our Vision</h3>
+                    <p>To be a center of excellence in technical education, innovation, and research that meets global standards.</p>
+                </div>
+            </div>
 
-                    <div class="section-title" style="margin-top: 80px;">
-                        <h2>College Leadership</h2>
-                        <p>Meet our dedicated leadership team</p>
+            <div class="leadership">
+                <div class="section-title">
+                    <h2>College Leadership</h2>
+                    <p>Meet our dedicated leadership team</p>
+                </div>
+                <div class="leadership-cards">
+                    <div class="leader-card animate-on-scroll">
+                        <div class="leader-img">
+                            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Principal">
+                        </div>
+                        <h3>Dr. S. R. Potil</h3>
+                        <p>Principal</p>
+                        <p>Ph.D. in Mechanical Engineering with over 25 years of experience in technical education.</p>
                     </div>
-
-                    <div class="features-grid">
-                        <div class="feature-card animate-on-scroll">
-                            <div class="feature-icon">
-                                <i class="fas fa-user-tie"></i>
-                            </div>
-                            <h3>Principal</h3>
-                            <p>Dr. S. R. Patil, Ph.D in Mechanical Engineering with over 25 years of experience in technical education.</p>
+                    <div class="leader-card animate-on-scroll">
+                        <div class="leader-img">
+                            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Vice Principal">
                         </div>
-                        
-                        <div class="feature-card animate-on-scroll delay-1">
-                            <div class="feature-icon">
-                                <i class="fas fa-chalkboard-teacher"></i>
-                            </div>
-                            <h3>Vice Principal</h3>
-                            <p>Prof. M. L. Naik, M.Tech in Computer Science with specialization in Artificial Intelligence.</p>
-                        </div>
-                        
-                        <div class="feature-card animate-on-scroll delay-2">
-                            <div class="feature-icon">
-                                <i class="fas fa-award"></i>
-                            </div>
-                            <h3>Achievements</h3>
-                            <p>Recognized as "Best Polytechnic College" by the Department of Technical Education, Karnataka for three consecutive years.</p>
-                        </div>
+                        <h3>Prof. M. L. Nick</h3>
+                        <p>Vice Principal</p>
+                        <p>M.Tech in Computer Science with specialization in Artificial Intelligence.</p>
                     </div>
                 </div>
-            </section>
+            </div>
         </div>
+    </section>
 
-        <!-- Admission Page -->
-        <div id="admission-page" class="page">
-            <section class="admission-section">
-                <div class="container">
-                    <div class="section-title">
-                        <h2>Admission Process</h2>
-                        <p>Begin your journey to a successful career</p>
-                    </div>
-                    
-                    <div class="features-grid">
-                        <div class="feature-card animate-on-scroll">
-                            <div class="feature-icon">
-                                <i class="fas fa-clipboard-list"></i>
-                            </div>
-                            <h3>Eligibility</h3>
-                            <p>Students who have passed SSLC/10th standard or equivalent examination with minimum 35% marks in aggregate.</p>
-                        </div>
-                        
-                        <div class="feature-card animate-on-scroll delay-1">
-                            <div class="feature-icon">
-                                <i class="fas fa-calendar-alt"></i>
-                            </div>
-                            <h3>Academic Calendar</h3>
-                            <p>Admissions typically begin in June-July each year. The academic year is divided into two semesters.</p>
-                        </div>
-                        
-                        <div class="feature-card animate-on-scroll delay-2">
-                            <div class="feature-icon">
-                                <i class="fas fa-file-alt"></i>
-                            </div>
-                            <h3>Application Process</h3>
-                            <p>Applications are accepted online through the official website. Documents can be submitted in person or by post.</p>
-                        </div>
-                    </div>
+    <!-- Admission Section -->
+    <section id="admission" class="admission-process">
+        <div class="container">
+            <div class="section-title">
+                <h2>Admission Process</h2>
+                <p>Begin your journey to a successful career</p>
+            </div>
+            <div class="process-steps">
+                <div class="process-card animate-on-scroll">
+                    <h3>Eligibility</h3>
+                    <p>Students who have passed SSLC/10th standard or equivalent examination with minimum 45% marks in aggregate.</p>
+                </div>
+                <div class="process-card animate-on-scroll">
+                    <h3>Academic Calendar</h3>
+                    <p>Admission typically begins in June–July each year. The academic year is divided into two semesters.</p>
+                </div>
+                <div class="process-card animate-on-scroll">
+                    <h3>Application Process</h3>
+                    <p>Applications are accepted online through the official website. Documents can be submitted in person or by post.</p>
+                </div>
+                <div class="process-card animate-on-scroll">
+                    <h3>Scholarships</h3>
+                    <p>Scholarships available for eligible students based on merit and economic background.</p>
+                </div>
+            </div>
 
-                    <div class="section-title" style="margin-top: 80px;">
-                        <h2>Fee Structure</h2>
-                        <p>Affordable education for all sections of society</p>
+            <div class="fee-structure">
+                <div class="section-title">
+                    <h2>Fee Structure</h2>
+                    <p>Affordable education for all sections of society</p>
+                </div>
+                <div class="fee-cards">
+                    <div class="fee-card animate-on-scroll">
+                        <h4>Tuition Fee</h4>
+                        <p class="amount">₹5,000</p>
+                        <p>per semester</p>
                     </div>
-
-                    <div class="feature-card animate-on-scroll">
-                        <div class="program-details">
-                            <div class="program-detail">
-                                <i class="fas fa-rupee-sign"></i>
-                                <div>
-                                    <h4>Tuition Fee</h4>
-                                    <p>₹5,000 per semester</p>
-                                </div>
-                            </div>
-                            <div class="program-detail">
-                                <i class="fas fa-book"></i>
-                                <div>
-                                    <h4>Library Fee</h4>
-                                    <p>₹500 per semester</p>
-                                </div>
-                            </div>
-                            <div class="program-detail">
-                                <i class="fas fa-flask"></i>
-                                <div>
-                                    <h4>Laboratory Fee</h4>
-                                    <p>₹1,000 per semester</p>
-                                </div>
-                            </div>
-                            <div class="program-detail">
-                                <i class="fas fa-graduation-cap"></i>
-                                <div>
-                                    <h4>Examination Fee</h4>
-                                    <p>₹800 per semester</p>
-                                </div>
-                            </div>
-                        </div>
-                        <p style="text-align: center; margin-top: 20px; font-style: italic;">Scholarships available for eligible students</p>
+                    <div class="fee-card animate-on-scroll">
+                        <h4>Library Fee</h4>
+                        <p class="amount">₹500</p>
+                        <p>per semester</p>
+                    </div>
+                    <div class="fee-card animate-on-scroll">
+                        <h4>Laboratory Fee</h4>
+                        <p class="amount">₹1,000</p>
+                        <p>per semester</p>
+                    </div>
+                    <div class="fee-card animate-on-scroll">
+                        <h4>Examination Fee</h4>
+                        <p class="amount">₹800</p>
+                        <p>per semester</p>
                     </div>
                 </div>
-            </section>
+            </div>
         </div>
+    </section>
 
-        <!-- Academics Page -->
-        <div id="academics-page" class="page">
-            <section class="academics-section">
-                <div class="container">
-                    <div class="section-title">
-                        <h2>Academics</h2>
-                        <p>Comprehensive programs for diverse career paths</p>
+    <!-- Academics Section -->
+    <section id="academics" class="programs">
+        <div class="container">
+            <div class="section-title">
+                <h2>Academic Programs</h2>
+                <p>Comprehensive programs for diverse career paths</p>
+            </div>
+            <div class="programs-cards">
+                <div class="program-card animate-on-scroll">
+                    <h3>Computer Science Engineering</h3>
+                    <p>This program provides students with a strong foundation in computer science principles and programming skills. Students learn to develop software applications, work with databases, and understand computer networks.</p>
+                    <div class="program-details">
+                        <p><strong>Duration:</strong> 3 years (6 semesters)</p>
+                        <p><strong>Intake:</strong> 60 students per year</p>
+                        <p><strong>Careers:</strong> Software Developer, Web Designer, Network Administrator</p>
                     </div>
-                    
-                    <div class="program-card animate-on-scroll">
-                        <div class="program-header">
-                            <h3>Computer Science Engineering</h3>
-                        </div>
-                        <div class="program-content">
-                            <p>This program provides students with a strong foundation in computer science principles and programming skills. Students learn to develop software applications, work with databases, and understand computer networks.</p>
-                            <div class="program-details">
-                                <div class="program-detail">
-                                    <i class="fas fa-clock"></i>
-                                    <div>
-                                        <h4>Duration</h4>
-                                        <p>3 years (6 semesters)</p>
-                                    </div>
-                                </div>
-                                <div class="program-detail">
-                                    <i class="fas fa-user-graduate"></i>
-                                    <div>
-                                        <h4>Intake</h4>
-                                        <p>60 students per year</p>
-                                    </div>
-                                </div>
-                                <div class="program-detail">
-                                    <i class="fas fa-briefcase"></i>
-                                    <div>
-                                        <h4>Careers</h4>
-                                        <p>Software Developer, Web Designer, Network Administrator</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <a href="#" class="btn">Learn More</a>
-                        </div>
+                    <a href="#" class="btn">Learn More</a>
+                </div>
+                <div class="program-card animate-on-scroll">
+                    <h3>Electrical Engineering</h3>
+                    <p>This program focuses on electrical systems, power generation, transmission, and distribution. Students gain practical knowledge in electrical machines, power electronics, and control systems.</p>
+                    <div class="program-details">
+                        <p><strong>Duration:</strong> 3 years (6 semesters)</p>
+                        <p><strong>Intake:</strong> 60 students per year</p>
+                        <p><strong>Careers:</strong> Electrical Technician, Power Plant Operator, Maintenance Engineer</p>
                     </div>
+                    <a href="#" class="btn">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                    <div class="program-card animate-on-scroll delay-1">
-                        <div class="program-header">
-                            <h3>Electrical Engineering</h3>
-                        </div>
-                        <div class="program-content">
-                            <p>This program focuses on electrical systems, power generation, transmission, and distribution. Students gain practical knowledge in electrical machines, power electronics, and control systems.</p>
-                            <div class="program-details">
-                                <div class="program-detail">
-                                    <i class="fas fa-clock"></i>
-                                    <div>
-                                        <h4>Duration</h4>
-                                        <p>3 years (6 semesters)</p>
-                                    </div>
-                                </div>
-                                <div class="program-detail">
-                                    <i class="fas fa-user-graduate"></i>
-                                    <div>
-                                        <h4>Intake</h4>
-                                        <p>60 students per year</p>
-                                    </div>
-                                </div>
-                                <div class="program-detail">
-                                    <i class="fas fa-briefcase"></i>
-                                    <div>
-                                        <h4>Careers</h4>
-                                        <p>Electrical Technician, Power Plant Operator, Maintenance Engineer</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <a href="#" class="btn">Learn More</a>
-                        </div>
-                    </div>
+    <!-- Facilities Section -->
+    <section id="facilities" class="facilities">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Facilities</h2>
+                <p>State-of-the-art infrastructure for holistic development</p>
+            </div>
+            <div class="facilities-cards">
+                <div class="facility-card animate-on-scroll">
+                    <i class="fas fa-flask"></i>
+                    <h3>Modern Labs</h3>
+                    <p>Well-equipped laboratories for each department with latest equipment and technology.</p>
+                </div>
+                <div class="facility-card animate-on-scroll">
+                    <i class="fas fa-book"></i>
+                    <h3>Library</h3>
+                    <p>Extensive collection of books, journals, and digital resources with reading rooms and computer access.</p>
+                </div>
+                <div class="facility-card animate-on-scroll">
+                    <i class="fas fa-running"></i>
+                    <h3>Sports Facilities</h3>
+                    <p>Indoor and outdoor sports facilities including cricket grounds, basketball court, and gymnasium.</p>
+                </div>
+                <div class="facility-card animate-on-scroll">
+                    <i class="fas fa-wifi"></i>
+                    <h3>Wi-Fi Campus</h3>
+                    <p>High-speed internet connectivity across the campus with 24/7 access for students and faculty.</p>
+                </div>
+                <div class="facility-card animate-on-scroll">
+                    <i class="fas fa-utensils"></i>
+                    <h3>Cafeteria</h3>
+                    <p>Spacious cafeteria serving hygienic and nutritious food at subsidized rates for students.</p>
+                </div>
+                <div class="facility-card animate-on-scroll">
+                    <i class="fas fa-bus"></i>
+                    <h3>Transportation</h3>
+                    <p>College bus service covering all major routes in and around Korwar for student convenience.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                    <div class="program-card animate-on-scroll delay-2">
-                        <div class="program-header">
-                            <h3>Mechanical Engineering</h3>
-                        </div>
-                        <div class="program-content">
-                            <p>This program provides comprehensive knowledge of machine design, thermal engineering, production technology, and automation. Students learn to design, analyze, and maintain mechanical systems.</p>
-                            <div class="program-details">
-                                <div class="program-detail">
-                                    <i class="fas fa-clock"></i>
-                                    <div>
-                                        <h4>Duration</h4>
-                                        <p>3 years (6 semesters)</p>
-                                    </div>
-                                </div>
-                                <div class="program-detail">
-                                    <i class="fas fa-user-graduate"></i>
-                                    <div>
-                                        <h4>Intake</h4>
-                                        <p>60 students per year</p>
-                                    </div>
-                                </div>
-                                <div class="program-detail">
-                                    <i class="fas fa-briefcase"></i>
-                                    <div>
-                                        <h4>Careers</h4>
-                                        <p>Mechanical Technician, CAD Designer, Production Supervisor</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <a href="#" class="btn">Learn More</a>
-                        </div>
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <div class="section-title">
+                <h2>Campus Gallery</h2>
+                <p>Take a visual tour of our campus and facilities</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item animate-on-scroll">
+                    <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="College Building">
+                </div>
+                <div class="gallery-item animate-on-scroll">
+                    <img src="https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Library">
+                </div>
+                <div class="gallery-item animate-on-scroll">
+                    <img src="https://images.unsplash.com/photo-1591123120675-6f7f1aae0e5b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Lab">
+                </div>
+                <div class="gallery-item animate-on-scroll">
+                    <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Classroom">
+                </div>
+                <div class="gallery-item animate-on-scroll">
+                    <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Sports">
+                </div>
+                <div class="gallery-item animate-on-scroll">
+                    <img src="https://images.unsplash.com/photo-1560452992-e3bd31713036?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Cafeteria">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Us</h2>
+                <p>Get in touch with us for any queries</p>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info animate-on-scroll">
+                    <h3>Contact Information</h3>
+                    <div class="contact-details">
+                        <p><i class="fas fa-map-marker-alt"></i> Government Polytechnic College, Korwar, Karnataka 593110</p>
+                        <p><i class="fas fa-phone"></i> +91 9382 123456</p>
+                        <p><i class="fas fa-envelope"></i> info@gpckorwar.edu.in</p>
+                        <p><i class="fas fa-clock"></i> Mon - Sat: 9:00 AM - 4:00 PM</p>
                     </div>
                 </div>
-            </section>
-        </div>
-
-        <!-- Facilities Page -->
-        <div id="facilities-page" class="page">
-            <section class="facilities-section">
-                <div class="container">
-                    <div class="section-title">
-                        <h2>Our Facilities</h2>
-                        <p>State-of-the-art infrastructure for holistic development</p>
-                    </div>
-                    
-                    <div class="features-grid">
-                        <div class="feature-card animate-on-scroll">
-                            <div class="feature-icon">
-                                <i class="fas fa-flask"></i>
-                            </div>
-                            <h3>Modern Labs</h3>
-                            <p>Well-equipped laboratories for each department with latest equipment and technology.</p>
-                        </div>
-                        
-                        <div class="feature-card animate-on-scroll delay-1">
-                            <div class="feature-icon">
-                                <i class="fas fa-book"></i>
-                            </div>
-                            <h3>Library</h3>
-                            <p>Extensive collection of books, journals, and digital resources with reading rooms and computer access.</p>
-                        </div>
-                        
-                        <div class="feature-card animate-on-scroll delay-2">
-                            <div class="feature-icon">
-                                <i class="fas fa-basketball-ball"></i>
-                            </div>
-                            <h3>Sports Facilities</h3>
-                            <p>Indoor and outdoor sports facilities including cricket ground, basketball court, and gymnasium.</p>
-                        </div>
-                    </div>
-
-                    <div class="features-grid" style="margin-top: 50px;">
-                        <div class="feature-card animate-on-scroll">
-                            <div class="feature-icon">
-                                <i class="fas fa-wifi"></i>
-                            </div>
-                            <h3>Wi-Fi Campus</h3>
-                            <p>High-speed internet connectivity across the campus with 24/7 access for students and faculty.</p>
-                        </div>
-                        
-                        <div class="feature-card animate-on-scroll delay-1">
-                            <div class="feature-icon">
-                                <i class="fas fa-utensils"></i>
-                            </div>
-                            <h3>Cafeteria</h3>
-                            <p>Spacious cafeteria serving hygienic and nutritious food at subsidized rates for students.</p>
-                        </div>
-                        
-                        <div class="feature-card animate-on-scroll delay-2">
-                            <div class="feature-icon">
-                                <i class="fas fa-bus"></i>
-                            </div>
-                            <h3>Transportation</h3>
-                            <p>College bus service covering all major routes in and around Karwar for student convenience.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-
-        <!-- Gallery Page -->
-        <div id="gallery-page" class="page">
-            <section class="gallery-section">
-                <div class="container">
-                    <div class="section-title">
-                        <h2>Campus Gallery</h2>
-                        <p>Take a visual tour of our campus and facilities</p>
-                    </div>
-                    
-                    <div class="gallery-grid">
-                        <div class="gallery-item animate-on-scroll">
-                            <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="College Building">
-                        </div>
-                        <div class="gallery-item animate-on-scroll delay-1">
-                            <img src="https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlf极 Hx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Library">
-                        </div>
-                        <div class="gallery-item animate-on-scroll delay-2">
-                            <img src="https://images.unsplash.com/photo-1591123120675-6f7f1aae0e5b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Computer Lab">
-                        </div>
-                        <div class="gallery-item animate-on-scroll">
-                            <img src="https://images.unsplash.com/photo-1543269865-cbf427effbbe?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Students in Class">
-                        </div>
-                        <div class="gallery-item animate-on-scroll delay-1">
-                            <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="College Event">
-                        </div>
-                        <div class="gallery-item animate-on-scroll delay-2">
-                            <img src="https://images.unsplash.com/photo-1541336032412-2048a678540d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Graduation Day">
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-
-        <!-- Contact Page -->
-        <div id="contact-page" class="page">
-            <section class="contact-section">
-                <div class="container">
-                    <div class="section-title">
-                        <h2>Contact Us</h2>
-                        <p>Get in touch with us for any queries</p>
-                    </div>
-                    
-                    <div class="contact-info">
-                        <div class="contact-card animate-on-scroll">
-                            <div class="contact-icon">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <h3>Address</h3>
-                            <p>Government Polytechnic College, Karwar, Karnataka 581301</p>
-                        </div>
-                        
-                        <div class="contact-card animate-on-scroll delay-1">
-                            <div class="contact-icon">
-                                <i class="fas fa-phone"></i>
-                            </div>
-                            <h3>Phone</h3>
-                            <p>+91 8382 123456</p>
-                            <p>+91 8382 123457</p>
-                        </div>
-                        
-                        <div class="contact-card animate-on-scroll delay-2">
-                            <div class="contact-icon">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <h3>Email</h3>
-                            <p>info@gpckarwar.edu.in</p>
-                            <p>principal@gpckarwar.edu.in</p>
-                        </div>
-                    </div>
-
-                    <div class="section-title" style="margin-top: 80px;">
-                        <h2>Send us a Message</h2>
-                        <p>We'd love to hear from you</p>
-                    </div>
-
-                    <form class="feature-card animate-on-scroll" style="max-width: 600px; margin: 0 auto;">
-                        <div style="margin-bottom: 20px;">
-                            <label for="name" style="display: block; margin-bottom: 8px; font-weight: 500;">Your Name</label>
-                            <input type="text" id="name" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 4px;" placeholder="Enter your name">
-                        </div>
-                        <div style="margin-bottom: 20px;">
-                            <label for="email" style="display: block; margin-bottom: 8px; font-weight: 500;">Email Address</label>
-                            <input type="email" id="email" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 4px;" placeholder="Enter your email">
-                        </div>
-                        <div style="margin-bottom: 20px;">
-                            <label for="message" style="display: block; margin-bottom: 8px; font-weight: 500;">Message</label>
-                            <textarea id="message" rows="5" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 4px;" placeholder="Type your message here"></textarea>
-                        </div>
-                        <button type="submit" class="btn" style="width: 100%;">Send Message</button>
+                <div class="contact-form animate-on-scroll">
+                    <h3>Send us a Message</h3>
+                    <form>
+                        <input type="text" placeholder="Your Name" required>
+                        <input type="email" placeholder="Email Address" required>
+                        <textarea placeholder="Your Message Here" required></textarea>
+                        <button type="submit" class="btn">Send Message</button>
                     </form>
                 </div>
-            </section>
+            </div>
         </div>
-    </div>
+    </section>
 
     <!-- Footer -->
     <footer>
         <div class="container">
-            <div class="footer-grid">
-                <div class="footer-about">
-                    <h3 class="footer-heading">About Us</h3>
-                    <p>Government Polytechnic College, Karwar is a premier technical education institution established in 1985, providing quality education in various engineering disciplines.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                    </div>
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Government Polytechnic College</h3>
+                    <p>Premier technical education institution established in 1985, providing quality education in various engineering disciplines.</p>
                 </div>
-                
-                <div class="footer-links">
-                    <h3 class="footer-heading">Quick Links</h3>
-                    <ul class="footer-links">
-                        <li><a data-page="home"><i class="fas fa-home"></i> Home</a></li>
-                        <li><a data-page="about"><i class="fas fa-info-circle"></i> About</a></li>
-                        <li><a data-page="admission"><i class="fas fa-user-graduate"></i> Admission</a></li>
-                        <li><a data-page="academics"><i class="fas fa-book-open"></i> Academics</a></li>
-                        <li><a data-page="facilities"><i class="fas fa-building"></i> Facilities</a></li>
-                        <li><a data-page="gallery"><i class="fas fa-images"></i> Gallery</a></li>
-                        <li><a data-page="contact"><i class="fas fa-phone"></i> Contact us</a></li>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#admission">Admission</a></li>
+                        <li><a href="#academics">Academics</a></li>
+                        <li><a href="#facilities">Facilities</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#contact">Contact us</a></li>
                     </ul>
                 </div>
-                
-                <div class="footer-contact">
-                    <h3 class="footer-heading">Contact Info</h3>
-                    <p><i class="fas fa-map-marker-alt"></i> Government Polytechnic College, Karwar, Karnataka 581301</p>
-                    <p><i class="fas fa-phone"></i> +91 8382 123456</p>
-                    <p><i class="fas fa-envelope"></i> info@gpckarwar.edu.in</p>
-                    <p><i class="fas fa-clock"></i> Mon - Sat: 9:00 AM - 4:00 PM</p>
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul>
+                        <li>Government Polytechnic College, Korwar, Karnataka 593110</li>
+                        <li>+91 9382 123456</li>
+                        <li>info@gpckorwar.edu.in</li>
+                        <li>Mon - Sat: 9:00 AM - 4:00 PM</li>
+                    </ul>
                 </div>
             </div>
-            
             <div class="copyright">
-                <p>&copy; 2023 Government Polytechnic College, Karwar. All Rights Reserved.</p>
+                <p>© 2023 Government Polytechnic College, Korwar. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Back to top button -->
-    <a href="#" class="back-to-top">
-        <i class="fas fa-arrow-up"></i>
-    </a>
-
     <script>
+        // Animation on scroll
         document.addEventListener('DOMContentLoaded', function() {
-            // Page navigation functionality
-            const pages = document.querySelectorAll('.page');
-            const navLinks = document.querySelectorAll('[data-page]');
-            const pageContainer = document.querySelector('.page-container');
+            const animatedElements = document.querySelectorAll('.animate-on-scroll');
             
-            // Function to switch pages
-            function switchPage(pageId) {
-                // Hide all pages
-                pages.forEach(page => {
-                    page.classList.remove('active');
-                });
-                
-                // Show the selected page
-                const targetPage = document.getElementById(`${pageId}-page`);
-                if (targetPage) {
-                    targetPage.classList.add('active');
-                    
-                    // Scroll to top
-                    window.scrollTo({
-                        top: 0,
-                        behavior: 'smooth'
-                    });
-                    
-                    // Update active class in navigation
-                    navLinks.forEach(link => {
-                        link.classList.remove('active');
-                        if (link.getAttribute('data-page') === pageId) {
-                            link.classList.add('active');
-                        }
-                    });
-                    
-                    // Reset animations for the new page
-                    resetAnimations();
-                    
-                    // Close mobile menu if open
-                    if (document.querySelector('.nav-container').classList.contains('active')) {
-                        toggleMobileMenu();
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
                     }
-                }
-            }
-            
-            // Add click event to all navigation links
-            navLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const pageId = this.getAttribute('data-page');
-                    switchPage(pageId);
                 });
+            }, {
+                threshold: 0.1
             });
             
-            // Reset animations for elements on the current page
-            function resetAnimations() {
-                const animatedElements = document.querySelectorAll('.animate-on-scroll');
-                animatedElements.forEach(el => {
-                    el.classList.remove('animated');
-                });
-                
-                // Trigger animation check after a short delay
-                setTimeout(checkScroll, 100);
-            }
+            animatedElements.forEach(element => {
+                observer.observe(element);
+            });
             
-            // Mobile menu functionality
-            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-            const closeMenuBtn = document.querySelector('.close-menu');
-            const navContainer = document.querySelector('.nav-container');
-            const overlay = document.querySelector('.overlay');
-            
-            function toggleMobileMenu() {
-                navContainer.classList.toggle('active');
-                overlay.classList.toggle('active');
-                document.body.style.overflow = navContainer.classList.contains('active') ? 'hidden' : '';
-            }
-            
-            mobileMenuBtn.addEventListener('click', toggleMobileMenu);
-            closeMenuBtn.addEventListener('click', toggleMobileMenu);
-            overlay.addEventListener('click', toggleMobileMenu);
-            
-            // Header scroll effect
+            // Snake animation effect for header on scroll
             const header = document.querySelector('header');
-            
             window.addEventListener('scroll', function() {
                 if (window.scrollY > 50) {
-                    header.classList.add('scrolled');
+                    header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
+                    header.style.background = 'rgba(255, 255, 255, 0.95)';
                 } else {
-                    header.classList.remove('scrolled');
+                    header.style.boxShadow = '0 2px 15px rgba(0, 0, 0, 0.1)';
+                    header.style.background = 'white';
                 }
-                
-                // Back to top button visibility
-                const backToTop = document.querySelector('.back-to-top');
-                if (window.scrollY > 300) {
-                    backToTop.classList.add('visible');
-                } else {
-                    backToTop.classList.remove('visible');
-                }
-                
-                // Check animations
-                checkScroll();
-            });
-            
-            // Scroll animations for elements
-            function checkScroll() {
-                const animatedElements = document.querySelectorAll('.animate-on-scroll');
-                const triggerPoint = window.innerHeight * 0.8;
-                
-                animatedElements.forEach((el, index) => {
-                    const elementTop = el.getBoundingClientRect().top;
-                    
-                    if (elementTop < triggerPoint) {
-                        setTimeout(() => {
-                            el.classList.add('animated');
-                        }, index * 100);
-                    }
-                });
-            }
-            
-            window.addEventListener('scroll', checkScroll);
-            window.addEventListener('load', checkScroll);
-            
-            // Back to top functionality
-            const backToTopBtn = document.querySelector('.back-to-top');
-            
-            backToTopBtn.addEventListener('click', function(e) {
-                e.preventDefault();
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
             });
         });
-        footer {
-    background-color: var(--primary-dark);
-    color: var(--white);
-    padding: 30px 0 15px;
-    position: fixed;
-    bottom: -200px;
-    left: 0;
-    width: 100%;
-    transition: bottom 0.5s ease;
-    z-index: 1000;
-    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.2);
-}
-
-footer.active {
-    bottom: 0;
-}
-
-footer:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 5px;
-    background: linear-gradient(90deg, var(--accent), var(--secondary));
-}
-
-.footer-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-    margin-bottom: 20px;
-}
-
-.footer-heading {
-    color: var(--white);
-    margin-bottom: 15px;
-    font-size: 1.1rem;
-    position: relative;
-    padding-bottom: 8px;
-}
-
-.footer-heading:after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 30px;
-    height: 2px;
-    background-color: var(--secondary);
-}
-
-.footer-links li {
-    margin-bottom: 8px;
-}
-
-.footer-links a {
-    color: rgba(255, 255, 255, 0.8);
-    text-decoration: none;
-    transition: var(--transition);
-    display: block;
-    cursor: pointer;
-    font-size: 0.9rem;
-}
-
-.footer-links a:hover {
-    color: var(--secondary);
-    padding-left: 5px;
-}
-
-.footer-contact p {
-    font-size: 0.9rem;
-    margin-bottom: 8px;
-    display: flex;
-    align-items: center;
-}
-
-.footer-contact i {
-    margin-right: 8px;
-    color: var(--secondary);
-}
-
-.social-links {
-    display: flex;
-    gap: 10px;
-    margin-top: 15px;
-}
-
-.social-links a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 35px;
-    height: 35px;
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 50%;
-    transition: var(--transition);
-    color: var(--white);
-    text-decoration: none;
-    font-size: 0.9rem;
-}
-
-.social-links a:hover {
-    background-color: var(--accent);
-    transform: translateY(-3px);
-}
-
-.copyright {
-    text-align: center;
-    padding-top: 15px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    color: rgba(255, 255, 255, 0.7);
-    font-size: 0.8rem;
-}
-
-@media (max-width: 768px) {
-    footer {
-        padding: 20px 0 10px;
-    }
-    
-    .footer-grid {
-        grid-template-columns: 1fr;
-        text-align: center;
-        gap: 15px;
-    }
-    
-    .footer-heading:after {
-        left: 50%;
-        transform: translateX(-50%);
-    }
-    
-    .footer-contact p {
-        justify-content: center;
-    }
-}
-</style>
-
-<script>
-// Footer scroll behavior
-let lastScrollTop = 0;
-const footer = document.querySelector('footer');
-const footerHeight = footer.offsetHeight;
-
-window.addEventListener('scroll', function() {
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    const windowHeight = window.innerHeight;
-    const documentHeight = document.documentElement.scrollHeight;
-    
-    // Show footer when scrolled to bottom
-    if (windowHeight + scrollTop >= documentHeight - 50) {
-        footer.classList.add('active');
-    } 
-    // Hide footer when scrolling up
-    else if (scrollTop < lastScrollTop && scrollTop > 100) {
-        footer.classList.remove('active');
-    }
-    
-    lastScrollTop = scrollTop;
-});
-
-// Also show footer on mouse movement near bottom of screen
-document.addEventListener('mousemove', function(e) {
-    const mouseY = e.clientY;
-    const windowHeight = window.innerHeight;
-    
-    if (windowHeight - mouseY < 50) {
-        footer.classList.add('active');
-    }
-});
     </script>
 </body>
-</html>         
+</html>
