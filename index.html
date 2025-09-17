@@ -1,631 +1,973 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Government Polytechnic College</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        /* Global Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
+<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Government Polytechnic College Karwar</title> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"> <style> /* Global Styles */ * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+    :root {
+        --primary: #1a5276;
+        --secondary: #2e86c1;
+        --accent: #f39c12;
+        --light: #ecf0f1;
+        --dark: #2c3e50;
+        --success: #27ae60;
+        --warning: #e67e22;
+    }
+
+    html, body {
+        height: 100%;
+        background-color: #f9f9f9;
+        color: #333;
+        overflow-x: hidden;
+        scroll-behavior: smooth;
+    }
+
+    .container {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    section {
+        padding: 80px 0;
+        display: none;
+        animation: fadeIn 0.5s ease;
+    }
+
+    section.active {
+        display: block;
+    }
+
+    .section-title {
+        text-align: center;
+        margin-bottom: 50px;
+        position: relative;
+    }
+
+    .section-title h2 {
+        font-size: 2.5rem;
+        color: var(--primary);
+        margin-bottom: 15px;
+        display: inline-block;
+    }
+
+    .section-title h2::after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 4px;
+        background-color: var(--accent);
+        border-radius: 2px;
+    }
+
+    .btn {
+        display: inline-block;
+        padding: 12px 28px;
+        background-color: var(--primary);
+        color: white;
+        border-radius: 4px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        border: none;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .btn:hover {
+        background-color: var(--secondary);
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .btn:active {
+        transform: translateY(-1px);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 5px;
+        height: 5px;
+        background: rgba(255, 255, 255, 0.5);
+        opacity: 0;
+        border-radius: 100%;
+        transform: scale(1, 1) translate(-50%);
+        transform-origin: 50% 50%;
+    }
+
+    .btn:focus:not(:active)::after {
+        animation: ripple 1s ease-out;
+    }
+
+    /* Header Styles */
+    header {
+        background-color: white;
+        box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        position: fixed;
+        width: 100%;
+        z-index: 1000;
+        transition: all 0.3s ease;
+    }
+
+    .header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 0;
+    }
+
+    .logo {
+        display: flex;
+        align-items: center;
+    }
+
+    .logo h1 {
+        font-size: 1.8rem;
+        color: var(--primary);
+        font-weight: 700;
+    }
+
+    .logo span {
+        color: var(--accent);
+    }
+
+    nav ul {
+        display: flex;
+        list-style: none;
+    }
+
+    nav ul li {
+        margin-left: 30px;
+        position: relative;
+    }
+
+    nav ul li a {
+        text-decoration: none;
+        color: var(--dark);
+        font-weight: 500;
+        transition: color 0.3s ease;
+        position: relative;
+        cursor: pointer;
+        padding: 5px 0;
+    }
+
+    nav ul li a::after {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: var(--accent);
+        transition: width 0.3s ease;
+    }
+
+    nav ul li a:hover, nav ul li a.active {
+        color: var(--primary);
+    }
+
+    nav ul li a:hover::after, nav ul li a.active::after {
+        width: 100%;
+    }
+
+    .mobile-menu-btn {
+        display: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+        color: var(--primary);
+    }
+
+    /* Page Content */
+    #content {
+        padding-top: 80px;
+        min-height: 100vh;
+    }
+
+    /* Hero Section */
+    #home {
+        height: 100vh;
+        background: linear-gradient(rgba(26, 82, 118, 0.8), rgba(26, 82, 118, 0.8)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        align-items: center;
+        color: white;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+    }
+
+    #home::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,128L48,117.3C96,107,192,85,288,112C384,139,480,213,576,218.7C672,224,768,160,864,138.7C960,117,1056,139,1152,149.3C1248,160,1344,160,1392,160L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+        background-size: cover;
+        background-position: bottom;
+        opacity: 0.1;
+    }
+
+    .hero-content {
+        max-width: 800px;
+        margin: 0 auto;
+        animation: fadeIn 1.5s ease;
+        position: relative;
+        z-index: 1;
+    }
+
+    .hero-content h2 {
+        font-size: 3.5rem;
+        margin-bottom: 20px;
+        animation: slideInFromTop 1s ease;
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    }
+
+    .hero-content p {
+        font-size: 1.2rem;
+        margin-bottom: 30px;
+        animation: slideInFromBottom 1s ease;
+    }
+
+    .hero-btns {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        animation: fadeIn 2s ease;
+    }
+
+    /* About Section */
+    .about-content {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+        margin-top: 40px;
+    }
+
+    .about-card {
+        background-color: white;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .about-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 5px;
+        height: 0;
+        background: var(--accent);
+        transition: height 0.3s ease;
+    }
+
+    .about-card:hover::before {
+        height: 100%;
+    }
+
+    .about-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .about-card i {
+        font-size: 3rem;
+        color: var(--primary);
+        margin-bottom: 20px;
+        position: relative;
+        z-index: 1;
+    }
+
+    .about-card h3 {
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+        color: var(--dark);
+        position: relative;
+        z-index: 1;
+    }
+
+    .about-card p {
+        position: relative;
+        z-index: 1;
+    }
+
+    .leadership {
+        margin-top: 60px;
+    }
+
+    .leadership-cards {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+
+    .leader-card {
+        background-color: white;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        text-align: center;
+        transition: transform 0.3s ease;
+    }
+
+    .leader-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .leader-img {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        margin: 0 auto 20px;
+        overflow: hidden;
+        border: 5px solid var(--light);
+        position: relative;
+    }
+
+    .leader-img::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--primary);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        z-index: 1;
+    }
+
+    .leader-card:hover .leader-img::before {
+        opacity: 0.3;
+    }
+
+    .leader-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+    }
+
+    .leader-card:hover .leader-img img {
+        transform: scale(1.1);
+    }
+
+    /* Admission Section */
+    .admission-process {
+        background-color: var(--light);
+        padding: 60px 0;
+    }
+
+    .process-steps {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+
+    .process-card {
+        background-color: white;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .process-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background: linear-gradient(to right, var(--primary), var(--accent));
+        transform: translateY(-5px);
+        transition: transform 0.3s ease;
+    }
+
+    .process-card:hover::before {
+        transform: translateY(0);
+    }
+
+    .process-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .process-card h3 {
+        color: var(--primary);
+        margin-bottom: 15px;
+        font-size: 1.5rem;
+    }
+
+    .fee-structure {
+        margin-top: 60px;
+    }
+
+    .fee-cards {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+    }
+
+    .fee-card {
+        background-color: white;
+        padding: 25px;
+        border-radius: 8px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        text-align: center;
+        transition: transform 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .fee-card::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background: linear-gradient(to right, var(--primary), var(--accent));
+        transform: translateY(5px);
+        transition: transform 0.3s ease;
+    }
+
+    .fee-card:hover::after {
+        transform: translateY(0);
+    }
+
+    .fee-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .fee-card h4 {
+        color: var(--primary);
+        margin-bottom: 15px;
+    }
+
+    .fee-card .amount {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--accent);
+    }
+
+    /* Programs Section */
+    .programs-cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+    }
+
+    .program-card {
+        background-color: white;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .program-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, var(--primary) 0%, transparent 100%);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        z-index: 0;
+    }
+
+    .program-card:hover::before {
+        opacity: 0.1;
+    }
+
+    .program-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .program-card h3 {
+        color: var(--primary);
+        margin-bottom: 15px;
+        font-size: 1.5rem;
+        position: relative;
+        z-index: 1;
+    }
+
+    .program-card p {
+        position: relative;
+        z-index: 1;
+    }
+
+    .program-details {
+        margin-top: 20px;
+        position: relative;
+        z-index: 1;
+    }
+
+    .program-details p {
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+    }
+
+    .program-details i {
+        margin-right: 10px;
+        color: var(--primary);
+    }
+
+    /* Facilities Section */
+    .facilities-cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+    }
+
+    .facility-card {
+        background-color: white;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        text-align: center;
+        transition: transform 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .facility-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, var(--primary) 0%, transparent 100%);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .facility-card:hover::before {
+        opacity: 0.1;
+    }
+
+    .facility-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .facility-card i {
+        font-size: 2.5rem;
+        color: var(--primary);
+        margin-bottom: 20px;
+        position: relative;
+        z-index: 1;
+    }
+
+    .facility-card h3 {
+        color: var(--dark);
+        margin-bottom: 15px;
+        position: relative;
+        z-index: 1;
+    }
+
+    .facility-card p {
+        position: relative;
+        z-index: 1;
+    }
+
+    /* Gallery Section */
+    .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
+
+    .gallery-item {
+        height: 250px;
+        border-radius: 8px;
+        overflow: hidden;
+        position: relative;
+        cursor: pointer;
+    }
+
+    .gallery-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+    }
+
+    .gallery-item:hover img {
+        transform: scale(1.1);
+    }
+
+    .gallery-item::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.3);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .gallery-item:hover::after {
+        opacity: 1;
+    }
+
+    .gallery-item::before {
+        content: '+';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        font-size: 3rem;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        z-index: 1;
+    }
+
+    .gallery-item:hover::before {
+        opacity: 1;
+    }
+
+    /* Contact Section */
+    .contact-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 50px;
+    }
+
+    .contact-info h3 {
+        color: var(--primary);
+        margin-bottom: 20px;
+        font-size: 1.8rem;
+    }
+
+    .contact-details {
+        margin-bottom: 30px;
+    }
+
+    .contact-details p {
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+    }
+
+    .contact-details i {
+        margin-right: 10px;
+        color: var(--primary);
+        width: 20px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+        width: 100%;
+        padding: 12px 15px;
+        margin-bottom: 20px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 1rem;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+        border-color: var(--primary);
+        box-shadow: 0 0 0 2px rgba(46, 134, 193, 0.2);
+        outline: none;
+    }
+
+    .contact-form textarea {
+        min-height: 150px;
+        resize: vertical;
+    }
+
+    .map-container {
+        margin-top: 40px;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .map-container iframe {
+        width: 100%;
+        height: 300px;
+        border: none;
+    }
+
+    /* Footer */
+    footer {
+        background-color: var(--dark);
+        color: white;
+        padding: 60px 0 20px;
+    }
+
+    .footer-content {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 40px;
+        margin-bottom: 40px;
+    }
+
+    .footer-column h3 {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+        color: var(--accent);
+    }
+
+    .footer-column ul {
+        list-style: none;
+    }
+
+    .footer-column ul li {
+        margin-bottom: 10px;
+    }
+
+    .footer-column ul li a {
+        color: #ddd;
+        text-decoration: none;
+        transition: color 0.3s ease;
+        cursor: pointer;
+    }
+
+    .footer-column ul li a:hover {
+        color: var(--accent);
+    }
+
+    .social-links {
+        display: flex;
+        gap: 15px;
+        margin-top: 20px;
+    }
+
+    .social-links a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        color: white;
+        transition: all 0.3s ease;
+    }
+
+    .social-links a:hover {
+        background-color: var(--accent);
+        transform: translateY(-3px);
+    }
+
+    .copyright {
+        text-align: center;
+        padding-top: 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    @keyframes slideInFromTop {
+        from { transform: translateY(-50px); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes slideInFromBottom {
+        from { transform: translateY(50px); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes ripple {
+        0% {
+            transform: scale(0, 0);
+            opacity: 0.5;
+        }
+        20% {
+            transform: scale(50, 50);
+            opacity: 0.3;
+        }
+        100% {
+            opacity: 0;
+            transform: scale(100, 100);
+        }
+    }
+
+    .animate-on-scroll {
+        opacity: 0;
+        transform: translateY(50px);
+        transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* Back to Top Button */
+    .back-to-top {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 50px;
+        height: 50px;
+        background-color: var(--primary);
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        z-index: 999;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .back-to-top.visible {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .back-to-top:hover {
+        background-color: var(--secondary);
+        transform: translateY(-3px);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 1200px) {
+        .programs-cards {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 992px) {
+        .about-content,
+        .leadership-cards,
+        .process-steps,
+        .fee-cards,
+        .facilities-cards,
+        .gallery-grid,
+        .contact-container,
+        .footer-content {
+            grid-template-columns: repeat(2, 1fr);
         }
 
-        :root {
-            --primary: #1a5276;
-            --secondary: #2e86c1;
-            --accent: #f39c12;
-            --light: #ecf0f1;
-            --dark: #2c3e50;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            background-color: #f9f9f9;
-            color: #333;
-            overflow-x: hidden;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        section {
-            padding: 80px 0;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 50px;
-            position: relative;
-        }
-
-        .section-title h2 {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 15px;
-            display: inline-block;
-        }
-
-        .section-title h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background-color: var(--accent);
-            border-radius: 2px;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 12px 28px;
-            background-color: var(--primary);
-            color: white;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn:hover {
-            background-color: var(--secondary);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Header Styles */
-        header {
-            background-color: white;
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
-            position: fixed;
-            width: 100%;
-            z-index: 1000;
-        }
-
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 0;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-        }
-
-        .logo h1 {
-            font-size: 1.8rem;
-            color: var(--primary);
-        }
-
-        .logo span {
-            color: var(--accent);
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-
-        nav ul li {
-            margin-left: 30px;
-        }
-
-        nav ul li a {
-            text-decoration: none;
-            color: var(--dark);
-            font-weight: 500;
-            transition: color 0.3s ease;
-            position: relative;
-        }
-
-        nav ul li a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--accent);
-            transition: width 0.3s ease;
-        }
-
-        nav ul li a:hover {
-            color: var(--primary);
-        }
-
-        nav ul li a:hover::after {
-            width: 100%;
-        }
-
-        /* Hero Section */
-        .hero {
-            height: 100vh;
-            background: linear-gradient(rgba(26, 82, 118, 0.8), rgba(26, 82, 118, 0.8)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            align-items: center;
-            color: white;
-            text-align: center;
-        }
-
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-            animation: fadeIn 1.5s ease;
+        .programs-cards {
+            grid-template-columns: 1fr;
         }
 
         .hero-content h2 {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-            animation: slideInFromTop 1s ease;
+            font-size: 2.8rem;
         }
+    }
 
-        .hero-content p {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-            animation: slideInFromBottom 1s ease;
+    @media (max-width: 768px) {
+        .header-container {
+            flex-direction: column;
         }
-
-        .hero-btns {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            animation: fadeIn 2s ease;
-        }
-
-        /* About Section */
-        .about-content {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .about-card {
-            background-color: white;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            text-align: center;
-        }
-
-        .about-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .about-card i {
-            font-size: 3rem;
-            color: var(--primary);
-            margin-bottom: 20px;
-        }
-
-        .about-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            color: var(--dark);
-        }
-
-        .leadership {
-            margin-top: 60px;
-        }
-
-        .leadership-cards {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
-        }
-
-        .leader-card {
-            background-color: white;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            text-align: center;
-        }
-
-        .leader-img {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            margin: 0 auto 20px;
-            overflow: hidden;
-            border: 5px solid var(--light);
-        }
-
-        .leader-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* Admission Section */
-        .admission-process {
-            background-color: var(--light);
-            padding: 60px 0;
-        }
-
-        .process-steps {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
-        }
-
-        .process-card {
-            background-color: white;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-
-        .process-card h3 {
-            color: var(--primary);
-            margin-bottom: 15px;
-            font-size: 1.5rem;
-        }
-
-        .fee-structure {
-            margin-top: 60px;
-        }
-
-        .fee-cards {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-        }
-
-        .fee-card {
-            background-color: white;
-            padding: 25px;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            text-align: center;
-            transition: transform 0.3s ease;
-        }
-
-        .fee-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .fee-card h4 {
-            color: var(--primary);
-            margin-bottom: 15px;
-        }
-
-        .fee-card .amount {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--accent);
-        }
-
-        /* Programs Section */
-        .programs-cards {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
-        }
-
-        .program-card {
-            background-color: white;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease;
-        }
-
-        .program-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .program-card h3 {
-            color: var(--primary);
-            margin-bottom: 15px;
-            font-size: 1.5rem;
-        }
-
-        .program-details {
+        
+        nav ul {
             margin-top: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        nav ul li {
+            margin: 0 10px 10px;
+        }
+        
+        .hero-content h2 {
+            font-size: 2.2rem;
+        }
+        
+        .hero-content p {
+            font-size: 1rem;
+        }
+        
+        .hero-btns {
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .about-content,
+        .leadership-cards,
+        .process-steps,
+        .fee-cards,
+        .facilities-cards,
+        .gallery-grid,
+        .contact-container,
+        .footer-content {
+            grid-template-columns: 1fr;
         }
 
-        .program-details p {
-            margin-bottom: 10px;
-        }
-
-        /* Facilities Section */
-        .facilities {
-            background-color: var(--light);
-        }
-
-        .facilities-cards {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-        }
-
-        .facility-card {
-            background-color: white;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            text-align: center;
-            transition: transform 0.3s ease;
-        }
-
-        .facility-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .facility-card i {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 20px;
-        }
-
-        .facility-card h3 {
-            color: var(--dark);
-            margin-bottom: 15px;
-        }
-
-        /* Gallery Section */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-
-        .gallery-item {
-            height: 250px;
-            border-radius: 8px;
-            overflow: hidden;
-            position: relative;
-            cursor: pointer;
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .gallery-item:hover img {
-            transform: scale(1.1);
-        }
-
-        .gallery-item::after {
-            content: '';
+        .mobile-menu-btn {
+            display: block;
             position: absolute;
-            top: 0;
-            left: 0;
+            top: 20px;
+            right: 20px;
+        }
+
+        nav {
+            display: none;
             width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.3);
-            opacity: 0;
-            transition: opacity 0.3s ease;
         }
 
-        .gallery-item:hover::after {
-            opacity: 1;
+        nav.active {
+            display: block;
         }
 
-        /* Contact Section */
-        .contact-container {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 50px;
-        }
-
-        .contact-info h3 {
-            color: var(--primary);
-            margin-bottom: 20px;
-            font-size: 1.8rem;
-        }
-
-        .contact-details {
-            margin-bottom: 30px;
-        }
-
-        .contact-details p {
-            margin-bottom: 10px;
-            display: flex;
+        nav ul {
+            flex-direction: column;
             align-items: center;
         }
 
-        .contact-details i {
-            margin-right: 10px;
-            color: var(--primary);
+        nav ul li {
+            margin: 10px 0;
         }
-
-        .contact-form input,
-        .contact-form textarea {
-            width: 100%;
-            padding: 12px 15px;
-            margin-bottom: 20px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 1rem;
-        }
-
-        .contact-form textarea {
-            min-height: 150px;
-            resize: vertical;
-        }
-
-        /* Footer */
-        footer {
-            background-color: var(--dark);
-            color: white;
-            padding: 60px 0 20px;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-
-        .footer-column h3 {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            color: var(--accent);
-        }
-
-        .footer-column ul {
-            list-style: none;
-        }
-
-        .footer-column ul li {
-            margin-bottom: 10px;
-        }
-
-        .footer-column ul li a {
-            color: #ddd;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .footer-column ul li a:hover {
-            color: var(--accent);
-        }
-
-        .copyright {
-            text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @keyframes slideInFromTop {
-            from { transform: translateY(-50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-
-        @keyframes slideInFromBottom {
-            from { transform: translateY(50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-
-        .animate-on-scroll {
-            opacity: 0;
-            transform: translateY(50px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-
-        .is-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Responsive Design */
-        @media (max-width: 992px) {
-            .about-content,
-            .leadership-cards,
-            .process-steps,
-            .fee-cards,
-            .programs-cards,
-            .facilities-cards,
-            .gallery-grid,
-            .contact-container,
-            .footer-content {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .header-container {
-                flex-direction: column;
-            }
-            
-            nav ul {
-                margin-top: 20px;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            
-            nav ul li {
-                margin: 0 10px 10px;
-            }
-            
-            .hero-content h2 {
-                font-size: 2.5rem;
-            }
-            
-            .about-content,
-            .leadership-cards,
-            .process-steps,
-            .fee-cards,
-            .programs-cards,
-            .facilities-cards,
-            .gallery-grid,
-            .contact-container,
-            .footer-content {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
-</head>
-<body>
-    <!-- Header -->
-    <header>
-        <div class="container header-container">
-            <div class="logo">
-                <h1>GP<span>Korwar</span></h1>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#admission">Admission</a></li>
-                    <li><a href="#academics">Academics</a></li>
-                    <li><a href="#facilities">Facilities</a></li>
-                    <li><a href="#gallery">Gallery</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <!-- Hero Section -->
-    <section id="home" class="hero">
+    }
+</style>
+</head> <body> <!-- Header --> <header> <div class="container header-container"> <div class="logo"> <h1>GP<span>Karwar</span></h1> </div> <div class="mobile-menu-btn"> <i class="fas fa-bars"></i> </div> <nav id="main-nav"> <ul> <li><a class="nav-link active" data-page="home">Home</a></li> <li><a class="nav-link" data-page="about">About</a></li> <li><a class="nav-link" data-page="admission">Admission</a></li> <li><a class="nav-link" data-page="academics">Academics</a></li> <li><a class="nav-link" data-page="facilities">Facilities</a></li> <li><a class="nav-link" data-page="gallery">Gallery</a></li> <li><a class="nav-link" data-page="contact">Contact</a></li> </ul> </nav> </div> </header>
+<!-- Page Content -->
+<main id="content">
+    <!-- Home Page -->
+    <section id="home" class="active">
         <div class="container hero-content">
-            <h2>Welcome to Government Polytechnic College</h2>
-            <p>Empowering students with technical education and skills for a better future</p>
+            <h2>Welcome to Government Polytechnic College Karwar</h2>
+            <p>Empowering students with technical education and skills for a better future since 1985</p>
             <div class="hero-btns">
-                <a href="#programs" class="btn">Explore Programs</a>
-                <a href="#gallery" class="btn" style="background-color: var(--accent);">Campus Tour</a>
+                <a class="btn nav-link" data-page="academics">Explore Programs</a>
+                <a class="btn nav-link" data-page="gallery" style="background-color: var(--accent);">Campus Tour</a>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="about">
+    <!-- About Page -->
+    <section id="about">
         <div class="container">
             <div class="section-title">
                 <h2>About Us</h2>
+                <p>Excellence in Technical Education Since 1985</p>
             </div>
             <div class="about-content">
                 <div class="about-card animate-on-scroll">
@@ -672,8 +1014,8 @@
         </div>
     </section>
 
-    <!-- Admission Section -->
-    <section id="admission" class="admission-process">
+    <!-- Admission Page -->
+    <section id="admission">
         <div class="container">
             <div class="section-title">
                 <h2>Admission Process</h2>
@@ -729,8 +1071,8 @@
         </div>
     </section>
 
-    <!-- Academics Section -->
-    <section id="academics" class="programs">
+    <!-- Academics Page -->
+    <section id="academics">
         <div class="container">
             <div class="section-title">
                 <h2>Academic Programs</h2>
@@ -741,9 +1083,29 @@
                     <h3>Computer Science Engineering</h3>
                     <p>This program provides students with a strong foundation in computer science principles and programming skills. Students learn to develop software applications, work with databases, and understand computer networks.</p>
                     <div class="program-details">
-                        <p><strong>Duration:</strong> 3 years (6 semesters)</p>
-                        <p><strong>Intake:</strong> 60 students per year</p>
-                        <p><strong>Careers:</strong> Software Developer, Web Designer, Network Administrator</p>
+                        <p><i class="fas fa-clock"></i> <strong>Duration:</strong> 3 years (6 semesters)</p>
+                        <p><i class="fas fa-users"></i> <strong>Intake:</strong> 60 students per year</p>
+                        <p><i class="fas fa-briefcase"></i> <strong>Careers:</strong> Software Developer, Web Designer, Network Administrator</p>
+                    </div>
+                    <a href="#" class="btn">Learn More</a>
+                </div>
+                <div class="program-card animate-on-scroll">
+                    <h3>Mechanical Engineering</h3>
+                    <p>This program focuses on designing, analyzing, and manufacturing mechanical systems. Students gain expertise in thermodynamics, fluid mechanics, and machine design.</p>
+                    <div class="program-details">
+                        <p><i class="fas fa-clock"></i> <strong>Duration:</strong> 3 years (6 semesters)</p>
+                        <p><i class="fas fa-users"></i> <strong>Intake:</strong> 60 students per year</p>
+                        <p><i class="fas fa-briefcase"></i> <strong>Careers:</strong> Mechanical Technician, Design Engineer, Production Supervisor</p>
+                    </div>
+                    <a href="#" class="btn">Learn More</a>
+                </div>
+                <div class="program-card animate-on-scroll">
+                    <h3>Civil Engineering</h3>
+                    <p>This program prepares students for planning, designing, and executing construction projects. Curriculum includes structural analysis, surveying, and construction management.</p>
+                    <div class="program-details">
+                        <p><i class="fas fa-clock"></i> <strong>Duration:</strong> 3 years (6 semesters)</p>
+                        <p><i class="fas fa-users"></i> <strong>Intake:</strong> 60 students per year</p>
+                        <p><i class="fas fa-briefcase"></i> <strong>Careers:</strong> Site Engineer, Structural Designer, Project Coordinator</p>
                     </div>
                     <a href="#" class="btn">Learn More</a>
                 </div>
@@ -751,9 +1113,39 @@
                     <h3>Electrical Engineering</h3>
                     <p>This program focuses on electrical systems, power generation, transmission, and distribution. Students gain practical knowledge in electrical machines, power electronics, and control systems.</p>
                     <div class="program-details">
-                        <p><strong>Duration:</strong> 3 years (6 semesters)</p>
-                        <p><strong>Intake:</strong> 60 students per year</p>
-                        <p><strong>Careers:</strong> Electrical Technician, Power Plant Operator, Maintenance Engineer</p>
+                        <p><i class="fas fa-clock"></i> <strong>Duration:</strong> 3 years (6 semesters)</p>
+                        <p><i class="fas fa-users"></i> <strong>Intake:</strong> 60 students per year</p>
+                        <p><i class="fas fa-briefcase"></i> <strong>Careers:</strong> Electrical Technician, Power Plant Operator, Maintenance Engineer</p>
+                    </div>
+                    <a href="#" class="btn">Learn More</a>
+                </div>
+                <div class="program-card animate-on-scroll">
+                    <h3>Electronics & Communication Engineering</h3>
+                    <p>This program covers electronic devices, circuits, communication equipment, and systems. Students learn about analog and digital electronics, microprocessors, and wireless communication.</p>
+                    <div class="program-details">
+                        <p><i class="fas fa-clock"></i> <strong>Duration:</strong> 3 years (6 semesters)</p>
+                        <p><i class="fas fa-users"></i> <strong>Intake:</strong> 60 students per year</p>
+                        <p><i class="fas fa-briefcase"></i> <strong>Careers:</strong> Electronics Technician, Communication Engineer, Embedded Systems Designer</p>
+                    </div>
+                    <a href="#" class="btn">Learn More</a>
+                </div>
+                <div class="program-card animate-on-scroll">
+                    <h3>Automobile Engineering</h3>
+                    <p>This program focuses on automobile design, manufacturing, and maintenance. Students learn about vehicle dynamics, engine technology, and automotive electrical systems.</p>
+                    <div class="program-details">
+                        <p><i class="fas fa-clock"></i> <strong>Duration:</strong> 3 years (6 semesters)</p>
+                        <p><i class="fas fa-users"></i> <strong>Intake:</strong> 60 students per year</p>
+                        <p><i class="fas fa-briefcase"></i> <strong>Careers:</strong> Automotive Technician, Service Advisor, Quality Inspector</p>
+                    </div>
+                    <a href="#" class="btn">Learn More</a>
+                </div>
+                <div class="program-card animate-on-scroll">
+                    <h3>Commercial Practice</h3>
+                    <p>This program combines business knowledge with technical skills. Students learn about accounting, office management, business communication, and computer applications.</p>
+                    <div class="program-details">
+                        <p><i class="fas fa-clock"></i> <strong>Duration:</strong> 3 years (6 semesters)</p>
+                        <p><i class="fas fa-users"></i> <strong>Intake:</strong> 60 students per year</p>
+                        <p><i class="fas fa-briefcase"></i> <strong>Careers:</strong> Office Administrator, Account Assistant, Business Correspondent</p>
                     </div>
                     <a href="#" class="btn">Learn More</a>
                 </div>
@@ -761,8 +1153,8 @@
         </div>
     </section>
 
-    <!-- Facilities Section -->
-    <section id="facilities" class="facilities">
+    <!-- Facilities Page -->
+    <section id="facilities">
         <div class="container">
             <div class="section-title">
                 <h2>Our Facilities</h2>
@@ -797,14 +1189,14 @@
                 <div class="facility-card animate-on-scroll">
                     <i class="fas fa-bus"></i>
                     <h3>Transportation</h3>
-                    <p>College bus service covering all major routes in and around Korwar for student convenience.</p>
+                    <p>College bus service covering all major routes in and around Karwar for student convenience.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Gallery Section -->
-    <section id="gallery" class="gallery">
+    <!-- Gallery Page -->
+    <section id="gallery">
         <div class="container">
             <div class="section-title">
                 <h2>Campus Gallery</h2>
@@ -833,8 +1225,8 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
+    <!-- Contact Page -->
+    <section id="contact">
         <div class="container">
             <div class="section-title">
                 <h2>Contact Us</h2>
@@ -844,10 +1236,13 @@
                 <div class="contact-info animate-on-scroll">
                     <h3>Contact Information</h3>
                     <div class="contact-details">
-                        <p><i class="fas fa-map-marker-alt"></i> Government Polytechnic College, Korwar, Karnataka 593110</p>
-                        <p><i class="fas fa-phone"></i> +91 9382 123456</p>
-                        <p><i class="fas fa-envelope"></i> info@gpckorwar.edu.in</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Government Polytechnic College, Karwar, Karnataka 581301</p>
+                        <p><i class="fas fa-phone"></i> +91 8382 123456</p>
+                        <p><i class="fas fa-envelope"></i> info@gpckarwar.edu.in</p>
                         <p><i class="fas fa-clock"></i> Mon - Sat: 9:00 AM - 4:00 PM</p>
+                    </div>
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d61675.72005542298!2d74.09981432606625!3d14.813448222395804!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bbf55ea3b5a2921%3A0x7a478e26710d2014!2sKarwar%2C%20Karnataka!5e0!3m2!1sen!2sin!4v1689767733995!5m2!1sen!2sin" allowfullscreen="" loading="lazy"></iframe>
                     </div>
                 </div>
                 <div class="contact-form animate-on-scroll">
@@ -855,6 +1250,7 @@
                     <form>
                         <input type="text" placeholder="Your Name" required>
                         <input type="email" placeholder="Email Address" required>
+                        <input type="tel" placeholder="Phone Number">
                         <textarea placeholder="Your Message Here" required></textarea>
                         <button type="submit" class="btn">Send Message</button>
                     </form>
@@ -862,74 +1258,186 @@
             </div>
         </div>
     </section>
+</main>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h3>Government Polytechnic College</h3>
-                    <p>Premier technical education institution established in 1985, providing quality education in various engineering disciplines.</p>
-                </div>
-                <div class="footer-column">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#admission">Admission</a></li>
-                        <li><a href="#academics">Academics</a></li>
-                        <li><a href="#facilities">Facilities</a></li>
-                        <li><a href="#gallery">Gallery</a></li>
-                        <li><a href="#contact">Contact us</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Contact Info</h3>
-                    <ul>
-                        <li>Government Polytechnic College, Korwar, Karnataka 593110</li>
-                        <li>+91 9382 123456</li>
-                        <li>info@gpckorwar.edu.in</li>
-                        <li>Mon - Sat: 9:00 AM - 4:00 PM</li>
-                    </ul>
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Government Polytechnic College</h3>
+                <p>Premier technical education institution established in 1985, providing quality education in various engineering disciplines.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
                 </div>
             </div>
-            <div class="copyright">
-                <p>© 2023 Government Polytechnic College, Korwar. All Rights Reserved.</p>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a class="nav-link" data-page="home">Home</a></li>
+                    <li><a class="nav-link" data-page="about">About</a></li>
+                    <li><a class="nav-link" data-page="admission">Admission</a></li>
+                    <li><a class="nav-link" data-page="academics">Academics</a></li>
+                    <li><a class="nav-link" data-page="facilities">Facilities</a></li>
+                    <li><a class="nav-link" data-page="gallery">Gallery</a></li>
+                    <li><a class="nav-link" data-page="contact">Contact us</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact Info</h3>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i> Government Polytechnic College, Karwar, Karnataka 581301</li>
+                    <li><i class="fas fa-phone"></i> +91 8382 123456</li>
+                    <li><i class="fas fa-envelope"></i> info@gpckarwar.edu.in</li>
+                    <li><i class="fas fa-clock"></i> Mon - Sat: 9:00 AM - 4:00 PM</li>
+                </ul>
             </div>
         </div>
-    </footer>
+        <div class="copyright">
+            <p>© 2023 Government Polytechnic College, Karwar. All Rights Reserved.</p>
+        </div>
+    </div>
+</footer>
 
-    <script>
-        // Animation on scroll
-        document.addEventListener('DOMContentLoaded', function() {
-            const animatedElements = document.querySelectorAll('.animate-on-scroll');
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('is-visible');
-                    }
+<!-- Back to Top Button -->
+<div class="back-to-top">
+    <i class="fas fa-arrow-up"></i>
+</div>
+
+<script>
+    // Page Navigation
+    document.addEventListener('DOMContentLoaded', function() {
+        // Show home page by default
+        showPage('home');
+        
+        // Add event listeners to navigation links
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const page = this.getAttribute('data-page');
+                showPage(page);
+                
+                // Update active class on navigation
+                document.querySelectorAll('.nav-link').forEach(nav => {
+                    nav.classList.remove('active');
                 });
-            }, {
-                threshold: 0.1
-            });
-            
-            animatedElements.forEach(element => {
-                observer.observe(element);
-            });
-            
-            // Snake animation effect for header on scroll
-            const header = document.querySelector('header');
-            window.addEventListener('scroll', function() {
-                if (window.scrollY > 50) {
-                    header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
-                    header.style.background = 'rgba(255, 255, 255, 0.95)';
-                } else {
-                    header.style.boxShadow = '0 2px 15px rgba(0, 0, 0, 0.1)';
-                    header.style.background = 'white';
-                }
+                this.classList.add('active');
+                
+                // Close mobile menu if open
+                document.getElementById('main-nav').classList.remove('active');
+                
+                // Scroll to top
+                window.scrollTo(0, 0);
             });
         });
-    </script>
-</body>
-</html>
+        
+        // Animation on scroll
+        const animatedElements = document.querySelectorAll('.animate-on-scroll');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+        
+        animatedElements.forEach(element => {
+            observer.observe(element);
+        });
+        
+        // Header animation on scroll
+        const header = document.querySelector('header');
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 50) {
+                header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+            } else {
+                header.style.boxShadow = '0 2px 15px rgba(0, 0, 0, 0.1)';
+                header.style.background = 'white';
+            }
+            
+            // Back to top button
+            const backToTop = document.querySelector('.back-to-top');
+            if (window.scrollY > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+        
+        // Back to top functionality
+        document.querySelector('.back-to-top').addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            document.getElementById('main-nav').classList.toggle('active');
+        });
+        
+        // Form submission
+        document.querySelector('.contact-form form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! We will get back to you soon.');
+            this.reset();
+        });
+        
+        // Button ripple effect
+        document.querySelectorAll('.btn').forEach(button => {
+            button.addEventListener('click', function(e) {
+                const x = e.clientX - e.target.getBoundingClientRect().left;
+                const y = e.clientY - e.target.getBoundingClientRect().top;
+                
+                const ripples = document.createElement('span');
+                ripples.classList.add('ripple');
+                ripples.style.left = x + 'px';
+                ripples.style.top = y + 'px';
+                this.appendChild(ripples);
+                
+                setTimeout(() => {
+                    ripples.remove();
+                }, 600);
+            });
+        });
+    });
+    
+    function showPage(pageId) {
+        // Hide all pages
+        document.querySelectorAll('section').forEach(section => {
+            section.classList.remove('active');
+        });
+        
+        // Show the selected page
+        document.getElementById(pageId).classList.add('active');
+        
+        // Update browser history
+        history.pushState(null, null, `#${pageId}`);
+    }
+    
+    // Handle browser back/forward buttons
+    window.addEventListener('popstate', function() {
+        const hash = window.location.hash.substring(1);
+        if (hash) {
+            showPage(hash);
+            
+            // Update active class on navigation
+            document.querySelectorAll('.nav-link').forEach(nav => {
+                nav.classList.remove('active');
+                if (nav.getAttribute('data-page') === hash) {
+                    nav.classList.add('active');
+                }
+            });
+        }
+    });
+</script>
+</body> </html> 
