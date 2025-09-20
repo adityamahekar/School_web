@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Karnataka Government School</title>
+    <title>Shivaji High School - Karwar</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -240,7 +240,7 @@
         /* Hero Section */
         .hero {
             height: 100vh;
-            background: linear-gradient(rgba(6, 0, 76, 0.8), rgba(0, 9, 78, 0.8)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background: linear-gradient(rgba(6, 0, 76, 0.7), rgba(0, 9, 78, 0.7)), url('https://images.unsplash.com/photo-1560452992-e3bd31713036?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80');
             background-size: cover;
             background-position: center;
             display: flex;
@@ -449,6 +449,46 @@
 
         .about-image:hover img {
             transform: scale(1.05);
+        }
+
+        /* Infrastructure Section */
+        .infrastructure {
+            background-color: var(--light);
+            padding: 60px 0;
+        }
+
+        .infra-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .infra-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            padding: 25px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .infra-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .infra-card i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .infra-card h3 {
+            color: var(--dark);
+            margin-bottom: 10px;
+        }
+
+        .infra-card p {
+            color: #666;
         }
 
         /* Academics Section */
@@ -868,7 +908,7 @@
 
         /* Responsive Design */
         @media (max-width: 1200px) {
-            .links-grid {
+            .links-grid, .infra-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
@@ -879,7 +919,8 @@
             .admission-process,
             .gallery-grid,
             .contact-container,
-            .footer-content {
+            .footer-content,
+            .infra-grid {
                 grid-template-columns: 1fr;
             }
 
@@ -956,8 +997,8 @@
                     <i class="fas fa-landmark"></i>
                 </div>
                 <div class="logo-text">
-                    <h1>Karnataka Government School</h1>
-                    <p>Empowering Students Through Education</p>
+                    <h1>SBS</h1>
+                   
                 </div>
             </div>
             
@@ -969,6 +1010,7 @@
                 <ul>
                     <li><a class="nav-link active" data-page="home">Home</a></li>
                     <li><a class="nav-link" data-page="about">About</a></li>
+                    <li><a class="nav-link" data-page="infrastructure">Infrastructure</a></li>
                     <li><a class="nav-link" data-page="academics">Academics</a></li>
                     <li><a class="nav-link" data-page="admissions">Admissions</a></li>
                     <li><a class="nav-link" data-page="notices">Notices</a></li>
@@ -988,17 +1030,18 @@
     <!-- Page Content -->
     <main id="content">
         <!-- Home Page -->
-        <section id="home" class="active">
-            <div class="hero">
-                <div class="container hero-content">
-                    <h2 data-en="Welcome to Karnataka Government School" data-kn="ಕರ್ನಾಟಕ ಸರ್ಕಾರಿ ಶಾಲೆಗೆ ಸ್ವಾಗತ">Welcome to Karnataka Government School</h2>
-                    <p data-en="Providing quality education and opportunities for all students since 1985. Empowering the future of Karnataka through learning and innovation." data-kn="1985 ರಿಂದ ಎಲ್ಲಾ ವಿದ್ಯಾರ್ಥಿಗಳಿಗೆ ಗುಣಮಟ್ಟದ ಶಿಕ್ಷಣ ಮತ್ತು ಅವಕಾಶಗಳನ್ನು ಒದಗಿಸುತ್ತಿದೆ. ಕಲಿಕೆ ಮತ್ತು ನಾವೀನ್ಯತೆಯ ಮೂಲಕ ಕರ್ನಾಟಕದ ಭವಿಷ್ಯವನ್ನು ಸಶಕ್ತಗೊಳಿಸುವುದು.">Providing quality education and opportunities for all students since 1985. Empowering the future of Karnataka through learning and innovation.</p>
-                    <div class="hero-btns">
-                        <a class="btn nav-link pulse" data-page="admissions" data-en="Online Admissions" data-kn="ಆನ್ಲೈನ್ ಪ್ರವೇಶ">Online Admissions</a>
-                        <a class="btn nav-link bounce" data-page="notices" style="background-color: var(--accent);" data-en="View Notice Board" data-kn="ಸೂಚನಾ ಮಂಡಪವನ್ನು ವೀಕ್ಷಿಸಿ">View Notice Board</a>
-                    </div>
-                </div>
+       <section id="home" class="active">
+    <div class="hero" style="background-image: url('./sc1.png'); background-size: cover; background-position: center; background-repeat: no-repeat; height: 100vh; display: flex; align-items: center;">
+        <div class="container hero-content" style="color: white; text-align: center;">
+            <h2 data-en="Welcome to Shivaji High School" data-kn="ಶಿವಾಜಿ ಹೈಸ್ಕೂಲ್ಗೆ ಸ್ವಾಗತ">Welcome to Shivaji High School</h2>
+            <p data-en="Providing quality education and opportunities for all students since 1945. Empowering the future of Karnataka through learning and innovation." data-kn="1945 ರಿಂದ ಎಲ್ಲಾ ವಿದ್ಯಾರ್ಥಿಗಳಿಗೆ ಗುಣಮಟ್ಟದ ಶಿಕ್ಷಣ ಮತ್ತು ಅವಕಾಶಗಳನ್ನು ಒದಗಿಸುತ್ತಿದೆ. ಕಲಿಕೆ ಮತ್ತು ನಾವೀನ್ಯತೆಯ ಮೂಲಕ ಕರ್ನಾಟಕದ ಭವಿಷ್ಯವನ್ನು ಸಶಕ್ತಗೊಳಿಸುವುದು.">Providing quality education and opportunities for all students since 1945. Empowering the future of Karnataka through learning and innovation.</p>
+            <div class="hero-btns">
+                <a class="btn nav-link pulse" data-page="admissions" data-en="Online Admissions" data-kn="ಆನ್ಲೈನ್ ಪ್ರವೇಶ">Online Admissions</a>
+                <a class="btn nav-link bounce" data-page="notices" style="background-color: var(--accent);" data-en="View Notice Board" data-kn="ಸೂಚನಾ ಮಂಡಪವನ್ನು ವೀಕ್ಷಿಸಿ">View Notice Board</a>
             </div>
+        </div>
+    </div>
+
 
             <!-- Announcements Section -->
             <div class="announcements">
@@ -1010,7 +1053,7 @@
                     <ul class="announcement-list">
                         <li class="announcement-item">
                             <i class="fas fa-bullhorn"></i>
-                            <a href="#" data-en="Annual Examination Schedule Released - Download Now" data-kn="ವಾರ್ಷಿಕ ಪರೀಕ್ಷಾ ವೇಳಾಪಟ್ಟಿ ಬಿಡುಗಡೆ - ಈಗ ಡೌನ್ಲೋಡ್ ಮಾಡಿ">Annual Examination Schedule Released - Download Now</a>
+                            <a href="#" data-en="Annual Examination Schedule Released - Download Now" data-kn="ವಾರ್ಷಿಕ ಪರೀಕ್ಷಾ ವೇಳಾಪಟ್ಟಿ ಬಿಡುಗಡೆ - ಈಗ ಡೌನ್ಲೋ드್ ಮಾಡಿ">Annual Examination Schedule Released - Download Now</a>
                         </li>
                         <li class="announcement-item">
                             <i class="fas fa-bullhorn"></i>
@@ -1043,7 +1086,7 @@
                         </div>
                         <div class="link-card animate-on-scroll">
                             <i class="fas fa-graduation-cap"></i>
-                            <h3 data-en="Scholarships" data-kn="ವಿದ್ಯಾರ್ಥಿವೇತನ">Scholarships</h3>
+                            <h3 data-en="Scholarships" data-kn="ವಿದ್ಯಾರthಿವೇತನ">Scholarships</h3>
                             <p data-en="Government scholarship programs for eligible students" data-kn="ಅರ್ಹ ವಿದ್ಯಾರ್ಥಿಗಳಿಗೆ ಸರ್ಕಾರದ ವಿದ್ಯಾರ್ಥಿವೇತನ ಕಾರ್ಯಕ್ರಮಗಳು">Government scholarship programs for eligible students</p>
                         </div>
                         <div class="link-card animate-on-scroll">
@@ -1066,19 +1109,61 @@
             <div class="container">
                 <div class="section-title">
                     <h2 data-en="About Our School" data-kn="ನಮ್ಮ ಶಾಲೆಯ ಬಗ್ಗೆ">About Our School</h2>
-                    <p data-en="Committed to excellence in education since 1985" data-kn="1985 ರಿಂದ ಶಿಕ್ಷಣದಲ್ಲಿ ಶ್ರೇಷ್ಠತೆಗೆ ಬದ್ಧವಾಗಿದೆ">Committed to excellence in education since 1985</p>
+                    <p data-en="Committed to excellence in education since 1945" data-kn="1945 ರಿಂದ ಶಿಕ್ಷಣದಲ್ಲಿ ಶ್ರೇಷ್ಠತೆಗೆ ಬದ್ಧವಾಗಿದೆ">Committed to excellence in education since 1945</p>
                 </div>
                 <div class="about-content">
                     <div class="about-text">
-                        <h3 data-en="Welcome to Karnataka Government School" data-kn="ಕರ್ನಾಟಕ ಸರ್ಕಾರಿ ಶಾಲೆಗೆ ಸ್ವಾಗತ">Welcome to Karnataka Government School</h3>
-                        <p data-en="Our school is dedicated to providing quality education to students from all backgrounds. Established in 1985, we have been at the forefront of educational innovation in Karnataka." data-kn="ನಮ್ಮ ಶಾಲೆಯು ಎಲ್ಲಾ ಹಿನ್ನೆಲೆಯ ವಿದ್ಯಾರ್ಥಿಗಳಿಗೆ ಗುಣಮಟ್ಟದ ಶಿಕ್ಷಣವನ್ನು ಒದಗಿಸಲು ಸಮರ್ಪಿತವಾಗಿದೆ. 1985 ರಲ್ಲಿ ಸ್ಥಾಪಿತವಾದ ನಾವು ಕರ್ನಾಟಕದಲ್ಲಿ ಶೈಕ್ಷಣಿಕ ನಾವೀನ್ಯತೆಯ ಅಗ್ರಭಾಗದಲ್ಲಿದ್ದೇವೆ.">Our school is dedicated to providing quality education to students from all backgrounds. Established in 1985, we have been at the forefront of educational innovation in Karnataka.</p>
+                        <h3 data-en="Welcome to Shivaji High School" data-kn="ಶಿವಾಜಿ ಹೈಸ್ಕೂಲ್ಗೆ ಸ್ವಾಗತ">Welcome to Shivaji High School</h3>
+                        <p data-en="Our school is dedicated to providing quality education to students from all backgrounds. Established in 1945, we have been serving the Karwar community for generations." data-kn="ನಮ್ಮ ಶಾಲೆಯು ಎಲ್ಲಾ ಹಿನ್ನೆಲೆಯ ವಿದ್ಯಾರ್ಥಿಗಳಿಗೆ ಗುಣಮಟ್ಟದ ಶಿಕ್ಷಣವನ್ನು ಒದಗಿಸಲು ಸಮರ್ಪಿತವಾಗಿದೆ. 1945 ರಲ್ಲಿ ಸ್ಥಾಪಿತವಾದ ನಾವು ಕಾರವಾರ ಸಮುದಾಯಕ್ಕೆ ತಲೆಮಾರುಗಳಿಂದ ಸೇವೆ ಸಲ್ಲಿಸುತ್ತಿದ್ದೇವೆ.">Our school is dedicated to providing quality education to students from all backgrounds. Established in 1945, we have been serving the Karwar community for generations.</p>
                         <p data-en="We believe in holistic development, focusing not only on academic excellence but also on character building, sports, and extracurricular activities." data-kn="ನಾವು ಸಮಗ್ರ ಅಭಿವೃದ್ಧಿಯನ್ನು ನಂಬುತ್ತೇವೆ, ಶೈಕ್ಷಣಿಕ ಶ್ರೇಷ್ಠತೆಯ ಮೇಲೆ ಮಾತ್ರವಲ್ಲದೆ ಪಾತ್ರ ನಿರ್ಮಾಣ, ಕ್ರೀಡೆ ಮತ್ತು ಪಠ್ಯೇತರ ಚಟುವಟಿಕೆಗಳ ಮೇಲೂ ಗಮನಹರಿಸುತ್ತೇವೆ.">We believe in holistic development, focusing not only on academic excellence but also on character building, sports, and extracurricular activities.</p>
-                        <p data-en="Our mission is to create responsible citizens who will contribute positively to society. We follow the state curriculum while incorporating modern teaching methodologies." data-kn="ಸಮಾಜಕ್ಕೆ ಸಕಾರಾತ್ಮಕವಾಗಿ ಕೊಡುಗೆ ನೀಡುವ ಜವಾಬ್ದಾರಿಯುತ ನಾಗರಿಕರನ್ನು ರೂಪಿಸುವುದು ನಮ್ಮ ಮಿಷನ್. ಆಧುನಿಕ ಬೋಧನಾ ಕ್ರಮಗಳನ್ನು ಸಂಯೋಜಿಸುವಾಗ ನಾವು ರಾಜ್ಯದ ಪಾಠ್ಯಕ್ರಮವನ್ನು ಅನುಸರಿಸುತ್ತೇವೆ.">Our mission is to create responsible citizens who will contribute positively to society. We follow the state curriculum while incorporating modern teaching methodologies.</p>
-                        <p data-en="With state-of-the-art facilities and a dedicated team of teachers, we strive to create a nurturing environment where every student can thrive." data-kn="ಆಧುನಿಕ ಸೌಲಭ್ಯಗಳು ಮತ್ತು ನಿಷ್ಠಾವಾದ ಶಿಕ್ಷಕರ ತಂಡದೊಂದಿಗೆ, ಪ್ರತಿ ವಿದ್ಯಾರ್ಥಿಯು ಯಶಸ್ವಿಯಾಗುವ ಪೋಷಕ ವಾತಾವರಣವನ್ನು ರಚಿಸಲು ನಾವು ಶ್ರಮಿಸುತ್ತೇವೆ.">With state-of-the-art facilities and a dedicated team of teachers, we strive to create a nurturing environment where every student can thrive.</p>
+                        <p data-en="Our mission is to create responsible citizens who will contribute positively to society. We follow the state curriculum with Kannada as the medium of instruction." data-kn="ಸಮಾಜಕ್ಕೆ ಸಕಾರಾತ್ಮಕವಾಗಿ ಕೊಡುಗೆ ನೀಡುವ ಜವಾಬ್ದಾರಿಯುತ ನಾಗರಿಕರನ್ನು ರೂಪಿಸುವುದು ನಮ್ಮ ಮಿಷನ್. ನಾವು ಕನ್ನಡವನ್ನು ಬೋಧನೆಯ ಮಾಧ್ಯಮವಾಗಿ ಬಳಸಿಕೊಂಡು ರಾಜ್ಯದ ಪಾಠ್ಯಕ್ರಮವನ್ನು ಅನುಸರಿಸುತ್ತೇವೆ.">Our mission is to create responsible citizens who will contribute positively to society. We follow the state curriculum with Kannada as the medium of instruction.</p>
+                        <p data-en="With dedicated teachers and a nurturing environment, we strive to create opportunities where every student can thrive and achieve their full potential." data-kn="ನಿಷ್ಠಾವಾದ ಶಿಕ್ಷಕರು ಮತ್ತು ಪೋಷಕ ವಾತಾವರಣದೊಂದಿಗೆ, ಪ್ರತಿ ವಿದ್ಯಾರ್ಥಿಯು ಯಶಸ್ವಿಯಾಗಿ ತಮ್ಮ ಪೂರ್ಣ ಸಾಮರ್ಥ್ಯವನ್ನು ತಲುಪಲು ಅವಕಾಶಗಳನ್ನು ರಚಿಸಲು ನಾವು ಶ್ರಮಿಸುತ್ತೇವೆ.">With dedicated teachers and a nurturing environment, we strive to create opportunities where every student can thrive and achieve their full potential.</p>
                         <a href="#" class="btn" data-en="Learn More" data-kn="ಮತ್ತಷ್ಟು ತಿಳಿಯಿರಿ">Learn More</a>
                     </div>
                     <div class="about-image animate-on-scroll">
                         <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="School Building">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Infrastructure Page -->
+        <section id="infrastructure">
+            <div class="container">
+                <div class="section-title">
+                    <h2 data-en="School Infrastructure" data-kn="ಶಾಲಾ ಮೂಲಸೌಕರ್ಯ">School Infrastructure</h2>
+                    <p data-en="Our facilities and resources for quality education" data-kn="ಗುಣಮಟ್ಟದ ಶಿಕ್ಷಣಕ್ಕಾಗಿ ನಮ್ಮ ಸೌಲಭ್ಯಗಳು ಮತ್ತು ಸಂಪನ್ಮೂಲಗಳು">Our facilities and resources for quality education</p>
+                </div>
+                <div class="infra-grid">
+                    <div class="infra-card animate-on-scroll">
+                        <i class="fas fa-building"></i>
+                        <h3 data-en="School Building" data-kn="ಶಾಲಾ ಕಟ್ಟಡ">School Building</h3>
+                        <p data-en="Private building with 3 classrooms and 2 additional rooms" data-kn="3 ತರಗತಿ ಕೊಠಡಿಗಳು ಮತ್ತು 2 ಹೆಚ್ಚುವರಿ ಕೊಠಡಿಗಳಿರುವ ಖಾಸಗಿ ಕಟ್ಟಡ">Private building with 3 classrooms and 2 additional rooms</p>
+                    </div>
+                    <div class="infra-card animate-on-scroll">
+                        <i class="fas fa-book"></i>
+                        <h3 data-en="Library" data-kn="ಗ್ರಂಥಾಲಯ">Library</h3>
+                        <p data-en="Well-stocked library with 3215 books for students" data-kn="ವಿದ್ಯಾರ್ಥಿಗಳಿಗಾಗಿ 3215 ಪುಸ್ತಕಗಳನ್ನು ಹೊಂದಿರುವ ಸಮೃದ್ಧ ಗ್ರಂಥಾಲಯ">Well-stocked library with 3215 books for students</p>
+                    </div>
+                    <div class="infra-card animate-on-scroll">
+                        <i class="fas fa-laptop"></i>
+                        <h3 data-en="Computer Lab" data-kn="ಕಂಪ್ಯೂಟರ್ ಲ್ಯಾಬ್">Computer Lab</h3>
+                        <p data-en="2 computers for teaching and learning purposes" data-kn="ಬೋಧನೆ ಮತ್ತು ಕಲಿಕೆಯ ಉದ್ದೇಶಗಳಿಗಾಗಿ 2 ಕಂಪ್ಯೂಟರ್‌ಗಳು">2 computers for teaching and learning purposes</p>
+                    </div>
+                    <div class="infra-card animate-on-scroll">
+                        <i class="fas fa-toilet"></i>
+                        <h3 data-en="Restrooms" data-kn="ವಿಶ್ರಾಂತಿ ಕೊಠಡಿಗಳು">Restrooms</h3>
+                        <p data-en="3 boys toilets and 1 girls toilet, all functional" data-kn="3 ಹುಡುಗರ ಶೌಚಾಲಯಗಳು ಮತ್ತು 1 ಹುಡುಗಿಯರ ಶೌಚಾಲಯ, ಎಲ್ಲಾ ಕಾರ್ಯನಿರ್ವಹಿಸುತ್ತವೆ">3 boys toilets and 1 girls toilet, all functional</p>
+                    </div>
+                    <div class="infra-card animate-on-scroll">
+                        <i class="fas fa-basketball-ball"></i>
+                        <h3 data-en="Playground" data-kn="ಕ್ರೀಡಾಂಗಣ">Playground</h3>
+                        <p data-en="Spacious playground for sports and physical activities" data-kn="ಕ್ರೀಡೆ ಮತ್ತು ದೈಹಿಕ ಚಟುವಟಿಕೆಗಳಿಗೆ ವಿಶಾಲ ಕ್ರೀಡಾಂಗಣ">Spacious playground for sports and physical activities</p>
+                    </div>
+                    <div class="infra-card animate-on-scroll">
+                        <i class="fas fa-utensils"></i>
+                        <h3 data-en="Mid-day Meals" data-kn="ಮಧ್ಯಾಹ್ನ ಊಟ">Mid-day Meals</h3>
+                        <p data-en="Meals provided and prepared in school premises" data-kn="ಶಾಲಾ premise ನಲ್ಲಿ ಒದಗಿಸಲಾಗಿದೆ ಮತ್ತು ಸಿದ್ಧಪಡಿಸಲಾಗಿದೆ">Meals provided and prepared in school premises</p>
                     </div>
                 </div>
             </div>
@@ -1089,18 +1174,18 @@
             <div class="container">
                 <div class="section-title">
                     <h2 data-en="Academics & Departments" data-kn="ಶೈಕ್ಷಣಿಕ ಮತ್ತು ವಿಭಾಗಗಳು">Academics & Departments</h2>
-                    <p data-en="Comprehensive educational programs for all students" data-kn="ಎಲ್ಲಾ ವಿದ್ಯಾರ್ಥಿಗಳಿಗಾಗಿ ಸಮಗ್ರ ಶೈಕ್ಷಣಿಕ ಕಾರ್ಯಕ್ರಮಗಳು">Comprehensive educational programs for all students</p>
+                    <p data-en="Comprehensive educational programs for students from grades 6 to 10" data-kn="6 ರಿಂದ 10 ನೇ ತರಗತಿಯ ವಿದ್ಯಾರ್ಥಿಗಳಿಗೆ ಸಮಗ್ರ ಶೈಕ್ಷಣಿಕ ಕಾರ್ಯಕ್ರಮಗಳು">Comprehensive educational programs for students from grades 6 to 10</p>
                 </div>
                 <div class="academics-grid">
                     <div class="academic-card animate-on-scroll">
                         <i class="fas fa-book"></i>
                         <h3 data-en="State Syllabus" data-kn="ರಾಜ್ಯ ಪಾಠ್ಯಕ್ರಮ">State Syllabus</h3>
-                        <p data-en="Following the Karnataka State Board curriculum with emphasis on regional language and culture" data-kn="ಪ್ರಾದೇಶಿಕ ಭಾಷೆ ಮತ್ತು ಸಂಸ್ಕೃತಿಯ ಮೇಲೆ ಒತ್ತು ನೀಡಿ ಕರ್ನಾಟಕ ರಾಜ್ಯ ಮಂಡಳಿಯ ಪಾಠ್ಯಕ್ರಮವನ್ನು ಅನುಸರಿಸುತ್ತದೆ">Following the Karnataka State Board curriculum with emphasis on regional language and culture</p>
+                        <p data-en="Following the Karnataka State Board curriculum with Kannada as medium of instruction" data-kn="ಕನ್ನಡವನ್ನು ಬೋಧನೆಯ ಮಾಧ್ಯಮವಾಗಿ ಬಳಸಿಕೊಂಡು ಕರ್ನಾಟಕ ರಾಜ್ಯ ಮಂಡಳಿಯ ಪಾಠ್ಯಕ್ರಮವನ್ನು ಅನುಸರಿಸುತ್ತದೆ">Following the Karnataka State Board curriculum with Kannada as medium of instruction</p>
                     </div>
                     <div class="academic-card animate-on-scroll">
                        <i class="fas fa-microscope"></i>
                         <h3 data-en="Science Department" data-kn="ವಿಜ್ಞಾನ ವಿಭಾಗ">Science Department</h3>
-                        <p data-en="Well-equipped laboratories and experienced faculty for physics, chemistry and biology" data-kn="ಭೌತಶಾಸ್ತ್ರ, ರಸಾಯನಶಾಸ್ತ್ರ ಮತ್ತು ಜೀವಶಾಸ್ತ್ರಕ್ಕಾಗಿ ಸುಸಜ್ಜಿತ ಪ್ರಯೋಗಾಲಯಗಳು ಮತ್ತು ಅನುಭವಿ ಫ್ಯಾಕಲ್ಟಿ">Well-equipped laboratories and experienced faculty for physics, chemistry and biology</p>
+                        <p data-en="Quality science education with emphasis on practical knowledge" data-kn="ಪ್ರಾಯೋಗಿಕ ಜ್ಞಾನದ ಮೇಲೆ ಒತ್ತು ನೀಡಿ ಗುಣಮಟ್ಟದ ವಿಜ್ಞಾನ ಶಿಕ್ಷಣ">Quality science education with emphasis on practical knowledge</p>
                     </div>
                     <div class="academic-card animate-on-scroll">
                         <i class="fas fa-calculator"></i>
@@ -1110,17 +1195,17 @@
                     <div class="academic-card animate-on-scroll">
                         <i class="fas fa-language"></i>
                         <h3 data-en="Languages" data-kn="ಭಾಷೆಗಳು">Languages</h3>
-                        <p data-en="Comprehensive language programs in Kannada, English, Hindi and Sanskrit" data-kn="ಕನ್ನಡ, ಇಂಗ್ಲಿಷ್, ಹಿಂದಿ ಮತ್ತು ಸಂಸ್ಕೃತದಲ್ಲಿ ಸಮಗ್ರ ಭಾಷಾ ಕಾರ್ಯಕ್ರಮಗಳು">Comprehensive language programs in Kannada, English, Hindi and Sanskrit</p>
+                        <p data-en="Comprehensive language programs with emphasis on Kannada as per state curriculum" data-kn="ರಾಜ್ಯದ ಪಾಠ್ಯಕ್ರಮದ ಪ್ರಕಾರ ಕನ್ನಡದ ಮೇಲೆ ಒತ್ತು ನೀಡಿ ಸಮಗ್ರ ಭಾಷಾ ಕಾರ್ಯಕ್ರಮಗಳು">Comprehensive language programs with emphasis on Kannada as per state curriculum</p>
                     </div>
                     <div class="academic-card animate-on-scroll">
                         <i class="fas fa-laptop-code"></i>
                         <h3 data-en="Computer Education" data-kn="ಕಂಪ್ಯೂಟರ್ ಶಿಕ್ಷಣ">Computer Education</h3>
-                        <p data-en="Modern computer lab with internet access and qualified instructors" data-kn="ಇಂಟರ್ನೆಟ್ ಪ್ರವೇಶ ಮತ್ತು ಅರ್ಹ ಇನ್ಸ್ಟ್ರಕ್ಟರ್‌ಗಳೊಂದಿಗೆ ಆಧುನಿಕ ಕಂಪ್ಯೂಟರ್ ಲ್ಯಾಬ್">Modern computer lab with internet access and qualified instructors</p>
+                        <p data-en="Basic computer education to prepare students for digital world" data-kn="ವಿದ್ಯಾರ್ಥಿಗಳನ್ನು ಡಿಜಿಟಲ್ ಪ್ರಪಂಚಕ್ಕೆ ಸಿದ್ಧಪಡಿಸಲು ಮೂಲ ಕಂಪ್ಯೂಟರ್ ಶಿಕ್ಷಣ">Basic computer education to prepare students for digital world</p>
                     </div>
                     <div class="academic-card animate-on-scroll">
                         <i class="fas fa-download"></i>
                         <h3 data-en="Study Resources" data-kn="ಅಧ್ಯಯನ ಸಂಪನ್ಮೂಲಗಳು">Study Resources</h3>
-                        <p data-en="Download textbooks, worksheets and previous year question papers" data-kn="ಪಠ್ಯಪುಸ್ತಕಗಳು, ವರ್ಕ್‌ಶೀಟ್‌ಗಳು ಮತ್ತು ಹಿಂದಿನ ವರ್ಷದ ಪ್ರಶ್ನೆ ಪತ್ರಿಕೆಗಳನ್ನು ಡೌನ್‌ಲೋಡ್ ಮಾಡಿ">Download textbooks, worksheets and previous year question papers</p>
+                        <p data-en="Access to textbooks, worksheets and previous year question papers" data-kn="ಪಠ್ಯಪುಸ್ತಕಗಳು, ವರ್ಕ್‌ಶೀಟ್‌ಗಳು ಮತ್ತು ಹಿಂದಿನ ವರ್ಷದ ಪ್ರಶ್ನೆ ಪತ್ರಿಕೆಗಳಿಗೆ ಪ್ರವೇಶ">Access to textbooks, worksheets and previous year question papers</p>
                     </div>
                 </div>
             </div>
@@ -1131,7 +1216,7 @@
             <div class="container">
                 <div class="section-title">
                     <h2 data-en="Admissions" data-kn="ಪ್ರವೇಶ">Admissions</h2>
-                    <p data-en="Join our educational community" data-kn="ನಮ್ಮ ಶೈಕ್ಷಣಿಕ ಸಮುದಾಯವನ್ನು ಸೇರಿಕೊಳ್ಳಿ">Join our educational community</p>
+                    <p data-en="Join our educational community for grades 6 to 10" data-kn="6 ರಿಂದ 10 ನೇ ತರಗತಿಗಳಿಗೆ ನಮ್ಮ ಶೈಕ್ಷಣಿಕ ಸಮುದಾಯವನ್ನು ಸೇರಿಕೊಳ್ಳಿ">Join our educational community for grades 6 to 10</p>
                 </div>
                 <div class="admission-process">
                     <div class="process-card animate-on-scroll">
@@ -1149,7 +1234,7 @@
                         <h3 data-en="Admission Process" data-kn="ಪ್ರವೇಶ ಪ್ರಕ್ರಿಯೆ">Admission Process</h3>
                         <p data-en="Admissions typically begin in May-June each year. Follow these steps:" data-kn="ಪ್ರವೇಶವು ಸಾಮಾನ್ಯವಾಗೆ ಪ್ರತಿ ವರ್ಷ ಮೇ-ಜೂನ್‌ನಲ್ಲಿ ಪ್ರಾರಂಭವಾಗುತ್ತದೆ. ಈ ಹಂತಗಳನ್ನು ಅನುಸರಿಸಿ:">Admissions typically begin in May-June each year. Follow these steps:</p>
                         <ol>
-                            <li data-en="Collect application form from school office or download online" data-kn="ಶಾಲೆಯ ಕಚೇರಿಯಿಂದ ಅರ್ಜಿ ಫಾರ್ಮ್ ಪಡೆಯಿರಿ ಅಥವಾ ಆನ್‌ಲೈನ್‌ನಲ್ಲಿ ಡೌನ್‌ಲೋಡ್ ಮಾಡಿ">Collect application form from school office or download online</li>
+                            <li data-en="Collect application form from school office" data-kn="ಶಾಲೆಯ ಕಚೇರಿಯಿಂದ ಅರ್ಜಿ ಫಾರ್ಮ್ ಪಡೆಯಿರಿ">Collect application form from school office</li>
                             <li data-en="Submit filled form with required documents" data-kn="ಅಗತ್ಯ ದಾಖಲೆಗಳೊಂದಿಗೆ ಪೂರ್ಣಗೊಂಡ ಫಾರ್ಮ್ ಸಲ್ಲಿಸಿ">Submit filled form with required documents</li>
                             <li data-en="Attend interaction session (if required)" data-kn="ಅಂತರಕ್ರಿಯಾ ಅಧಿವೇಶನದಲ್ಲಿ ಭಾಗವಹಿಸಿ (ಅಗತ್ಯವಿದ್ದರೆ)">Attend interaction session (if required)</li>
                             <li data-en="Complete admission formalities and pay fees" data-kn="ಪ್ರವೇಶ ಔಪಚಾರಿಕತೆಗಳನ್ನು ಪೂರ್ಣಗೊಳಿಸಿ ಮತ್ತು ಶುಲ್ಕವನ್ನು ಪಾವತಿಸಿ">Complete admission formalities and pay fees</li>
@@ -1178,7 +1263,7 @@
                     <div class="notice-list">
                         <div class="notice-item animate-on-scroll" data-category="exams">
                             <h4 data-en="Annual Examination Schedule" data-kn="ವಾರ್ಷಿಕ ಪರೀಕ್ಷಾ ವೇಳಾಪಟ್ಟಿ">Annual Examination Schedule</h4>
-                            <p data-en="Schedule for the annual examinations has been published. Download from the link below." data-kn="ವಾರ್ಷಿಕ ಪರೀಕ್ಷೆಗಳ ವೇಳಾಪಟ್ಟಿಯನ್ನು ಪ್ರಕಟಿಸಲಾಗಿದೆ. ಕೆಳಗಿನ ಲಿಂಕ್‌ನಿಂದ ಡೌन್‌ಲೋಡ್ ಮಾಡಿ.">Schedule for the annual examinations has been published. Download from the link below.</p>
+                            <p data-en="Schedule for the annual examinations has been published. Download from the link below." data-kn="ವಾರ್ಷಿಕ ಪರೀಕ್ಷೆಗಳ ವೇಳಾಪಟ್ಟಿಯನ್ನು ಪ್ರಕಟಿಸಲಾಗಿದೆ. ಕೆಳಗಿನ ಲಿಂಕ್‌ನಿಂದ ಡೌನ್‌ಲೋಡ್ ಮಾಡಿ.">Schedule for the annual examinations has been published. Download from the link below.</p>
                             <p class="notice-date">Published on: May 10, 2023</p>
                             <a href="#" class="btn" data-en="Download" data-kn="ಡೌನ್ಲೋಡ್ ಮಾಡಿ">Download</a>
                         </div>
@@ -1189,13 +1274,13 @@
                         </div>
                         <div class="notice-item animate-on-scroll" data-category="circulars">
                             <h4 data-en="Scholarship Application Deadline" data-kn="ವಿದ್ಯಾರ್ಥಿವೇತನ ಅರ್ಜಿ ಅಂತಿಮ ದಿನಾಂಕ">Scholarship Application Deadline</h4>
-                            <p data-en="Last date to apply for various government scholarships is May 30, 2023. Apply soon." data-kn="ವಿವಿಧ ಸರ್ಕಾರಿ ವಿದ್ಯಾರ್ಥಿವೇತನಗಳಿಗೆ ಅರ್ಜಿ ಸಲ್ಲಿಸುವ ಕೊನೆಯ ದಿನಾಂಕ ಮೇ 30, 2023. ಶೀಘ್ರವೇ ಅರ್ಜಿ ಸಲ್ಲಿಸಿ.">Last date to apply for various government scholarships is May 30, 2023. Apply soon.</p>
+                            <p data-en="Last date to apply for various government scholarships is May 30, 2023. Apply soon." data-kn="ವಿವಿಧ ಸರ್ಕಾರಿ ವಿದ್ಯಾರ್ಥಿವೇತನಗಳಿಗೆ ಅರ್ಜಿ ಸಲ್ಲಿಸುವ ಕೊನೆಯ ದಿನಾಂಕ ಮೇ 30, 2023. ಶೀಘ್ರವೇ ಅರ್ಜಿ ಸಲ್ಲಿಸი.">Last date to apply for various government scholarships is May 30, 2023. Apply soon.</p>
                             <p class="notice-date">Published on: May 3, 2023</p>
                             <a href="#" class="btn" data-en="Apply Now" data-kn="ಈಗಲೇ ಅರ್ಜಿ ಸಲ್ಲಿಸಿ">Apply Now</a>
                         </div>
                         <div class="notice-item animate-on-scroll" data-category="results">
                             <h4 data-en="SSLC Results Published" data-kn="ಎಸ್‌ಎಸ್‌ಎಲ್‌ಸಿ ಫಲಿತಾಂಶಗಳು ಪ್ರಕಟವಾಗಿವೆ">SSLC Results Published</h4>
-                            <p data-en="SSLC examination results for the academic year 2022-23 have been published on the official website." data-kn="2022-23 ಶೈಕ್ಷಣಿಕ ವರ್ಷದ ಎಸ್‌ಎಸ್‌ಎಲ್‌ಸಿ ಪರೀಕ್ಷೆಯ ಫಲಿತಾಂಶಗಳನ್ನು ಅಧಿಕೃತ ವೆಬ್‌ಸೈಟ್‌ನಲ್ಲಿ ಪ್ರಕಟಿಸಲಾಗಿದೆ.">SSLC examination results for the academic year 2022-23 have been published on the official website.</p>
+                            <p data-en="SSLC examination results for the academic year 2022-23 have been published on the official website." data-kn="2022-23 ಶೈಕ್ಷಣಿಕ ವರ್ಷದ ಎಸ್‌ಎಸ್‌ಎಲ್‌ಸಿ ಪरೀಕ್ಷೆಯ ಫಲಿತಾಂಶಗಳನ್ನು ಅಧಿಕೃತ ವೆಬ್‌ಸೈಟ್‌ನಲ್ಲಿ ಪ್ರಕಟಿಸಲಾಗಿದೆ.">SSLC examination results for the academic year 2022-23 have been published on the official website.</p>
                             <p class="notice-date">Published on: May 25, 2023</p>
                             <a href="#" class="btn" data-en="Check Results" data-kn="ಫಲಿತಾಂಶಗಳನ್ನು ಪರಿಶೀಲಿಸಿ">Check Results</a>
                         </div>
@@ -1245,13 +1330,13 @@
                     <div class="contact-info">
                         <h3 data-en="Contact Information" data-kn="ಸಂಪರ್ಕ ಮಾಹಿತಿ">Contact Information</h3>
                         <div class="contact-details">
-                            <p><i class="fas fa-map-marker-alt"></i> Karnataka Government School, Bengaluru, Karnataka 560001</p>
-                            <p><i class="fas fa-phone"></i> +91 80 1234 5678</p>
-                            <p><i class="fas fa-envelope"></i> info@karnatakagovschool.edu.in</p>
+                            <p><i class="fas fa-map-marker-alt"></i> Shivaji High School, Ward 17, Baad, Karwar, Uttara Kannada, Karnataka 581304</p>
+                            <p><i class="fas fa-phone"></i> +91 XXXXX-XXXXX</p>
+                            <p><i class="fas fa-envelope"></i> XXXX@XXXXXX.XXX</p>
                             <p><i class="fas fa-clock"></i> Mon - Sat: 9:00 AM - 4:00 PM</p>
                         </div>
                         <div class="map-container">
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.986395046787!2d77.59421431482145!3d12.90869099089619!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae151f0a46d96f%3A0x3a37b2ef6b22e61f!2sVidhana%20Soudha!5e0!3m2!1sen!2sin!4v1683558579436!5m2!1sen!2sin" allowfullscreen="" loading="lazy"></iframe>
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d61570.4570200005!2d74.09267926953126!3d14.813999999999993!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bbf8eb1c754984d%3A0x6d345b2e87f8b6d8!2sKarwar%2C%20Karnataka!5e0!3m2!1sen!2sin!4v1683558579436!5m2!1sen!2sin" allowfullscreen="" loading="lazy"></iframe>
                         </div>
                     </div>
                     <div class="contact-form">
@@ -1274,8 +1359,8 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-column">
-                    <h3>Karnataka Government School</h3>
-                    <p data-en="Providing quality education to students from all backgrounds since 1985. Empowering the future of Karnataka." data-kn="1985 ರಿಂದ ಎಲ್ಲಾ ಹಿನ್ನೆಲೆಯ ವಿದ್ಯಾರ್ಥಿಗಳಿಗೆ ಗುಣಮಟ್ಟದ ಶಿಕ್ಷಣವನ್ನು ಒದಗಿಸುತ್ತಿದೆ. ಕರ್ನಾಟಕದ ಭವಿಷ್ಯವನ್ನು ಸಶಕ್ತಗೊಳಿಸುವುದು.">Providing quality education to students from all backgrounds since 1985. Empowering the future of Karnataka.</p>
+                    <h3>Shivaji High School</h3>
+                    <p data-en="Providing quality education to students from all backgrounds since 1945. Empowering the future of Karwar." data-kn="1945 ರಿಂದ ಎಲ್ಲಾ ಹಿನ್ನೆಲೆಯ ವಿದ್ಯಾರ್ಥಿಗಳಿಗೆ ಗುಣಮಟ್ಟದ ಶಿಕ್ಷಣವನ್ನು ಒದಗಿಸುತ್ತಿದೆ. ಕಾರವಾರದ ಭವಿಷ್ಯವನ್ನು ಸಶಕ್ತಗೊಳಿಸುವುದು.">Providing quality education to students from all backgrounds since 1945. Empowering the future of Karwar.</p>
                     <div class="social-links">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
@@ -1288,6 +1373,7 @@
                     <ul>
                         <li><a class="nav-link" data-page="home" data-en="Home" data-kn="ಮುಖಪುಟ">Home</a></li>
                         <li><a class="nav-link" data-page="about" data-en="About Us" data-kn="ನಮ್ಮ ಬಗ್ಗೆ">About Us</a></li>
+                        <li><a class="nav-link" data-page="infrastructure" data-en="Infrastructure" data-kn="ಮೂಲಸೌಕರ್ಯ">Infrastructure</a></li>
                         <li><a class="nav-link" data-page="academics" data-en="Academics" data-kn="ಶೈಕ್ಷಣಿಕ">Academics</a></li>
                         <li><a class="nav-link" data-page="admissions" data-en="Admissions" data-kn="ಪ್ರವೇಶ">Admissions</a></li>
                         <li><a class="nav-link" data-page="notices" data-en="Notices" data-kn="ಸೂಚನೆಗಳು">Notices</a></li>
@@ -1308,7 +1394,8 @@
                 </div>
             </div>
             <div class="copyright">
-                <p>© 2023 Karnataka Government School. All Rights Reserved.</p>
+                <p>© 2023 Shivaji High School. All Rights Reserved.</p>
+                <p>UDISE Code: 29100207103 | Managed by: Pvt. Aided</p>
             </div>
         </div>
     </footer>
