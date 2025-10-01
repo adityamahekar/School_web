@@ -21,7 +21,7 @@ It also features a **language toggle** to switch between **English** and **Kanna
 - Optional: Bootstrap for styling 🖌️
 - ---
 ## 🖼️ Screenshot Gallery
----
+
 | Home Page|  Home Page 2 |
 |-----|-----|
 | ![sw1](imgg/sw1.png) | ![sw2](imgg/sw2.png)|
