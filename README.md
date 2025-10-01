@@ -13,16 +13,16 @@ It also features a **language toggle** to switch between **English** and **Kanna
 - 🔻 Footer with school information  
 - 🌏 Language toggle option (English / Kannada)  
 - 🖼️ Image gallery showcasing school facilities  
-
+---
 ## 🛠️ Technologies Used
 - HTML5 📝
 - CSS3 🎨
 - JavaScript ⚡
 - Responsive Design 📱
 - Optional: Bootstrap for styling 🖌️
+- ---
 ## 🖼️ Screenshot Gallery
-All images are stored in the `imgg` folder.
-
+---
 | Home Page|  Home Page 2 |
 |-----|-----|
 | ![sw1](imgg/sw1.png) | ![sw2](imgg/sw2.png)|
