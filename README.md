@@ -2,8 +2,8 @@
 
 A responsive school website for **Shivaji Balmandir Kannada Medium School, Baad Karwar**.  
 The website includes sections like **Home, About, Infrastructure, Academy, Admission, Notice, Gallery, and Contact**.  
-It also features a **language toggle** to switch between **English 🇬🇧** and **Kannada 🇮🇳**.
----
+It also features a **language toggle** to switch between **English** and **Kannada**.
+
 ## 🔗 Live Link
 [School Web](https://adityamahekar.github.io/School_web/)
 ---
