@@ -23,27 +23,27 @@ It also features a **language toggle** to switch between **English 🇬🇧** an
 ## 🖼️ Screenshot Gallery
 All images are stored in the `imgg` folder.
 
-| sw1 | sw2 |
+| Home Page|  Home Page 2 |
 |-----|-----|
-| ![sw1](imgg/sw1.png) <br> 🏠 Home Page | ![sw2](imgg/sw2.png) <br> ℹ️ About Page |
+| ![sw1](imgg/sw1.png) | ![sw2](imgg/sw2.png)|
 
-| sw3 | sw4 |
+| About Page | Infrastructure Overview |
 |-----|-----|
-| ![sw3](imgg/sw3.png) <br> 🏢 Infrastructure Overview | ![sw4](imgg/sw4.png) <br> 🏫 Classrooms & Facilities |
+| ![sw3](imgg/sw3.png) | ![sw4](imgg/sw4.png) |
 
-| sw5 | sw6 |
+|Academy Section | Admission Page |
 |-----|-----|
-| ![sw5](imgg/sw5.png) <br> 🎓 Academy Section | ![sw6](imgg/sw6.png) <br> 📝 Admission Page |
+| ![sw5](imgg/sw5.png) | ![sw6](imgg/sw6.png) |
 
-| sw7 | sw8 |
+| Notice Board | Notice Board 2 |
 |-----|-----|
-| ![sw7](imgg/sw7.png) <br> 📢 Notice Board | ![sw8](imgg/sw8.png) <br> 🖼️ Gallery Section |
+| ![sw7](imgg/sw7.png) | ![sw8](imgg/sw8.png) |
 
-| sw9 | sw10 |
+| Gallery Section  | Contact Page |
 |------|------|
-| ![sw9](imgg/sw9.png) <br> 🖼️ More Gallery Images | ![sw10](imgg/sw10.png) <br> 📞 Contact Page |
+| ![sw9](imgg/sw9.png)| ![sw10](imgg/sw10.png) |
 
-| sw11 | sw12 |
+| Footer Section| Language Toggle Feature|
 |------|------|
-| ![sw11](imgg/sw11.png) <br> 🔻 Footer Section | ![sw12](imgg/sw12.png) <br> 🌏 Language Toggle Feature |
+| ![sw11](imgg/sw11.png) | ![sw12](imgg/sw12.png) |
 
