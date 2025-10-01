@@ -20,7 +20,7 @@ It also features a **language toggle** to switch between **English** and **Kanna
 - Responsive Design 📱
 - Optional: Bootstrap for styling 🖌️
 - ---
-## 🖼️ Screenshot Gallery
+## 🖼️Gallery
 
 | Home Page|  Home Page 2 |
 |-----|-----|
