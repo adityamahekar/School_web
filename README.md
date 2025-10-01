@@ -6,7 +6,6 @@ It also features a **language toggle** to switch between **English** and **Kanna
 
 ## 🔗 Live Link: [School Web](https://adityamahekar.github.io/School_web/)
 
----
 ## ✨ Features
 - 🌐 Responsive design for desktop and mobile  
 - 🏠 Home, ℹ️ About, 🏢 Infrastructure, 🎓 Academy, 📝 Admission, 📢 Notice, 🖼️ Gallery, and 📞 Contact pages  
